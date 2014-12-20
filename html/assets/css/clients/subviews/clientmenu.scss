@@ -1,0 +1,30 @@
+.client-menu {
+  float:right;
+  min-width:200px;
+  margin-top:-2px;
+}
+
+.client-menu-item {
+  display:block;
+  padding:8px 16px;
+  margin:2px 0;
+  text-align:right;
+  text-decoration:none;
+  color:grey(50%);
+
+  &::after {
+    content:"\00A0\00A0\276E";
+    color:grey(100%);
+  }
+}
+
+.client-current-menu-item {
+  @extend .client-menu-item;
+  color:grey(0%);
+  cursor:default;
+  font-weight:bold;
+
+  &::after {
+    color:grey(0%);
+  }
+}

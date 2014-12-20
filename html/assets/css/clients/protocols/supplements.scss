@@ -1,0 +1,44 @@
+@import '../../layouts/master/master';
+
+.letters {
+  margin-bottom:15px;
+  padding:0 20px;
+}
+
+.letter {
+  margin:0 4px;
+  font-size:12px;
+}
+
+.supplements {
+  border-width:1px 0;
+  border-style:solid;
+  border-color:grey(77%);
+  height:300px;
+  overflow-y:scroll;
+}
+
+.supplement {
+  list-style:none;
+  padding:8px 23px 8px 23px;
+  border-width:0 0 1px 0;
+  border-style:solid;
+  border-color:grey(90%);
+  border-collapse:collapse;
+  cursor:pointer;
+
+  &:hover {
+    text-decoration:underline;
+  }
+}
+
+.selected-supplement {
+  @extend .supplement;
+  background-color:grey(97%);
+  text-decoration:underline;
+}
+
+.buttons {
+  text-align:right;
+  margin:20px 20px 20px 0;
+}

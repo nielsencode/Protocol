@@ -1,0 +1,13 @@
+@import 'partials/colors';
+@import 'partials/fonts';
+@import 'partials/paths';
+@import 'partials/shadows';
+@import 'partials/buttons';
+@import 'partials/messages';
+@import 'partials/forms';
+@import 'partials/pagination';
+
+body {
+  font-family:$helvetica;
+  font-size:13px;
+}

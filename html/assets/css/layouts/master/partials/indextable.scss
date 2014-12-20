@@ -1,0 +1,67 @@
+.index-table-tools {
+  margin-bottom:25px;
+  width:100%;
+}
+
+.index-table {
+  width:100%;
+  border-collapse:collapse;
+  text-align:right;
+  font-size:13px;
+}
+
+.index-table-column {
+  border-width:1px;
+  border-style:solid;
+  border-color:grey(100%) grey(100%) grey(90%) grey(100%);
+  height:30px;
+  padding:0 10px;
+  color:grey(25%);
+}
+
+.index-table-column-link {
+  text-decoration:none;
+  display:block;
+  color:grey(25%);
+}
+
+.index-table-head {
+  background-color:grey(97%);
+}
+
+.index-table-row {
+  cursor:pointer;
+
+  &:hover {
+    background-color:grey(98%);
+  }
+}
+
+.index-table-cell {
+  border-bottom:1px solid grey(81%);
+
+  a {
+    padding:11px;
+    display:block;
+    color:initial;
+    text-decoration:none;
+  }
+}
+
+.index-tools-link {
+  color:red();
+  text-decoration:underline;
+  cursor:pointer;
+
+  &:link {
+    text-decoration:underline;
+  }
+}
+
+.index-table .index-table-column:first-of-type {
+  text-align:left;
+}
+
+.index-table-row .index-table-cell:first-of-type {
+  text-align:left;
+}

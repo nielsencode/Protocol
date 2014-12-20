@@ -1,0 +1,57 @@
+.modal-dialog {
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:9999px;
+  background-color:grey(100%,.5);
+  z-index:1;
+}
+
+.modal-dialog-box {
+  position:absolute;
+  border:1px solid grey(77%);
+  border-radius:4px;
+  width:760px;
+  height:475px;
+  top:50%;
+  left:50%;
+  box-shadow:0 4px 16px rgba(0,0,0,.15);
+  background-color:grey(100%);
+  z-index:2;
+}
+
+.modal-dialog-box-inner {
+  position:relative;
+  height:100%;
+}
+
+.modal-dialog-box-header {
+  padding:20px;
+}
+
+.modal-dialog-box-title {
+  font-size:18px;
+}
+
+.modal-dialog-box-close {
+  float:right;
+  font-size:16px;
+  cursor:pointer;
+  padding:4px;
+  margin:-4px;
+}
+
+.modal-dialog-box-frame-outer {
+  position:absolute;
+  top:70px;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+.modal-dialog-box-frame {
+  border:none;
+  width:100%;
+  height:100%;
+}

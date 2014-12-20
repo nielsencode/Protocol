@@ -1,0 +1,22 @@
+.client-menu {
+  float: right;
+  min-width: 200px;
+  margin-top: -2px; }
+
+.client-menu-item, .client-current-menu-item {
+  display: block;
+  padding: 8px 16px;
+  margin: 2px 0;
+  text-align: right;
+  text-decoration: none;
+  color: grey(50%); }
+  .client-menu-item::after, .client-current-menu-item::after {
+    content: "\00A0\00A0\276E";
+    color: grey(100%); }
+
+.client-current-menu-item {
+  color: grey(0%);
+  cursor: default;
+  font-weight: bold; }
+  .client-current-menu-item::after {
+    color: grey(0%); }

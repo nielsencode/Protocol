@@ -1,0 +1,9 @@
+@import '../layouts/master/base';
+
+body {
+  margin:0;
+}
+
+.ok-button {
+  @extend .button;
+}

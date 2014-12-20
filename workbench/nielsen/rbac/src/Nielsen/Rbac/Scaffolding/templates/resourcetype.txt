@@ -1,0 +1,9 @@
+<?php namespace {{ $namespace }};
+
+use Nielsen\Rbac\Resource\ResourceType;
+
+class {{ $classname }} extends ResourceType
+{
+
+
+}

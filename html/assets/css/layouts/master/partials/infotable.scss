@@ -1,0 +1,46 @@
+.info-table {
+  font-size:13px;
+}
+
+.info-table-cell {
+  padding:3px 40px 3px 0;
+  line-height:25px;
+  vertical-align:top;
+  text-align:left;
+  max-width:500px;
+}
+
+.info-table-label-cell {
+  @extend .info-table-cell;
+  color:grey(45%);
+  text-align:right;
+}
+
+.info-table-section-label {
+  @extend .info-table-label-cell;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.info-table-section-cell {
+  @extend .info-table-section-label;
+  text-align:left;
+  text-transform:initial;
+}
+
+.info-table-links {
+  display:inline-block;
+  font-weight:normal;
+  font-size:13px;
+  font-weight:initial;
+  margin-left:10px;
+  color:grey(75%);
+}
+
+.info-table-edit-link {
+  color:red();
+  font-size:13px;
+  font-weight:initial;
+  text-decoration:underline;
+  cursor:pointer;
+}

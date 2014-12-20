@@ -1,0 +1,35 @@
+.client-protocols-table-wrapper {
+  overflow-x: scroll;
+  margin-top: 20px; }
+
+.client-protocols-table {
+  width: 100%; }
+
+.client-protocols-table-cell, .client-protocols-table-header-cell, .client-protocols-table-label-cell {
+  padding: 8px;
+  text-align: center;
+  font-weight: normal;
+  min-width: 110px;
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: grey(60%); }
+  .client-protocols-table-cell:last-of-type, .client-protocols-table-header-cell:last-of-type, .client-protocols-table-label-cell:last-of-type {
+    border-right-width: 1px; }
+
+.client-protocols-table-label-cell {
+  border-right-width: 1px;
+  background-color: grey(70%);
+  text-align: right;
+  color: grey(100%);
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 12px;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 1; }
+
+.client-protocols-table-header-cell-link {
+  color: inherit;
+  display: block; }
+  .client-protocols-table-header-cell-link:hover {
+    background-color: rgba(255, 255, 255, 0.66); }

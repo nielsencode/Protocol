@@ -1,0 +1,89 @@
+.form-cell {
+  padding-top:3px;
+  padding-right:50px;
+  padding-bottom:3px;
+  font-size:13px;
+}
+
+.form-label-cell {
+  @extend .form-cell;
+  text-align:right;
+}
+
+.form-textarea-label-cell {
+  @extend .form-label-cell;
+  vertical-align:top;
+  padding-top:10px;
+}
+
+.form-checkbox-cell {
+  @extend .form-cell;
+  padding-right:20px;
+}
+
+.form-label {
+  font-size:13px;
+}
+
+.required-form-label {
+  @extend .form-label;
+  font-weight:bold;
+}
+
+.form-text {
+  width:200px;
+  border:1px solid grey(77%);
+  border-radius:3px;
+  outline:none;
+  padding:5px;
+  font-size:12px;
+}
+
+.long-form-text {
+  @extend .form-text;
+  width:300px;
+}
+
+.short-form-text {
+  @extend .form-text;
+  width:150px;
+}
+
+.price-form-text {
+  @extend .form-text;
+  width:75px;
+}
+
+.form-text-area {
+  @extend .form-text;
+  width:450px;
+  height:150px;
+}
+
+.form-select {
+  @extend .form-text;
+  margin:5px 0;
+}
+
+.form-field-error {
+  @include error;
+}
+
+.form-section-header {
+  @extend .form-cell;
+  padding-top:25px;
+  padding-bottom:15px;
+}
+
+.form-section-header-title {
+  @extend .form-section-header;
+  text-transform:uppercase;
+  font-size:12px;
+  text-align:right;
+}
+
+.form-description-cell {
+  @extend .form-cell;
+  color:grey();
+  font-size:12px;
+}

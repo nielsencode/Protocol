@@ -1,0 +1,27 @@
+@import 'master.scss';
+
+.center-panel {
+  text-align:center;
+  margin-top:100px;
+}
+
+.inner-center-panel {
+  display:inline-block;
+  border-radius:4px;
+  margin:auto;
+  background-color:grey(97%);
+  border:1px solid grey(87%);
+  padding:35px 60px 35px 50px;
+}
+
+.messages {
+  margin-bottom:15px;
+}
+
+.form-cell {
+  padding-right:0;
+}
+
+.form-text {
+  margin-left:30px;
+}
