@@ -26,7 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'development' => array('protocolapp')
+	'development' => array('protocolapp'),
+	'production'  => array('ip-172-31-36-53')
 
 ));
 
