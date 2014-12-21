@@ -108,6 +108,7 @@
 						Auth::user()
 							->has('edit')
 							->ofScope('Subscriber')
+							->orScope('Protocol')
 							->over('Setting')
 					)
 						<a class="master-navbar-dropdown-menu-item" href="{{ route('settings') }}">Settings</a>
