@@ -22,7 +22,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'protocol.chce0c2qwzkn.us-west-2.rds.amazonaws.com:3306',
+			'host'      => 'protocol.chce0c2qwzkn.us-west-2.rds.amazonaws.com',
 			'database'  => 'protocol',
 			'username'  => 'protocol',
 			'password'  => 'ProtocolOctopus',
