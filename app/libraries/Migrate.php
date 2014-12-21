@@ -26,13 +26,11 @@ class Migrate {
             return false;
         }
 
-        if(!isset($errors)) {
-            $template = csvToArray(file_get_contents($template_path));
-            $template_keys = array_keys($template[0]);
+        $template = csvToArray(file_get_contents($template_path));
+        $template_keys = array_keys($template[0]);
 
-            if(!empty(array_diff(array_keys($data[0]),$template_keys))) {
-                return false;
-            }
+        if(!empty(array_diff(array_keys($data[0]),$template_keys))) {
+            return false;
         }
 
         return $data;

@@ -464,12 +464,13 @@ class ClientController extends BaseController {
 			->over('Client');
 
 		$data = file_get_contents($_FILES['data']['tmp_name']);
+
 		$template_path = public_path().'/assets/templates/clients/import.csv';
 
 		$clients = Migrate::import($data,$template_path);
 
-		if(isset($errors)) {
-			return Redirect::route('import clients')->with('errors',$errors);
+		if(!$clients) {
+			return Redirect::route('import clients')->with('errors',array(''));
 		}
 
 		foreach(Addresstype::all() as $type) {
@@ -478,6 +479,7 @@ class ClientController extends BaseController {
 
 		foreach($clients as $data) {
 			$clientData = array_intersect_key($data,array_flip(array('first name','last name','email')));
+
 			$clientData = array_combine(str_replace(' ','_',array_keys($clientData)),array_values($clientData));
 
 			if(Client::where('email',$clientData['email'])->count()>0) {
@@ -489,11 +491,17 @@ class ClientController extends BaseController {
 			$client = Client::create($clientData);
 
 			$pattern = '/('.implode('|',array_keys($addresstypes)).') (.+)/';
+
 			$addresses = array();
+
 			foreach($data as $key=>$value) {
+
 				if(preg_match($pattern,$key,$matches)) {
+
 					$addresstype = $matches[1];
+
 					$attribute = $matches[2];
+
 					if(!isset($addresses[$addresstype])) {
 						$addresses[$addresstype] = array(
 							'addresstype_id'=>$addresstypes[$addresstype],
@@ -501,9 +509,13 @@ class ClientController extends BaseController {
 							'addressable_id'=>$client->id
 						);
 					}
+
 					$addresses[$addresstype][$attribute] = $value;
+
 					$addresses[$addresstype]['addresstype_id'] = $addresstypes[$addresstype];
+
 				}
+
 			}
 
 			foreach($addresses as $address) {
@@ -532,7 +544,7 @@ class ClientController extends BaseController {
 			->orScope('Protocol')
 			->over('Client');
 
-		foreach(Client::all() as $client) {
+		foreach(Subscriber::current()->clients as $client) {
 			$data = array(
 				'first name'=>$client->first_name,
 				'last name'=>$client->last_name,
