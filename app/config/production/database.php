@@ -22,10 +22,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'protocol.chce0c2qwzkn.us-west-2.rds.amazonaws.com:3306',
 			'database'  => 'protocol',
-			'username'  => 'root',
-			'password'  => 'root',
+			'username'  => 'protocol',
+			'password'  => 'ProtocolOctopus',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
