@@ -64,12 +64,21 @@ class Subscriber extends Eloquent {
 
 	public static function current() {
 		$hostParts = explode('.',$_SERVER['HTTP_HOST']);
+
 		$subdomain = array_shift($hostParts);
-		if($subscriber =  Subscriber::where('subdomain',$subdomain)->first()) {
-			return $subscriber;
+
+		$host = gethostname();
+
+		if($subdomain==$host) {
+			$subdomain = null;
 		}
-		else {
-			return Subscriber::where('subdomain',null)->first();
+
+		$subscriber = Subscriber::where('subdomain',$subdomain);
+
+		if(!$subscriber->count()) {
+			return false;
 		}
+
+		return $subscriber->first();
 	}
 }
