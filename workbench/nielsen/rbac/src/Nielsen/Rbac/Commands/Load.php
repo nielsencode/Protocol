@@ -42,7 +42,7 @@ class Load extends Command {
 		//return;
 
 		$file = $this->argument('path');
-		require base_path() . "/Load.php";
+		require base_path()."/$file";
 
 		$this->info('Permissions loaded.');
 	}
