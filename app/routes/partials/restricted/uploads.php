@@ -7,6 +7,7 @@ Route::group(['prefix'=>'uploads'],function() {
 		if(!Auth::user()
 			->has('read')
 			->ofScope('Subscriber',Subscriber::current()->id)
+			->orScope('Protocol')
 			->over('Setting')
 		) {
 			return false;

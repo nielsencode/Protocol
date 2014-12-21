@@ -18,11 +18,21 @@ class AuthController extends BaseController {
 			return Redirect::route('login')->withErrors($validator)->withInput();
 		}
 
-		if(Auth::attempt(array(
-			'email'=>Input::get('email'),
-			'password'=>Input::get('password'),
-			'subscriber_id'=>Subscriber::current()->id
-		),true)) {
+		if(
+			Auth::attempt(array(
+				'email'=>Input::get('email'),
+				'password'=>Input::get('password'),
+				'subscriber_id'=>Subscriber::current()->id
+			),true)
+
+			||
+
+			Auth::attempt(array(
+				'email'=>Input::get('email'),
+				'password'=>Input::get('password'),
+				'subscriber_id'=>null
+			),true)
+		) {
 			return Redirect::route('home');
 		}
 		else {
