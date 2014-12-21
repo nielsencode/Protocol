@@ -6,12 +6,19 @@ class SettingController extends BaseController {
 		Auth::user()
 			->requires('edit')
 			->ofScope('Subscriber',Subscriber::current()->id)
+			->orScope('Protocol')
 			->over('Setting');
 
 		return View::make('settings.index');
 	}
 
 	public function postIndex() {
+		Auth::user()
+			->requires('edit')
+			->ofScope('Subscriber',Subscriber::current()->id)
+			->orScope('Protocol')
+			->over('Setting');
+
 		$input = Input::except('_token');
 
 		$rules = array(
