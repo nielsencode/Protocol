@@ -2,6 +2,10 @@
 
 Route::group(['prefix'=>'import'],function() {
 
+	if(Auth::user()->role->name!='protocol') {
+		App::abort(404);
+	}
+
 	Route::get('/protocols',function() {
 
 		$path = public_path().'/assets/imports/'.Subscriber::current()->subdomain.'/protocols.csv';
