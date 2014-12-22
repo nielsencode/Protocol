@@ -51,7 +51,7 @@ Route::group(['prefix' => 'reset-password', 'as' => 'reset password', 'before' =
 
 });
 
-Route::group(['prefix' => 'set-password', 'as' => 'set password'], function () {
+Route::group(['prefix' => 'set-password', 'as' => 'set password','before'=>'guest'], function () {
 
 	Route::get('/', [
 		'uses' => 'AuthController@getSetPassword'

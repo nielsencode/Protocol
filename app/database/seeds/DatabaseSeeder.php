@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder {
 		$this->call('PermissionSeeder');
 		$this->call('SubscriberSeeder');
 		$this->call('UserSeeder');
-		$this->call('ClientSeeder');
+		//$this->call('ClientSeeder');
 		$this->call('AddresstypeSeeder');
-		$this->call('AddressSeeder');
+		//$this->call('AddressSeeder');
 		$this->call('ScheduletimeSeeder');
-		$this->call('SupplementSeeder');
-		$this->call('ProtocolSeeder');
+		//$this->call('SupplementSeeder');
+		//$this->call('ProtocolSeeder');
 		$this->call('AutoshipfrequencySeeder');
 		$this->call('InputtypeSeeder');
 		$this->call('SettinggroupSeeder');
@@ -103,14 +103,9 @@ class SubscriberSeeder extends Seeder {
 		DB::table('subscribers')->delete();
 		$subs = array(
 			array(
-				'name'=>'Protocol',
-				'email'=>'nick@nicknielsencode.com'
-
-			),
-			array(
-				'name'=>'Healthy',
-				'email'=>'healthy.protocol@mailinator.com',
-				'subdomain'=>'healthy'
+				'name'=>'Juvenescence',
+				'subdomain'=>'juvenescence',
+				'email'=>'robin@togrowyoung.com'
 			)
 		);
 		foreach($subs as $sub) {
@@ -125,19 +120,6 @@ class UserSeeder extends Seeder {
 
 	public function run() {
 		DB::table('users')->delete();
-
-		foreach(Subscriber::all() as $subscriber) {
-
-			User::create(array(
-				'role_id' => Role::where('name', 'subscriber')->first()->id,
-				'subscriber_id' => $subscriber->id,
-				'email' => strtolower($subscriber->name).'.subscriber@mailinator.com',
-				'password' => '12345',
-				'first_name' => 'Test',
-				'last_name' => 'Client'
-			));
-
-		}
 
 		$nick = User::create(array(
 			'role_id' => Role::where('name', 'protocol')->first()->id,

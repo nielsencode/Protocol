@@ -68,7 +68,7 @@
 @section('index-table-rows')
     @if (!count($users))
         <tr class="index-table-row">
-            <td class="index-table-cell" colspan="3">
+            <td class="index-table-cell" colspan="4">
                 <a>no users.</a>
             </td>
         </tr>

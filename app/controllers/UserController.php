@@ -12,6 +12,20 @@ class UserController extends BaseController {
 		$users = User::where('subscriber_id',Subscriber::current()->id)
 			->join('roles','roles.id','=','users.role_id');
 
+		switch(Auth::user()->role->name) {
+			case 'protocol':
+				$roles = array('subscriber','admin','client');
+				break;
+			case 'subscriber':
+				$roles = array('admin','client');
+				break;
+			case 'admin':
+				$roles = array('client');
+				break;
+		}
+
+		$user = $users->whereIn('roles.name',$roles);
+
 		if(Input::get('q')) {
 			$users = $users->where('fulltext','LIKE','%'.Input::get('q').'%');
 		}
@@ -88,8 +102,9 @@ class UserController extends BaseController {
 		}
 		else {
 			$user = User::create($values);
-			$this->newAccountInvitation($user);
 		}
+
+		$this->newAccountInvitation($user);
 
 		return Redirect::route('user',$user->id);
 	}

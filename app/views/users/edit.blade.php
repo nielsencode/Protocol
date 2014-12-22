@@ -49,7 +49,8 @@
 		->has('delete')
 		->ofScope('Subscriber',Subscriber::current()->id)
 		->orScope('Protocol')
-		->over('User')
+		->over('User',$user->id) &&
+	Auth::user()->id != $user->id
 )
 	@section('delete-link')
 		{{ Form::open(['route'=>['delete user',$user->id]]) }}

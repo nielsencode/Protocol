@@ -58,17 +58,44 @@
 	@endif
 @stop
 
-@if (isset($client->user) && !isset($client->user->password) && Auth::user()->role->name!='client')
+@if (
+	isset($client->user) &&
+	!$client->user->password &&
+	Auth::user()
+		->has('edit')
+		->ofScope('Subscriber',Subscriber::current()->id)
+		->orScope('Protocol')
+		->over('User')
+)
 	@section('messages')
 		<div class="warning-messages" style="display:inline-block;">
 	        <li class="warning-message">
 	            {{ $client->first_name }} needs to verify their account.
-	            An invitation was sent:
-	            <i>
-	                {{ $client->user->emails()->where('message','auth.emails.new_account')->orderBy('created_at','desc')->first()->created_at->diffForHumans() }}
-	            </i>
-				&nbsp;&nbsp;&ndash;&nbsp;&nbsp;
-	            <a href="{{ route('client new account invitation',[$client->id]) }}">resend invitation</a>
+
+				@if (
+					$client->user->emails()->where('message','auth.emails.new_account')->count()
+				)
+					An invitation was sent:
+					<i>
+						{{
+							$client->user->emails()->where('message','auth.emails.new_account')
+								->orderBy('created_at','desc')
+								->first()
+								->created_at
+								->diffForHumans()
+						}}
+					</i>
+
+					&nbsp;&nbsp;&ndash;&nbsp;&nbsp;
+
+					<a href="{{ route('client new account invitation',[$client->id]) }}">resend invitation</a>
+				@else
+
+					&nbsp;&nbsp;&ndash;&nbsp;&nbsp;
+
+					<a href="{{ route('client new account invitation',[$client->id]) }}">send invitation</a>
+
+				@endif
 	        </li>
 	    </div>
 	 @stop

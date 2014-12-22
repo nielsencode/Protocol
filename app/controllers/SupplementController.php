@@ -240,15 +240,13 @@ class SupplementController extends BaseController {
 
 		$template_path = public_path().'/assets/templates/supplements/import.csv';
 
-		$supplements = Migrate::import($data,$template_path);
+		$migrate = Migrate::import($data,$template_path);
 
-		if(!$supplements) {
-			return Redirect::route('import supplements')->with('errors',array(
-				'We could not process your file. Please check your file and try again.'
-			));
+		if($migrate->fails()) {
+			return Redirect::route('import supplements')->with('errors',$migrate->errors());
 		}
 
-		foreach($supplements as $supplement) {
+		foreach($migrate->data() as $supplement) {
 			if(!Supplement::where('name',$supplement['name'])->count()) {
 				Supplement::create(array(
 					'subscriber_id'=>Subscriber::current()->id,

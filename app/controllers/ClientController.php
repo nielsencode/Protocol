@@ -467,17 +467,17 @@ class ClientController extends BaseController {
 
 		$template_path = public_path().'/assets/templates/clients/import.csv';
 
-		$clients = Migrate::import($data,$template_path);
+		$migrate = Migrate::import($data,$template_path);
 
-		if(!$clients) {
-			return Redirect::route('import clients')->with('errors',array(''));
+		if($migrate->fails()) {
+			return Redirect::route('import clients')->with('errors',$migrate->errors());
 		}
 
 		foreach(Addresstype::all() as $type) {
 			$addresstypes[$type->name] = $type->id;
 		}
 
-		foreach($clients as $data) {
+		foreach($migrate->data() as $data) {
 			$clientData = array_intersect_key($data,array_flip(array('first name','last name','email')));
 
 			$clientData = array_combine(str_replace(' ','_',array_keys($clientData)),array_values($clientData));
