@@ -2,7 +2,7 @@
 
 Route::group(['prefix'=>'import'],function() {
 
-	if(Auth::user()->role->name!='protocol') {
+	if(Auth::user() && Auth::user()->role->name!='protocol') {
 		App::abort(404);
 	}
 
