@@ -1,16 +1,23 @@
 <?php
 
-View::composers(array(
-    '\Clients\AddComposer'=>array('clients.add','clients.edit'),
-    '\Clients\Account\AddComposer'=>array('clients.account.add'),
-    '\Layouts\Master\IndextableComposer'=>array(
+View::composers([
+    '\Clients\AddComposer'=>[
+        'clients.add',
+        'clients.edit'
+    ],
+    '\Clients\Account\AddComposer'=>[
+        'clients.account.add'
+    ],
+    '\Layouts\Master\IndextableComposer'=>[
         'clients.index',
         'supplements.index',
         'orders.index',
         'users.index'
-    ),
-    '\Supplements\OrderComposer'=>array('supplements.order'),
-    '\myUsers\AddComposer'=>array(
+    ],
+    '\Supplements\OrderComposer'=>[
+        'supplements.order'
+    ],
+    '\myUsers\AddComposer'=>[
         'users.add'
-    )
-));
+    ]
+]);

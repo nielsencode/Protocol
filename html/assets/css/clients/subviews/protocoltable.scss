@@ -1,6 +1,17 @@
 .client-protocols-table-wrapper {
   overflow-x:scroll;
   margin-top:20px;
+
+  &:before {
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    width:5px;
+    box-shadow:-2px 0 5px rgba(0,0,0,.1) inset;
+    display:block;
+    content:'';
+  }
 }
 
 .client-protocols-table {
@@ -18,6 +29,14 @@
 
   &:last-of-type {
     border-right-width:1px;
+  }
+}
+
+.client-protocols-table-row {
+  .client-protocols-table-cell {
+    &:last-of-type {
+      border-right-width:0;
+    }
   }
 }
 
