@@ -596,4 +596,16 @@ class ClientController extends BaseController {
 			'orders'=>$orders
 		));
 	}
+
+	public function getLoginAs($client) {
+		Auth::user()
+			->requires('login')
+			->ofScope('Subscriber',Subscriber::current()->id)
+			->orScope('Protocol')
+			->over('Client',$client->id);
+
+		Auth::login($client->user);
+
+		return Redirect::route('home');
+	}
 }

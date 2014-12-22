@@ -77,7 +77,7 @@ Rbac::let('subscriber')
 	->over('Client');
 
 Rbac::let('subscriber')
-	->have('all')
+	->have(array('read','add','edit','delete'))
 	->ofScope('Subscriber')
 	->over('User');
 

@@ -171,14 +171,13 @@ class UserController extends BaseController {
 
 	public function getLoginAs($user) {
 		Auth::user()
-			->requires('login')
-			->ofScope('Subscriber',Subscriber::current()->id)
-			->orScope('Protocol')
+			->has('login')
+			->ofScope('Protocol')
 			->over('User',$user->id);
 
 		Auth::login($user);
 
-		return Redirect::to('/');
+		return Redirect::route('home');
 	}
 
 	public function newAccountInvitation($user) {

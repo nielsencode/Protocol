@@ -136,6 +136,11 @@ Route::group(['prefix'=>'clients'],function() {
 
         });
 
+        Route::get('/login-as',[
+            'as'=>'login as client',
+            'uses'=>'ClientController@getLoginAs'
+        ]);
+
     });
 
 });

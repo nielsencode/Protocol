@@ -49,12 +49,12 @@
 			->has('login')
 			->ofScope('Subscriber',Subscriber::current()->id)
 			->orScope('Protocol')
-			->over('User')
+			->over('Client')
 
 		&& $client->user
 	)
 		{{ str_repeat('&nbsp;',2).'&rsaquo;'.str_repeat('&nbsp;',2) }}
-        <a name="login as client" href="{{ route('login as',[$client->user->id]) }}">login as {{ $client->first_name }}</a>
+        <a name="login as client" href="{{ route('login as client',[$client->id]) }}">login as {{ $client->first_name }}</a>
 	@endif
 @stop
 

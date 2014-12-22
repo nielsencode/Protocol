@@ -35,6 +35,16 @@
 	)
         <a class="info-table-edit-link" href="{{ route('edit user',[$user->id]) }}">edit</a>
     @endif
+
+	@if (
+		Auth::user()
+			->has('login')
+			->ofScope('Protocol')
+			->over('User')
+	)
+		{{ str_repeat('&nbsp;',2).'&rsaquo;'.str_repeat('&nbsp;',2) }}
+		<a href="{{ route('login as',[$user->id]) }}">login as {{ $user->first_name }}</a>
+	@endif
 @stop
 
 @if (
