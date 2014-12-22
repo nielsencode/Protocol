@@ -20,7 +20,7 @@ class Permissions extends Command {
 	 */
 	protected $description = 'List all permissions.';
 
-	protected $string = '%s %s has %s%s over %s%s';
+	protected $string = '%s has %s%s over %s%s';
 
 	/**
 	 * Create a new command instance.
@@ -46,8 +46,9 @@ class Permissions extends Command {
 		$actions = $permission->actions()->orderBy('id','asc')->get();
 
 		$args = array(
-			$permission->agent_type,
-			$permission->agent_id,
+			$permission->agent_type=='Role'
+				? \Role::find($permission->agent_id)->name
+				: \User::find($permission->agent_id)->name(),
 			implode(',',array_map(function($v) {return $v['name'];},$actions->toArray())),
 			$permission->scope ? " of scope {$permission->scope->name}" : '',
 			$permission->resource_type,

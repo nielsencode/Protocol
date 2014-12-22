@@ -132,3 +132,8 @@ Rbac::let('client')
 	->have('read')
 	->ofScope('Client')
 	->over('Protocol');
+
+Rbac::let('client')
+	->have('read')
+	->ofScope('Subscriber')
+	->over('Setting');
