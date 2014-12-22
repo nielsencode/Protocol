@@ -123,7 +123,7 @@
 		</li>
 	@endif
 
-	@if (!Auth::check())
+	@if (!Auth::check() && Subscriber::current())
 		<li class="master-navbar-item">
 			<a href="{{ route('login') }}" class="master-small-navbar-link">login</a>
 		</li>
