@@ -76,14 +76,3 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
-
-/*
-|--------------------------------------------------------------------------
-| Filter Partials
-|--------------------------------------------------------------------------
-|
-*/
-
-Route::filter('permission','PermissionFilter');
-Route::filter('role','RoleFilter');
-Route::filter('token','TokenFilter');

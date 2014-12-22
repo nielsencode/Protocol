@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix'=>'uploads'],function() {
+Route::group(['prefix'=>'images'],function() {
 
 	Route::get('/{file}',function($file) {
 
@@ -15,13 +15,9 @@ Route::group(['prefix'=>'uploads'],function() {
 
 		$path = public_path() . "/assets/uploads/$file";
 
-		$file = new \Symfony\Component\HttpFoundation\File\File($path);
+		$headers = array('Content-type'=>'image/png');
 
-		$headers = array(
-			'Content-type'=>$file->getMimeType()
-		);
-
-		$response = Response::make(File::get($path),200,$headers);
+		$response = Response::download($path,$file,$headers);
 
 		ob_end_clean();
 

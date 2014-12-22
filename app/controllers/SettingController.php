@@ -33,12 +33,14 @@ class SettingController extends BaseController {
 
 		if(Input::hasFile('logo')) {
 			$dest = public_path().'/assets/uploads';
-			$ext = Input::file('logo')->getClientOriginalExtension();
-			$name = uniqid().".$ext";
 
-			Input::file('logo')->move($dest,$name);
+			$name = uniqid().".png";
 
-			$input['logo'] = url("uploads/$name");
+			$image = Image::make(Input::file('logo'))->encode('png');
+
+			$image->save($dest."/$name");
+
+			$input['logo'] = url("images/$name");
 		}
 
 		foreach($input as $k=>$value) {

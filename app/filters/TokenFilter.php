@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 class TokenFilter {
 
     public function filter($route,$request) {
@@ -9,3 +11,5 @@ class TokenFilter {
     }
 
 }
+
+*/
