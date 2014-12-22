@@ -1,6 +1,10 @@
 <?php
 
-Route::model('client','Client');
+Route::bind('client',function($value,$route) {
+	return Client::where('id',$value)->with('protocols')->first();
+});
+
+//Route::model('client','Client');
 
 Route::model('order','Order');
 
