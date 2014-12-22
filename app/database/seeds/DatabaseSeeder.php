@@ -331,6 +331,9 @@ class InputtypeSeeder extends Seeder {
 			),
 			array(
 				'name'=>'file'
+			),
+			array(
+				'name'=>'text'
 			)
 		);
 
@@ -348,6 +351,10 @@ class SettinggroupSeeder extends Seeder {
 			array(
 				'name'=>'appearance',
 				'scope_id'=>Scope::where('name','Subscriber')->pluck('id')
+			),
+			array(
+				'name'=>'account',
+				'scope_id'=>Scope::where('name','Subscriber')->pluck('id')
 			)
 		);
 
@@ -362,7 +369,7 @@ class SettinggroupSeeder extends Seeder {
 class SettingnameSeeder extends Seeder {
 
 	public function run() {
-		$settings = array(
+		$appearance = array(
 			array(
 				'inputtype_id'=>Inputtype::where('name','colorpicker')->pluck('id'),
 				'settinggroup_id'=>Settinggroup::where('name','appearance')->pluck('id'),
@@ -376,6 +383,19 @@ class SettingnameSeeder extends Seeder {
 				'name'=>'logo',
 				'description'=>'logo will be resized to fit within a 50 x 150 pixel rectangle. 2 mb max file size.'
 			)
+		);
+
+		$account = array(
+			array(
+				'inputtype_id'=>Inputtype::where('name','text')->pluck('id'),
+				'settinggroup_id'=>Settinggroup::where('name','account')->pluck('id'),
+				'name'=>'primary contact email'
+			)
+		);
+
+		$settings = array_merge(
+			$appearance,
+			$account
 		);
 
 		foreach($settings as $setting) {

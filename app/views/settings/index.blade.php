@@ -47,9 +47,24 @@
 @stop
 
 @section('form-fields')
-    @foreach(Scope::where('name','Subscriber')->first()->settinggroups as $group)
+    @foreach(
+        Scope::where('name','Subscriber')
+            ->first()
+            ->settinggroups()
+            ->orderBy('name','asc')
+            ->get()
+            as $i=>$group
+    )
 
         <tbody>
+
+           @if ($i!=0)
+                <tr>
+                    <td colspan="3">
+                        <hr class="hr" style="margin-right:-40px;"/>
+                    </td>
+                </tr>
+            @endif
 
             <tr>
                 <td class="form-section-header-title">
@@ -62,7 +77,7 @@
             @foreach($group->settingnames as $setting)
                 <tr>
                     <td class="form-label-cell">
-                        <label class="form-label">{{ ucwords($setting->name) }}</label>
+                        <label class="form-label">{{ ucfirst($setting->name) }}</label>
                     </td>
                     <td class="form-cell">
                         @if ($setting->inputtype->name=='colorpicker')
@@ -76,6 +91,10 @@
 
                         @if ($setting->inputtype->name=='file')
                             {{ Form::file($setting->name) }}
+                        @endif
+
+                        @if ($setting->inputtype->name=='text')
+                            {{ Form::text($setting->name,$setting->subscriberValue,['class'=>'form-text']) }}
                         @endif
                     </td>
                     <td class="form-description-cell">
