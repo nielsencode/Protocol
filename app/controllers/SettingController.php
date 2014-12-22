@@ -55,7 +55,7 @@ class SettingController extends BaseController {
 			$setting->save();
 		}
 
-		return Redirect::route('settings');
+		return Redirect::route('settings')->with('success','Your settings have been saved.');
 	}
 
 }

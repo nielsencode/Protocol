@@ -42,6 +42,14 @@
     {{ Subscriber::current()->name }} Settings
 @stop
 
+@if (Session::has('success'))
+    @section('messages')
+        <div class="messages">
+            <li class="message">{{ Session::get('success') }}</li>
+        </div>
+    @stop
+@endif
+
 @section('form')
     {{ Form::open(['route'=>['settings'],'files'=>true]) }}
 @stop
@@ -109,5 +117,7 @@
 @stop
 
 @section('buttons')
+    <a href="{{ URL::previous()==Request::url() ? route('home') : URL::previous() }}">cancel</a>
+    {{ str_repeat('&nbsp;',4) }}
     <a href=""><button class="button">Save</button></a>
 @stop
