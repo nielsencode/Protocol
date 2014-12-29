@@ -6,7 +6,7 @@
 	{{ HTML::script('assets/js/jquery.min.js') }}
 	<script>
 		$(function() {
-			window.print();
+			//window.print();
 		});
 	</script>
 
@@ -32,10 +32,12 @@
 
 		.print-protocols-header-cell {
 			width:100px;
+			font-size:12px;
 		}
 
 		.print-protocols-cell {
 			width:100px;
+			font-size:12px;
 		}
 
 		.print-protocols-label-cell {
@@ -66,6 +68,10 @@
 			vertical-align:top;
 			font-size:11px;
 		}
+
+		.subscriber-logo {
+			float:right;
+		}
 	</style>
 </head>
 <body>
@@ -76,9 +82,11 @@
 				<table class="protocols-table" cellpadding="0" cellspacing="0">
 	                <tbody>
 	                    <tr>
-	                        <td colspan="5">
+	                        <td colspan="9">
 	                            <div class="heading">
-	                                Supplement Schedule for {{ $client->name() }} {{ $i!=0 ? '(cont.)' : '' }}
+	                                <span style="font-size:.7em;">{{ strtoupper(Subscriber::current()->name) }}</span>
+									&nbsp;
+									Supplement Schedule for {{ $client->name() }} {{ $i!=0 ? '(cont.)' : '' }}
 	                            </div>
 	                        </td>
 	                    </tr>
@@ -116,7 +124,9 @@
                 <tr>
                     <td colspan="3">
                         <div class="heading">
-                            Supplement Information
+							<span style="font-size:.7em;">{{ strtoupper(Subscriber::current()->name) }}</span>
+							&nbsp;
+							Supplement Information
                         </div>
                     </td>
                 </tr>
