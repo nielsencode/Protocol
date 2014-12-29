@@ -2,8 +2,16 @@
 
 class Address extends Eloquent {
 
+	public static function boot() {
+		parent::boot();
+
+		self::saving(function($address) {
+			$address->location();
+		});
+	}
+
 	/* Mass assignment */
-	protected $guarded = array('id','created_at','updated_at');
+	protected $guarded = array('id','longitude','latitude','created_at','updated_at');
 
 	protected $fillable = array('addressable_id','addressable_type','addresstype_id','address','city','state','zip','phone');
 
@@ -34,6 +42,26 @@ class Address extends Eloquent {
 
 	public function formatAddress() {
 		return $this->address.'<br>'.$this->city.', '.$this->state.' '.$this->zip;
+	}
+
+	public function location() {
+		$format = "%s, %s";
+
+		$bindings = array(
+			$this->city,
+			$this->state
+		);
+
+		$address = vsprintf($format,$bindings);
+
+		$location = location($address);
+
+		if(!$location) {
+			return false;
+		}
+
+		$this->latitude = $location->geometry->location->lat;
+		$this->longitude = $location->geometry->location->lng;
 	}
 
 }

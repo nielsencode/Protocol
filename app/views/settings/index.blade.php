@@ -38,6 +38,12 @@
     </script>
 @stop
 
+@section('breadcrumbs')
+    {{ Breadcrumbs::make([
+        'settings'=>''
+    ]) }}
+@stop
+
 @section('title')
     {{ Subscriber::current()->name }} Settings
 @stop

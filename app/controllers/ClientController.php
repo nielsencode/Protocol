@@ -19,7 +19,7 @@ class ClientController extends BaseController {
 			$clients = $clients->orderBy(Input::get('sortby'),Input::get('order'));
 		}
 		else {
-			$clients = $clients->orderBy('created_at','desc');
+			$clients = $clients->orderBy('last_name','asc');
 		}
 
 		$data['clients'] = $clients->paginate(15);
@@ -494,13 +494,21 @@ class ClientController extends BaseController {
 
 			$addresses = array();
 
+			$states = Seed::data('states')->data;
+
 			foreach($data as $key=>$value) {
+
+				$value = trim($value);
 
 				if(preg_match($pattern,$key,$matches)) {
 
 					$addresstype = $matches[1];
 
 					$attribute = $matches[2];
+
+					if($attribute=='state' && strlen($value)>2) {
+						$value = location($value)->address_components[0]->short_name;
+					}
 
 					if(!isset($addresses[$addresstype])) {
 						$addresses[$addresstype] = array(

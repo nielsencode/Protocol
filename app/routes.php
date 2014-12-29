@@ -37,4 +37,9 @@ require_once app_path().'/routes/partials/base.php';
 */
 
 Route::get('test',function() {
+
+	foreach(Address::all() as $address) {
+		$address->touch();
+	}
+
 });
