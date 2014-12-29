@@ -33,6 +33,8 @@
 		.print-protocols-header-cell {
 			width:100px;
 			font-size:12px;
+			border-style:dashed;
+			border-width:2px;
 		}
 
 		.print-protocols-cell {
@@ -67,10 +69,6 @@
 			padding:8px 0;
 			vertical-align:top;
 			font-size:11px;
-		}
-
-		.subscriber-logo {
-			float:right;
 		}
 	</style>
 </head>
