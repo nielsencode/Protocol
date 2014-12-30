@@ -431,7 +431,7 @@ class ClientController extends BaseController {
 
 		$client->user->sendEmail('New Account',array('text'=>'auth.emails.new_account'),array(
 			'subscriber'=>Subscriber::current()->name,
-			'link'=>url("/clients/{$client->id}/account/edit?token={$token->token}")
+			'link'=>route('set password',array('token'=>$token->token))
 		));
 	}
 

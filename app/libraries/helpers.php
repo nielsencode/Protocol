@@ -125,10 +125,10 @@ function token() {
 	return $token;
 }
 
-function location($address,$components) {
-	$api = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&components=%s&sensor=false";
+function location($address) {
+	$api = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false";
 
-	$uri = sprintf($api,rawurlencode($address),$components);
+	$uri = sprintf($api,rawurlencode($address));
 
 	$result = json_decode(file_get_contents($uri));
 
