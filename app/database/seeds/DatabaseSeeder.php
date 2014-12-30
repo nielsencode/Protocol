@@ -309,7 +309,6 @@ class AutoshipfrequencySeeder extends Seeder {
 
 	public function run() {
 		$frequencies = array(
-			array('name'=>'.01 days'),
 			array('name'=>'30 days'),
 			array('name'=>'45 days'),
 			array('name'=>'60 days')

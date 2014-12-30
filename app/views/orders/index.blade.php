@@ -1,5 +1,30 @@
 @extends('layouts.master.indextable')
 
+@section('js')
+	@parent
+
+	<script>
+		$(function() {
+			$('.all-orders').click(function() {
+				var checked = $(this).prop('checked');
+				$(':input[name="orders[]"]').prop('checked',checked);
+			});
+
+			$('.fulfill-orders').click(function() {
+				if($(':input[name="orders[]"]:checked').length<1) {
+					return false;
+				}
+
+				var form = $('.bulk-edit-orders-form');
+
+				form.find(':input[name="method"]').val('fulfill');
+
+				form.submit();
+			});
+		});
+	</script>
+@stop
+
 @section('breadcrumbs')
 	{{ Breadcrumbs::make([
 		'orders'=>''
@@ -7,10 +32,21 @@
 @stop
 
 @section('index-tools-left')
+	<a class="info-table-edit-link fulfill-orders">fulfill selected orders</a>
+@stop
 
+@section('table-form-open')
+	{{ Form::open(['route'=>'bulk edit orders','class'=>'bulk-edit-orders-form']) }}
+
+	{{ Form::hidden('method') }}
 @stop
 
 @section('index-table-header')
+	<th class="index-table-column">
+		<a class="index-table-column-link">
+			{{ Form::checkbox(null,null,false,['class'=>'all-orders']) }}
+		</a>
+	</th>
 	<th class="index-table-column">
 		<a class="index-table-column-link" href="{{ sortby('orders.order_id',$sortorder) }}">
 			Order
@@ -48,13 +84,16 @@
 @section('index-table-rows')
 	@if (!count($orders))
 		<tr class="index-table-row">
-            <td class="index-table-cell" colspan="{{ Auth::user()->role->name!='client' ? 6 : 5 }}">
+            <td class="index-table-cell" colspan="{{ Auth::user()->role->name!='client' ? 7 : 5 }}">
                 <a>no orders.</a>
             </td>
         </tr>
     @else
 		@foreach ($orders as $order)
 			<tr class="index-table-row" supplement-id="{{ $order->id }}">
+				<td class="index-table-cell">
+					<a>{{ Form::checkbox('orders[]',$order->id) }}</a>
+				</td>
 				<td class="index-table-cell">
 					<a href="{{ route('order',[$order->id]) }}">#{{ $order->order_id }}</a>
 				</td>
@@ -84,6 +123,10 @@
 			</tr>
 		@endforeach
 	@endif
+@stop
+
+@section('table-form-close')
+	{{ Form::close() }}
 @stop
 
 @section('index-table-pagination')

@@ -103,4 +103,30 @@ class OrderController extends BaseController {
 
         return Redirect::route('orders');
     }
+
+    public function postBulkEdit() {
+        Auth::user()
+            ->requires('edit')
+            ->ofScope('Subscriber')
+            ->orScope('Protocol')
+            ->over('Order');
+
+        switch(Input::get('method')) {
+            case 'fulfill':
+                return $this->bulkFulfillOrders();
+                break;
+        }
+    }
+
+    public function bulkFulfillOrders() {
+        foreach(Input::get('orders') as $id) {
+            $order = Order::find($id);
+
+            $order->fulfilled_at = date('Y-m-d H:i:s',time());
+
+            $order->save();
+        }
+
+        return Redirect::back();
+    }
 }

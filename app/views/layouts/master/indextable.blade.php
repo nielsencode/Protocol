@@ -20,16 +20,20 @@
 		</tr>
 	</table>
 
-	<table class="index-table" cellpadding="0" cellspacing="0">
-		<thead class="index-table-head">
-			<tr>
-				@yield('index-table-header')
-			</tr>
-		</thead>
-		<tbody>
-			@yield('index-table-rows')
-		</tbody>
-	</table>
+	@yield('table-form-open')
+
+		<table class="index-table" cellpadding="0" cellspacing="0">
+			<thead class="index-table-head">
+				<tr>
+					@yield('index-table-header')
+				</tr>
+			</thead>
+			<tbody>
+				@yield('index-table-rows')
+			</tbody>
+		</table>
+
+	@yield('table-form-close')
 
 	@yield('index-table-pagination')
 @stop

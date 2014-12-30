@@ -7,6 +7,11 @@ Route::group(['prefix'=>'orders'],function() {
         'uses'=>'OrderController@getIndex'
     ]);
 
+    Route::post('/bulk-edit',[
+        'as'=>'bulk edit orders',
+        'uses'=>'OrderController@postBulkEdit'
+    ]);
+
     Route::group(['prefix'=>'/{cancelledOrder}'],function($order) {
 
         Route::get('/',[
