@@ -33,8 +33,8 @@
 		.print-protocols-header-cell {
 			width:100px;
 			font-size:12px;
-			border-style:dashed;
-			border-width:2px;
+			border-bottom-width:2px;
+			border-bottom-color:#606060;
 		}
 
 		.print-protocols-cell {
@@ -82,9 +82,9 @@
 	                    <tr>
 	                        <td colspan="9">
 	                            <div class="heading">
-	                                <span style="font-size:.7em;">{{ strtoupper(Subscriber::current()->name) }}</span>
-									&nbsp;
 									Supplement Schedule for {{ $client->name() }} {{ $i!=0 ? '(cont.)' : '' }}
+									&nbsp;
+									<span style="font-size:.66em; text-transform:uppercase;">{{ Subscriber::current()->name }}</span>
 	                            </div>
 	                        </td>
 	                    </tr>
@@ -122,9 +122,9 @@
                 <tr>
                     <td colspan="3">
                         <div class="heading">
-							<span style="font-size:.7em;">{{ strtoupper(Subscriber::current()->name) }}</span>
-							&nbsp;
 							Supplement Information
+							&nbsp;
+							<span style="font-size:.66em; text-transform:uppercase;">{{ Subscriber::current()->name }}</span>
                         </div>
                     </td>
                 </tr>
