@@ -19,7 +19,6 @@
             "app/filters",
 			"app/models",
 			"app/libraries",
-		  	"app/queue",
 			"app/tests/TestCase.php"
 		],
 		"psr-4": {
