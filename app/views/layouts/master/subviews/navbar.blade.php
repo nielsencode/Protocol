@@ -84,7 +84,9 @@
 		</li>-->
 	@endif
 
-	<li class="master-navbar-item"><a class="master-small-navbar-link" href="#">help</a></li>
+	<li class="master-navbar-item">
+		<a class="master-small-navbar-link {{ Route::currentRouteName()=='help' ? 'is-selected' : '' }}" href="{{ route('help') }}">help</a>
+	</li>
 
 	@if (Auth::check())
 		<li class="master-dropdown-navbar-item">
