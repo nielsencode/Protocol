@@ -114,12 +114,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	
 	/* Mail */
-	public function sendEmail($subject,$message,$data) {
-		MailLib::send($this,$message,$data,function($message) use ($subject) {
-			$message->from(Subscriber::current()->email,Subscriber::current()->name);
-			$message->to($this->email);
-			$message->subject($subject);
+	public function sendEmail($subject,$view,$data) {
+
+		$email = [
+			'subject'=>$subject,
+			'fromEmail'=>$this->subscriber ? $this->subscriber->email : 'support@protocolapp.com',
+			'fromName'=>$this->subscriber ? $this->subscriber->name : 'Protocol',
+			'to'=>$this->email
+		];
+
+		Mail::queue($view,$data,function($message) use ($email) {
+			$message
+				->from($email['fromEmail'],$email['fromName'])
+				->to($email['to'])
+				->subject($email['subject']);
 		});
+
 	}
 
 	public function name() {
@@ -155,5 +165,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		);
 
 		$this->fulltext = implode(' ',$values);
+	}
+
+	public function is($id) {
+		return $this->id == $id;
 	}
 }

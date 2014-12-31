@@ -41,6 +41,8 @@
 			->has('login')
 			->ofScope('Protocol')
 			->over('User')
+		&&
+		!Auth::user()->is($user->id)
 	)
 		{{ str_repeat('&nbsp;',2).'&rsaquo;'.str_repeat('&nbsp;',2) }}
 		<a href="{{ route('login as',[$user->id]) }}">login as {{ $user->first_name }}</a>

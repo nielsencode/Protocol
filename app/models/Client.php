@@ -23,10 +23,6 @@ class Client extends Eloquent {
 		return $this->morphMany('Address','addressable');
 	}
 
-	public function emails() {
-		return $this->morphMany('Email');
-	}
-
 	public function orders() {
 		return $this->hasMany('Order');
 	}
@@ -41,11 +37,6 @@ class Client extends Eloquent {
 
 	public function user() {
 		return $this->belongsTo('User');
-	}
-	
-	/* Mail */
-	public function sendEmail($message,$data,$callback) {
-		MailLib::send($this,$message,$data,$callback);
 	}
 
 	public function name() {
