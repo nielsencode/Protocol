@@ -17,7 +17,7 @@ class ContactController extends BaseController {
 		$validator = Validator::make(Input::all(),$rules);
 
 		if($validator->fails()) {
-			return Redirect::route('landing.contact')->withErrors($validator)->withInput();
+			return Redirect::route('contact')->withErrors($validator)->withInput();
 		}
 
 		$email = [
@@ -43,7 +43,7 @@ class ContactController extends BaseController {
 				->subject($email['subject']);
 		});
 
-		return Redirect::route('landing.contact')->with('success',true);
+		return Redirect::route('contact')->with('success',true);
 	}
 
 }

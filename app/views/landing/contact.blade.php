@@ -32,7 +32,7 @@
 
         @if (!Session::has('success'))
 
-            {{ Form::open(['route'=>'help']) }}
+            {{ Form::open(['route'=>'contact']) }}
 
                 <div style="font-size:14px; line-height:2.25em; margin:10px 0;">
                     name
