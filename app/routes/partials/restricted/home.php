@@ -1,6 +1,6 @@
 <?php
 
-Route::get('',['as'=>'home',function() {
+Route::get('home',['as'=>'home',function() {
 
 	switch(Auth::user()->role->name) {
 		case 'client':

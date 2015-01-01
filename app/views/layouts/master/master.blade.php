@@ -28,7 +28,9 @@
 		<div class="master-header">
 
 			<div class="master-inner-header">
-				@include('layouts.master.subviews.navbar')
+				@section('navbar')
+					@include('layouts.master.subviews.navbar')
+				@show
 			</div>
 
 		</div>
@@ -55,9 +57,11 @@
 
 		<div class="master-inner-content">
 
-			<div class="master-footer-credit">
-				powered by <span class="protocol">protocol</span>.
-			</div>
+			@section('footer')
+				<div class="master-footer-credit">
+					powered by <span class="protocol">protocol</span>.
+				</div>
+			@show
 
 		</div>
 

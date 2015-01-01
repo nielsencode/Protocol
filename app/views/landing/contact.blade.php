@@ -1,4 +1,4 @@
-@extends('layouts.master.master')
+@extends('layouts.landing.landing')
 
 @section('css')
     @parent

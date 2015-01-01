@@ -85,7 +85,7 @@
 	@endif
 
 	<li class="master-navbar-item">
-		<a class="master-small-navbar-link {{ Route::currentRouteName()=='help' ? 'is-selected' : '' }}" href="{{ route('help') }}">help</a>
+		<a class="master-small-navbar-link {{ Route::currentRouteName()=='help' ? 'is-selected' : '' }}" href="{{ route('help') }}" target="_blank">help</a>
 	</li>
 
 	@if (Auth::check())

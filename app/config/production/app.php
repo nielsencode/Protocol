@@ -26,6 +26,6 @@ return array(
 	|
 	*/
 
-	'url' => 'http://54.149.186.161/',
+	'url' => 'protocolappstage.com',
 
 );

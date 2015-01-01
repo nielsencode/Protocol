@@ -1,9 +1,9 @@
 <?php
 
-class HelpController extends BaseController {
+class ContactController extends BaseController {
 
 	public function getIndex() {
-		return View::make('help');
+		return View::make('landing.contact');
 	}
 
 	public function postIndex() {
@@ -17,7 +17,7 @@ class HelpController extends BaseController {
 		$validator = Validator::make(Input::all(),$rules);
 
 		if($validator->fails()) {
-			return Redirect::route('help')->withErrors($validator)->withInput();
+			return Redirect::route('landing.contact')->withErrors($validator)->withInput();
 		}
 
 		$email = [
@@ -43,7 +43,7 @@ class HelpController extends BaseController {
 				->subject($email['subject']);
 		});
 
-		return Redirect::route('help')->with('success',true);
+		return Redirect::route('landing.contact')->with('success',true);
 	}
 
 }
