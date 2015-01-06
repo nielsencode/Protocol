@@ -6,7 +6,7 @@ class Address extends Eloquent {
 		parent::boot();
 
 		self::saving(function($address) {
-			$address->location();
+			//$address->location();
 		});
 	}
 

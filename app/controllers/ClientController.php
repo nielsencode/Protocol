@@ -504,9 +504,9 @@ class ClientController extends BaseController {
 
 					$attribute = $matches[2];
 
-					if($attribute=='state' && strlen($value)>2) {
+					/*if($attribute=='state' && strlen($value)>2) {
 						$value = location($value)->address_components[0]->short_name;
-					}
+					}*/
 
 					if(!isset($addresses[$addresstype])) {
 						$addresses[$addresstype] = array(
