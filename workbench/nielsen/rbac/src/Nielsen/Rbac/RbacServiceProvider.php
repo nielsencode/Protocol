@@ -32,15 +32,25 @@ class RbacServiceProvider extends ServiceProvider {
 		return array();
 	}
 
+	/**
+	 * Boot rbac.
+	 *
+	 * @return void
+	 */
 	public function boot()
 	{
 		$this->package('nielsen/rbac');
 
 		AliasLoader::getInstance()->alias('Rbac','Nielsen\Rbac\Rbac');
 
-		require 'global.php';
+		require __DIR__.'/../../start/global.php';
 	}
 
+	/**
+	 * Register the rbac commands.
+	 *
+	 * @return void
+	 */
 	public function registerCommands()
 	{
 		foreach(Command::allCommands() as $command) {

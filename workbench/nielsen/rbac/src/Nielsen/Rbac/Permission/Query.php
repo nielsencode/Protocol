@@ -2,8 +2,18 @@
 
 class Query {
 
+	/**
+	 * The negotiation.
+	 *
+	 * @var Negotiation
+	 */
 	protected $negotiation;
 
+	/**
+	 * The permission select statement.
+	 *
+	 * @var string
+	 */
 	protected $selectStatement = "
 		SELECT *,
 			GROUP_CONCAT(
@@ -32,14 +42,33 @@ class Query {
 			HAVING actions LIKE :actions
 	";
 
+	/**
+	 * Create a new query instance.
+	 *
+	 * @param Negotiation $negotiation
+	 * @return void
+	 */
 	public function __construct(Negotiation $negotiation) {
 		$this->setNegotiation($negotiation);
 	}
 
-	public function setNegotiation($negotiation) {
+	/**
+	 * Set the negotiation.
+	 *
+	 * @param Negotiation $negotiation
+	 * @return void
+	 */
+	public function setNegotiation(Negotiation $negotiation) {
 		$this->negotiation = $negotiation;
 	}
 
+	/**
+	 * Get the query bindings for a statement.
+	 *
+	 * @param string $statement
+	 * @param array $values
+	 * @return array
+	 */
 	public function bindings($statement,$values) {
 		preg_match_all('/:(\w+)/',$statement,$matches,PREG_PATTERN_ORDER);
 
@@ -50,6 +79,11 @@ class Query {
 		return $bindings;
 	}
 
+	/**
+	 * Query for resource type permissions.
+	 *
+	 * @return bool
+	 */
 	public function resourceType() {
 		$queryValues = $this->negotiation->queryValues();
 
@@ -72,6 +106,11 @@ class Query {
 		return !empty($result) ? $result[0] : false;
 	}
 
+	/**
+	 * Query for single resource permissions.
+	 *
+	 * @return bool
+	 */
 	public function singleResource() {
 		$queryValues = $this->negotiation->queryValues();
 
@@ -89,6 +128,11 @@ class Query {
 		return !empty($result) ? $result[0] : false;
 	}
 
+	/**
+	 * Delete all existing permissions that match the negotiation.
+	 *
+	 * @return void
+	 */
 	protected function delete() {
 		$queryValues = $this->negotiation->queryValues();
 
@@ -115,6 +159,11 @@ class Query {
 		\DB::statement(\DB::raw($delete),$this->bindings($delete,$queryValues));
 	}
 
+	/**
+	 * Insert a new permission.
+	 *
+	 * @return void
+	 */
 	protected function insert() {
 		$queryValues = $this->negotiation->queryValues();
 
@@ -128,6 +177,11 @@ class Query {
 		\DB::statement(\DB::raw($insert),$this->bindings($insert,$queryValues));
 	}
 
+	/**
+	 * Insert actions for the last inserted permission.
+	 *
+	 * @return void
+	 */
 	protected function actions() {
 		$actions = "
 			INSERT
@@ -152,9 +206,16 @@ class Query {
 		\DB::statement(\DB::raw($actions),$bindings);
 	}
 
+	/**
+	 * Create a new permission.
+	 *
+	 * @return void
+	 */
 	public function grant() {
 		$this->delete();
+
 		$this->insert();
+
 		$this->actions();
 	}
 

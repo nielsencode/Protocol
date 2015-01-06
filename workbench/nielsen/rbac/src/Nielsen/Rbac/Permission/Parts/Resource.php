@@ -2,47 +2,80 @@
 
 class Resource {
 
+    /**
+     * The resource type.
+     *
+     * @var string
+     */
     public $type;
 
+    /**
+     * The resource id.
+     *
+     * @var int
+     */
     public $id;
 
+    /**
+     * Create a new resource instance.
+     *
+     * @param string $type
+     * @param int $id
+     * @return void
+     */
     public function __construct($type,$id=null) {
-        $this->model($type);
+        $this->modelExists($type);
 
         $this->setType($type);
+
         $this->setId($id);
     }
 
+    /**
+     * Set the resource type.
+     *
+     * @param string $type
+     * @return void
+     */
     protected function setType($type) {
         $this->type = $type;
     }
 
+    /**
+     * Set the resource id.
+     *
+     * @param int $id
+     * @return void
+     */
     protected function setId($id) {
         $this->id = $id;
     }
 
-    /*protected function exists($type,$id) {
-        $class = $this->model($type);
-
-        if(!$class::where('id',$id)->count()) {
-            throw new \InvalidArgumentException(sprintf('Could not find "%s" with id "%u".',$type,$id));
-        }
-
-        return true;
-    }*/
-
-    protected function model($modelName) {
+    /**
+     * Check if a DB model for the resource exists.
+     *
+     * @param string $modelName
+     * @return bool
+     */
+    protected function modelExists($modelName) {
         $class = "\\$modelName";
 
         if(get_parent_class($class)=='Illuminate\\Database\\Eloquent\\Model') {
-            return $class;
+            return true;
         }
 
         throw new \InvalidArgumentException(sprintf('Model "%s" could not be found.',$modelName));
     }
 
+    /**
+     * Generate a resource model instance.
+     *
+     * @param string $scopeName
+     * @param int $scopeOwner
+     * @return \Nielsen\Rbac\Resource\ResourceType;
+     */
     public function make($scopeName,$scopeOwner) {
-        $classname = \Config::get('rbac::resource')."\\{$this->type}";
+        $classname = \Config::get('rbac::resources')."\\{$this->type}";
         return new $classname($scopeName,$scopeOwner);
     }
 

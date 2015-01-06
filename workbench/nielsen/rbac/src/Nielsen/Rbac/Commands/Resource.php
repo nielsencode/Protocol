@@ -1,7 +1,6 @@
 <?php namespace Nielsen\Rbac\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Nielsen\Rbac\Scaffolding\Generator;
 
@@ -45,7 +44,7 @@ class Resource extends Command {
 		$generator = new Generator('resourcetype',$savepath);
 
 		$generator->setBindings(array(
-			'namespace'=>\Config::get('rbac::resource'),
+			'namespace'=>\Config::get('rbac::resources'),
 			'classname'=>$name
 		));
 

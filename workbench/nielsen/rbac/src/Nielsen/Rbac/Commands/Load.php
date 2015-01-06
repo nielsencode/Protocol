@@ -1,7 +1,6 @@
 <?php namespace Nielsen\Rbac\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Rbac;
 
@@ -38,9 +37,6 @@ class Load extends Command {
 	 */
 	public function fire()
 	{
-		//$this->info(export(Rbac::$namedResources));
-		//return;
-
 		$file = $this->argument('path');
 		require base_path()."/$file";
 

@@ -1,13 +1,38 @@
 <?php
 
-return array(
+return [
 
-    'resource' => 'Rbac\Resources',
+    /*
+    |--------------------------------------------------------------------------
+    | Resource Namespace
+    |--------------------------------------------------------------------------
+    |
+    | This is the namespace corresponding to your resource model folder.
+    |
+    */
 
-    'scope' => 'Rbac\Scope',
+    'resources' => 'Nielsen\Rbac\Models\Resources',
 
-    'resource_path' => app_path().'/rbac/resources',
+    /*
+    |--------------------------------------------------------------------------
+    | Resource Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the path to your resource model folder.
+    |
+    */
 
-    'deny' => 'Permission denied.'
+    'resource_path' => __DIR__.'/../Nielsen/Rbac/Models/Resources',
 
-);
+    /*
+    |--------------------------------------------------------------------------
+    | Scope Namespace
+    |--------------------------------------------------------------------------
+    |
+    | This is the namespace corresponding to the Scope file.
+    |
+    */
+
+    'scope' => 'Nielsen\Rbac\Models\Scope',
+
+];

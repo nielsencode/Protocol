@@ -1,4 +1,4 @@
-<?php namespace rbac;
+<?php namespace Nielsen\Rbac\Models;
 
 use Nielsen\Rbac\Resource\ResourceScope;
 
