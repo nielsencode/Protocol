@@ -92,7 +92,7 @@ class PermissionSeeder extends Seeder {
 	public function run() {
 		DB::table('permissions')->delete();
 
-		Artisan::call('rbac:load',array('path'=>'app/rbac/permissions.php'));
+		Artisan::call('rbac:load',array('path'=>'app/rbac/permissions/base.php'));
 	}
 }
 

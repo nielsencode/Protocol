@@ -38,6 +38,7 @@ class Load extends Command {
 	public function fire()
 	{
 		$file = $this->argument('path');
+
 		require base_path()."/$file";
 
 		$this->info('Permissions loaded.');
