@@ -116,9 +116,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	/* Mail */
 	public function sendEmail($subject,$view,$data) {
 
+		$primaryContactEmail = Settingname::where('name','primary contact email')
+			->first()
+			->subscriberValue;
+
 		$email = [
 			'subject'=>$subject,
-			'fromEmail'=>$this->subscriber ? $this->subscriber->email : 'support@protocolapp.com',
+			'fromEmail'=>!is_null($primaryContactEmail) ? $primaryContactEmail : 'support@protocolapp.com',
 			'fromName'=>$this->subscriber ? $this->subscriber->name : 'Protocol',
 			'to'=>$this->email
 		];

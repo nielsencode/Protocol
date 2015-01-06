@@ -164,7 +164,8 @@ class UserController extends BaseController {
 		$input['token_id'] = null;
 
 		$user->update(Input::all());
-		Auth::login($user);
+
+		//Auth::login($user);
 
 		return Redirect::route('user',array($user->id));
 	}
