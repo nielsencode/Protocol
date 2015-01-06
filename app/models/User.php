@@ -134,6 +134,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				->subject($email['subject']);
 		});
 
+		Email::create([
+			'emailable_id'=>$this->id,
+			'emailable_type'=>'User',
+			'message'=>is_array($view) ? array_shift($view) : $view
+		]);
+
 	}
 
 	public function name() {
