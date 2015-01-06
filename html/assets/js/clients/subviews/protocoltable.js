@@ -3,14 +3,6 @@ $(function() {
         var widths = [];
 
         $('.client-protocols-table-label-cell').each(function () {
-            var height = ($(this).siblings().first().height() - $(this).height()) / 2;
-            var padding = (parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'))) / 2;
-
-            $(this).css({
-                paddingTop: height + padding,
-                paddingBottom: height + padding
-            });
-
             widths.push($(this).width());
         });
 
@@ -18,6 +10,16 @@ $(function() {
             $(this).css('width', Math.max.apply(Math, widths));
             $(this).siblings().first().css({
                 paddingLeft: $(this).outerWidth(true) + parseInt($(this).css('padding-left'))
+            });
+        });
+
+        $('.client-protocols-table-label-cell').each(function () {
+            var height = ($(this).siblings().first().height() - $(this).height()) / 2;
+            var padding = (parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'))) / 2;
+
+            $(this).css({
+                paddingTop: height + padding,
+                paddingBottom: height + padding
             });
         });
 
