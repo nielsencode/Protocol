@@ -482,19 +482,17 @@ class ClientController extends BaseController {
 
 			$clientData = array_combine(str_replace(' ','_',array_keys($clientData)),array_values($clientData));
 
-			if(Client::where('email',$clientData['email'])->count()>0) {
+			/*if(Client::where('email',$clientData['email'])->count()>0) {
 				continue;
-			}
+			}*/
 
 			$clientData['subscriber_id'] = Subscriber::current()->id;
 
-			$client = Client::create($clientData);
+			$client = Client::firstOrCreate($clientData);
 
 			$pattern = '/('.implode('|',array_keys($addresstypes)).') (.+)/';
 
 			$addresses = array();
-
-			$states = Seed::data('states')->data;
 
 			foreach($data as $key=>$value) {
 
@@ -527,7 +525,7 @@ class ClientController extends BaseController {
 			}
 
 			foreach($addresses as $address) {
-				Address::create($address);
+				Address::firstOrCreate($address);
 			}
 		}
 
