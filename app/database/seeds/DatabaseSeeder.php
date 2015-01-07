@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ScopeSeeder');
 		$this->call('PermissionSeeder');
 		$this->call('SubscriberSeeder');
-		$this->call('UserSeeder');
 		//$this->call('ClientSeeder');
+		$this->call('UserSeeder');
 		$this->call('AddresstypeSeeder');
 		//$this->call('AddressSeeder');
 		$this->call('ScheduletimeSeeder');
-		//$this->call('SupplementSeeder');
+		$this->call('SupplementSeeder');
 		//$this->call('ProtocolSeeder');
 		$this->call('AutoshipfrequencySeeder');
 		$this->call('InputtypeSeeder');
@@ -128,6 +128,19 @@ class UserSeeder extends Seeder {
 			'first_name' => 'Nick',
 			'last_name' => 'Nielsen'
 		));
+
+		/*foreach(Client::all() as $client) {
+			$user = User::create(array(
+				'role_id'=>Role::where('name','client')->first()->id,
+				'email'=>$client->email,
+				'first_name'=>$client->first_name,
+				'last_name'=>$client->last_name,
+				'subscriber_id'=>Subscriber::first()->id
+			));
+
+			$client->user_id = $user->id;
+			$client->save();
+		}*/
 	}
 
 }

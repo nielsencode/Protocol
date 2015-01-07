@@ -2,6 +2,14 @@
 
 Route::group(['prefix'=>'users'],function() {
 
+    Route::get('/invite',function() {
+
+        foreach(User::all() as $user) {
+            (new UserController)->getNewAccountInvitation($user);
+        }
+
+    });
+
     Route::get('/',[
         'as'=>'users',
         'uses'=>'UserController@getIndex'
@@ -46,6 +54,11 @@ Route::group(['prefix'=>'users'],function() {
         Route::post('/delete',[
             'as'=>'delete user',
             'uses'=>'UserController@postDelete'
+        ]);
+
+        Route::get('/new-account-invitation', [
+            'as' => 'new account invitation',
+            'uses' => 'UserController@getNewAccountInvitation'
         ]);
 
     });

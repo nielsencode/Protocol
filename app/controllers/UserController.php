@@ -183,7 +183,7 @@ class UserController extends BaseController {
 
 	public function newAccountInvitation($user) {
 		Auth::user()
-			->has('add')
+			->requires('add')
 			->ofScope('Subscriber',Subscriber::current()->id)
 			->orScope('Protocol')
 			->over('User');
@@ -208,7 +208,7 @@ class UserController extends BaseController {
 
 	public function getNewAccountInvitation($user) {
 		Auth::user()
-			->has('add')
+			->requires('add')
 			->ofScope('Subscriber',Subscriber::current()->id)
 			->orScope('Protocol')
 			->over('User');

@@ -62,8 +62,3 @@ Route::group(['prefix' => 'set-password', 'as' => 'set password','before'=>'gues
 	]);
 
 });
-
-Route::get('/new-account-invitation', [
-	'as' => 'new account invitation',
-	'uses' => 'UserController@getNewAccountInvitation'
-]);
