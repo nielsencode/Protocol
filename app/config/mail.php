@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'secure.emailsrvr.com',
+	'host' => 'smtp.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'nick@nicknielsencode.com', 'name' => 'Protocol'),
+	'from' => array('address' => 'support@protocolapp.com', 'name' => 'Protocol'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'nick@nicknielsencode.com',
+	'username' => null,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'Portent1',
+	'password' => null,
 
 	/*
 	|--------------------------------------------------------------------------
