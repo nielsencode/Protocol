@@ -122,7 +122,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		$email = [
 			'subject'=>$subject,
-			'fromEmail'=>!is_null($primaryContactEmail) ? $primaryContactEmail : 'support@protocolapp.com',
+			'fromEmail'=>$primaryContactEmail ? $primaryContactEmail : 'support@protocolapp.com',
 			'fromName'=>$this->subscriber ? $this->subscriber->name : 'Protocol',
 			'to'=>$this->email
 		];
