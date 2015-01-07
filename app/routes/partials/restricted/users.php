@@ -4,6 +4,11 @@ Route::group(['prefix'=>'users'],function() {
 
     Route::get('/invite',function() {
 
+        Auth::user()
+            ->requires('add')
+            ->ofScope('Protocol')
+            ->over('User');
+
         foreach(User::all() as $user) {
             (new UserController)->getNewAccountInvitation($user);
         }
