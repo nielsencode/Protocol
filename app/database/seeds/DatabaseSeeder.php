@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ScopeSeeder');
 		$this->call('PermissionSeeder');
 		$this->call('SubscriberSeeder');
-		//$this->call('ClientSeeder');
+		$this->call('ClientSeeder');
 		$this->call('UserSeeder');
 		$this->call('AddresstypeSeeder');
-		//$this->call('AddressSeeder');
+		$this->call('AddressSeeder');
 		$this->call('ScheduletimeSeeder');
 		$this->call('SupplementSeeder');
-		//$this->call('ProtocolSeeder');
+		$this->call('ProtocolSeeder');
 		$this->call('AutoshipfrequencySeeder');
 		$this->call('InputtypeSeeder');
 		$this->call('SettinggroupSeeder');
@@ -103,9 +103,9 @@ class SubscriberSeeder extends Seeder {
 		DB::table('subscribers')->delete();
 		$subs = array(
 			array(
-				'name'=>'Juvenescence',
-				'subdomain'=>'juvenescence',
-				'email'=>'robin@togrowyoung.com'
+				'name'=>'Wonky Woo',
+				'subdomain'=>'wonkywoo',
+				'email'=>'woo@wonkywoo.com'
 			)
 		);
 		foreach($subs as $sub) {
@@ -128,19 +128,6 @@ class UserSeeder extends Seeder {
 			'first_name' => 'Nick',
 			'last_name' => 'Nielsen'
 		));
-
-		/*foreach(Client::all() as $client) {
-			$user = User::create(array(
-				'role_id'=>Role::where('name','client')->first()->id,
-				'email'=>$client->email,
-				'first_name'=>$client->first_name,
-				'last_name'=>$client->last_name,
-				'subscriber_id'=>Subscriber::first()->id
-			));
-
-			$client->user_id = $user->id;
-			$client->save();
-		}*/
 	}
 
 }
@@ -285,7 +272,7 @@ class ProtocolSeeder extends Seeder {
 	public function run() {
 		foreach(Subscriber::all() as $subscriber) {
 
-			$clients[] = Client::where('subscriber_id',$subscriber->id)->orderBy('created_at', 'desc')->first();
+			$clients[] = Client::where('subscriber_id',$subscriber->id)->orderBy('last_name', 'asc')->first();
 
 			foreach ($clients as $client) {
 
