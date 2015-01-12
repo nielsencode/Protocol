@@ -1,0 +1,68 @@
+.client-protocols-table-wrapper {
+  overflow-x:scroll;
+  margin-top:20px;
+
+  &:before {
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    width:5px;
+    box-shadow:-2px 0 5px rgba(0,0,0,.1) inset;
+    display:block;
+    content:'';
+  }
+}
+
+.client-protocols-table {
+  width:100%;
+}
+
+.client-protocols-table-cell {
+  padding:8px;
+  text-align:center;
+  font-weight:normal;
+  min-width:110px;
+  border-width:1px 0 1px 1px;
+  border-style:solid;
+  border-color:grey(60%);
+
+  &:last-of-type {
+    border-right-width:1px;
+  }
+}
+
+.client-protocols-table-row {
+  .client-protocols-table-cell {
+    &:last-of-type {
+      border-right-width:0;
+    }
+  }
+}
+
+.client-protocols-table-header-cell {
+  @extend .client-protocols-table-cell;
+}
+
+.client-protocols-table-label-cell {
+  @extend .client-protocols-table-cell;
+  border-right-width:1px;
+  background-color:grey(70%);
+  text-align:right;
+  color:grey(100%);
+  font-weight:normal;
+  text-transform:uppercase;
+  font-size:12px;
+  position:absolute;
+  white-space:nowrap;
+  z-index:1;
+}
+
+.client-protocols-table-header-cell-link {
+  color:inherit;
+  display:block;
+
+  &:hover {
+    background-color:rgba(255,255,255,.66);
+  }
+}

@@ -1,0 +1,8 @@
+@import '../layouts/master/master.scss';
+
+.client-protocols-header {
+  width:100%;
+}
+
+@import 'subviews/protocoltable.scss';
+@import 'subviews/clientmenu.scss';

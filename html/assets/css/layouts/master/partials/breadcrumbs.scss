@@ -1,0 +1,50 @@
+.breadcrumbs {
+  background-color:grey(97%);
+}
+
+.breadcrumbs-inner {
+  width:970px;
+  margin:auto;
+  padding:0 15px 0 15px;
+}
+
+.breadcrumb {
+  float:left;
+  padding:9px 0 8px 0;
+  display:block;
+  text-decoration:none;
+  color:inherit;
+
+  &:hover {
+    text-decoration:underline;
+  }
+}
+
+.disabled-breadcrumb {
+  @extend .breadcrumb;
+  color:#787878;
+
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+.breadcrumb-delimeter {
+  @extend .breadcrumb;
+  margin:5px 4px 0 4px;
+  font-size:7px;
+
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+.breadcrumb-delimeter::after {
+  content:"\276F";
+}
+
+.breadcrumbs-inner::after {
+  content: " ";
+  display:block;
+  clear:both;
+}

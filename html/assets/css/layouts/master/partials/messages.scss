@@ -1,0 +1,54 @@
+@mixin error {
+  background-color:red(90%);
+  border-color:red(75%);
+}
+
+@mixin warning {
+  background-color:yellow(90%);
+  border-color:yellow(75%);
+}
+
+.messages {
+  border-radius:4px;
+  background-color:blue(90%);
+  border-width:1px;
+  border-style:solid;
+  border-color:blue(75%);
+  padding:10px 15px;
+  margin-bottom:25px;
+  text-align:left;
+}
+
+.messages-small {
+  @extend .messages;
+  padding:4px 8px;
+}
+
+.message {
+  list-style:none;
+  font-size:13px;
+  line-height:23px;
+}
+
+.error-messages {
+  @extend .messages;
+  @include error;
+}
+
+.error-message {
+  @extend .message;
+}
+
+.warning-messages {
+  @extend .messages;
+  @include warning;
+}
+
+.warning-messages-small {
+  @extend .warning-messages;
+  padding:4px 8px;
+}
+
+.warning-message {
+  @extend .message;
+}
