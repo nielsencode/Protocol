@@ -24,8 +24,6 @@ class UserController extends BaseController {
 				break;
 		}
 
-		$user = $users->whereIn('roles.name',$roles);
-
 		if(Input::get('q')) {
 			$users = $users->where('fulltext','LIKE','%'.Input::get('q').'%');
 		}
