@@ -43,7 +43,7 @@
 		}
 
 		.print-protocols-label-cell {
-			background-color:#a8a8a8;
+			background-color:#808080;
 			color:#fff;
 			text-align:right;
 			width:100px;

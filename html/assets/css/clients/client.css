@@ -567,7 +567,7 @@ body {
 
 .client-protocols-table-label-cell {
   border-right-width: 1px;
-  background-color: #b3b3b3;
+  background-color: gray;
   text-align: right;
   color: white;
   font-weight: normal;
