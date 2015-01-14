@@ -19,7 +19,7 @@ class Order extends ResourceType
 	}
 
 	public function scopeProtocol() {
-		return \Order::lists('id');
+		return \Order::withTrashed()->lists('id');
 	}
 
 }
