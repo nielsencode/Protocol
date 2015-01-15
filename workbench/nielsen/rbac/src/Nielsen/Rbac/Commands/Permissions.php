@@ -1,6 +1,8 @@
 <?php namespace Nielsen\Rbac\Commands;
 
 use Illuminate\Console\Command;
+use App;
+use Action;
 
 class Permissions extends Command {
 
@@ -28,6 +30,8 @@ class Permissions extends Command {
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->actions = Action::orderBy('id','asc')->lists('name');
 	}
 
 	/**
@@ -41,22 +45,41 @@ class Permissions extends Command {
 	}
 
 	protected function output($permission) {
-		$actions = $permission->actions()->orderBy('id','asc')->get();
+		$actions = $permission->actions()->orderBy('id','asc')->lists('name');
 
-		$args = array(
-			$permission->agent_type=='Role'
+		$values = [
+			ucfirst($permission->agent_type=='Role'
 				? \Role::find($permission->agent_id)->name
-				: \User::find($permission->agent_id)->name(),
-			implode(',',array_map(function($v) {return $v['name'];},$actions->toArray())),
-			$permission->scope ? " of scope {$permission->scope->name}" : '',
+				: \User::find($permission->agent_id)->name())
+		];
+
+		foreach($this->actions as $action) {
+			$values[] = in_array($action,$actions) ? 'x' : '-';
+		}
+
+		$values = array_merge($values,[
+			$permission->scope ? $permission->scope->name : '',
 			$permission->resource_type,
 			$permission->resource_id ? " {$permission->resource_id}" : ''
-		);
+		]);
 
-		return vsprintf($this->string,$args);
+		return $values;
 	}
 
 	protected function listPermissions() {
+		$table = App::make('\cli\Table');
+
+		$headers = array_merge(
+			['agent'],
+			$this->actions,
+			[
+				'scope',
+				'resource type',
+				'resource id'
+			]
+		);
+
+		$table->setHeaders(array_map('ucfirst',$headers));
 
 		$permissions = \Permission::with('scope')
 			->orderBy('agent_type')
@@ -66,9 +89,22 @@ class Permissions extends Command {
 			->orderBy('scope_id')
 			->get();
 
-		foreach($permissions as $permission) {
-			$this->info($this->output($permission));
+		foreach($permissions as $i=>$permission) {
+			$table->addRow($this->output($permission));
+
+			if(isset($permissions[$i+1])) {
+				$next = $permissions[$i+1];
+
+				if(
+					$next->agent_type != $permission->agent_type ||
+					$next->agent_id != $permission->agent_id
+				) {
+					$table->addRow(array_fill(0,count($headers),''));
+				}
+			}
 		}
+
+		$this->info($table->display());
 	}
 
 }

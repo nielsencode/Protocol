@@ -53,9 +53,9 @@ class ActionSeeder extends Seeder {
 	public function run() {
 		DB::table('actions')->delete();
 		$actions = array(
-			'add',
 			'read',
 			'edit',
+			'add',
 			'delete',
 			'login'
 		);
