@@ -13,6 +13,12 @@ use Nielsen\Rbac\Permission\Request;
 
 Rbac::deny(function(Request $request) {
 
-    die("<pre>{$request->toString()}</pre>");
+    switch(\App::environment()) {
+        case 'development':
+            die("<pre>{$request->toString()}</pre>");
+            break;
+        default:
+            \App::abort(404);
+    }
 
 });
