@@ -32,7 +32,14 @@
 @stop
 
 @section('index-tools-left')
-	<a class="info-table-edit-link fulfill-orders">fulfill selected orders</a>
+	@if (
+		Auth::user()
+			->has('edit')
+			->ofScope('Subscriber',Subscriber::current()->id)
+			->over('Order')
+	)
+		<a class="info-table-edit-link fulfill-orders">fulfill selected orders</a>
+	@endif
 @stop
 
 @section('table-form-open')
@@ -42,11 +49,18 @@
 @stop
 
 @section('index-table-header')
-	<th class="index-table-column">
-		<a class="index-table-column-link">
-			{{ Form::checkbox(null,null,false,['class'=>'all-orders']) }}
-		</a>
-	</th>
+	@if (
+		Auth::user()
+			->has('edit')
+			->ofScope('Subscriber',Subscriber::current()->id)
+			->over('Order')
+	)
+		<th class="index-table-column">
+			<a class="index-table-column-link">
+				{{ Form::checkbox(null,null,false,['class'=>'all-orders']) }}
+			</a>
+		</th>
+	@endif
 	<th class="index-table-column">
 		<a class="index-table-column-link" href="{{ sortby('orders.order_id',$sortorder) }}">
 			Order
