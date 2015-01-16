@@ -6,11 +6,17 @@ Route::get('home',['as'=>'home',function() {
 		case 'client':
 			return Redirect::route('my profile');
 		case 'admin':
-			return Redirect::route('orders');
+			return Subscriber::current()->setting('enable orders') ?
+				Redirect::route('orders') :
+				Redirect::route('clients');
 		case 'subscriber':
-			return Redirect::route('orders');
+			return Subscriber::current()->setting('enable orders') ?
+				Redirect::route('orders') :
+				Redirect::route('clients');
 		case 'protocol':
-			return Redirect::route('orders');
+			return Subscriber::current()->setting('enable orders') ?
+				Redirect::route('orders') :
+				Redirect::route('clients');
 	}
 
 }]);

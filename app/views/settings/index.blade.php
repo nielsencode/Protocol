@@ -91,14 +91,14 @@
             @foreach($group->settingnames as $setting)
                 <tr>
                     <td class="form-label-cell">
-                        <label class="form-label">{{ ucfirst($setting->name) }}</label>
+                        {{ Form::label($setting->name,ucfirst($setting->name),['class'=>'form-label']) }}
                     </td>
                     <td class="form-cell">
                         @if ($setting->inputtype->name=='colorpicker')
                             {{ Form::select(
                                 $setting->name,
                                 array_combine($setting->values,$setting->values),
-                                $setting->subscriberValue,
+                                Subscriber::current()->setting($setting->name),
                                 ['class'=>'colors']
                             ) }}
                         @endif
@@ -108,11 +108,12 @@
                         @endif
 
                         @if ($setting->inputtype->name=='text')
-                            {{ Form::text($setting->name,$setting->subscriberValue,['class'=>'form-text']) }}
+                            {{ Form::text($setting->name,Subscriber::current()->setting($setting->name),['class'=>'form-text']) }}
                         @endif
 
                         @if ($setting->inputtype->name=='checkbox')
-                            {{ Form::checkbox($setting->name,1,$setting->subscriberValue) }}
+                            {{ Form::hidden($setting->name,0,['id'=>'']) }}
+                            {{ Form::checkbox($setting->name,1,Subscriber::current()->setting($setting->name)) }}
                         @endif
                     </td>
                     <td class="form-description-cell">

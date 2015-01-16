@@ -10,4 +10,10 @@ class Setting extends Eloquent {
 		return $this->belongsTo('Settingname');
 	}
 
+	public function scopeNamed($query,$name) {
+		return $query
+			->join('settingnames','settingnames.id','=','settings.settingname_id')
+			->where('settingnames.name',$name);
+	}
+
 }

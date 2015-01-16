@@ -22,7 +22,8 @@ class SettingController extends BaseController {
 		$input = Input::except('_token');
 
 		$rules = array(
-			'logo'=>'max:2000|image'
+			'logo'=>'max:2000|image',
+			'external_store'=>'url'
 		);
 
 		$validator = Validator::make($input,$rules);

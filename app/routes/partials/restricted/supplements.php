@@ -69,7 +69,7 @@ Route::group(['prefix'=>'supplements'],function() {
             'uses'=>'SupplementController@postDelete'
         ]);
 
-        Route::group(['prefix'=>'/order','as'=>'order supplement'],function() {
+        Route::group(['prefix'=>'/order','as'=>'order supplement','before'=>'enable orders'],function() {
 
             Route::get('/',[
                 'uses'=>'SupplementController@getOrder'

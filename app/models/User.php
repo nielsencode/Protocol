@@ -116,9 +116,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	/* Mail */
 	public function sendEmail($subject,$view,$data) {
 
-		$primaryContactEmail = Settingname::where('name','primary contact email')
+		/*$primaryContactEmail = Settingname::where('name','primary contact email')
 			->first()
-			->subscriberValue;
+			->subscriberValue;*/
+
+		$primaryContactEmail = Subscriber::current()->setting('primary contact email');
 
 		$email = [
 			'subject'=>$subject,

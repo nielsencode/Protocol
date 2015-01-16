@@ -40,11 +40,24 @@
 
 	<div style="text-align:right;">
 		<a href="{{ URL::previous() }}">back</a>
-		@if (Auth::user()->role->name=='client')
+		@if (
+			Auth::user()->role->name=='client' &&
+			(
+				Subscriber::current()->setting('enable orders') ||
+				Subscriber::current()->setting('external store')
+			)
+		)
 			{{ str_repeat('&nbsp;',4) }}
-			<a href="{{ route('order supplement',[$supplement->id]) }}">
-				<button name="order button" class="button">Order</button>
-			</a>
+
+			@if (Subscriber::current()->setting('enable orders'))
+				<a href="{{ route('order supplement',[$supplement->id]) }}">
+					<button name="order button" class="button">Order</button>
+				</a>
+			@else
+				<a href="{{ Subscriber::current()->setting('external store') }}" target="_blank">
+					<button name="order button" class="button">Order</button>
+				</a>
+			@endif
 		@endif
 	</div>
 @stop

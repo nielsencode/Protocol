@@ -3,9 +3,8 @@
 
 		<li class="master-navbar-item">
 			<a class="master-navbar-home-link" href="{{ route('home') }}">
-
-				@if (Settingname::where('name','logo')->first()->subscriberValue)
-					<img class="subscriber-logo" src="{{ Settingname::where('name','logo')->first()->subscriberValue }}"/>
+				@if (Subscriber::current()->setting('logo'))
+					<img class="subscriber-logo" src="{{ Subscriber::current()->setting('logo') }}"/>
 				@else
 					<div class="master-navbar-home-link-icon"></div>
 				@endif
@@ -24,6 +23,10 @@
 				->orScope('Subscriber',Subscriber::current()->id)
 				->orScope('Protocol')
 				->over('Order')
+
+			&&
+
+			Subscriber::current()->setting('enable orders')
 		)
 			<li class="master-navbar-item"><a class="master-navbar-link {{ Route::currentRouteName()=='orders' ? 'is-selected' : '' }}" href="{{ route('orders') }}">Orders</a></li>
 		@endif

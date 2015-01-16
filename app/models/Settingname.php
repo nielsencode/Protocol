@@ -22,20 +22,4 @@ class Settingname extends Eloquent {
 		return explode(',',$values);
 	}
 
-	public function getSubscriberValueAttribute() {
-		if(!Subscriber::current()) {
-			return false;
-		}
-
-		$setting = Setting::where('settingable_type','Subscriber')
-			->where('settingable_id',Subscriber::current()->id)
-			->where('settingname_id',$this->id);
-
-		if($setting->count()) {
-			return $setting->first()->value;
-		}
-
-		return $this->default;
-	}
-
 }

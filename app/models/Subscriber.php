@@ -81,4 +81,22 @@ class Subscriber extends Eloquent {
 
 		return $subscriber->first();
 	}
+
+	public function setting($name) {
+		$settingname = Settingname::where('name',$name);
+
+		if(!$settingname->count()) {
+			return false;
+		}
+
+		$settings = $this
+			->settings()
+			->named($name);
+
+		if($settings->count()) {
+			return $settings->first()->value;
+		}
+
+		return $settingname->pluck('default');
+	}
 }
