@@ -36,6 +36,7 @@
 		Auth::user()
 			->has('edit')
 			->ofScope('Subscriber',Subscriber::current()->id)
+			->orScope('Protocol')
 			->over('Order')
 	)
 		<a class="info-table-edit-link fulfill-orders">fulfill selected orders</a>
@@ -53,6 +54,7 @@
 		Auth::user()
 			->has('edit')
 			->ofScope('Subscriber',Subscriber::current()->id)
+			->orScope('Protocol')
 			->over('Order')
 	)
 		<th class="index-table-column">
@@ -105,9 +107,17 @@
     @else
 		@foreach ($orders as $order)
 			<tr class="index-table-row" supplement-id="{{ $order->id }}">
-				<td class="index-table-cell">
-					<a>{{ Form::checkbox('orders[]',$order->id) }}</a>
-				</td>
+				@if (
+					Auth::user()
+						->has('edit')
+						->ofScope('Subscriber',Subscriber::current()->id)
+						->orScope('Protocol')
+						->over('Order')
+				)
+					<td class="index-table-cell">
+						<a>{{ Form::checkbox('orders[]',$order->id) }}</a>
+					</td>
+				@endif
 				<td class="index-table-cell">
 					<a href="{{ route('order',[$order->id]) }}">#{{ $order->order_id }}</a>
 				</td>
