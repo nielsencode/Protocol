@@ -110,6 +110,10 @@
                         @if ($setting->inputtype->name=='text')
                             {{ Form::text($setting->name,$setting->subscriberValue,['class'=>'form-text']) }}
                         @endif
+
+                        @if ($setting->inputtype->name=='checkbox')
+                            {{ Form::checkbox($setting->name,1,$setting->subscriberValue) }}
+                        @endif
                     </td>
                     <td class="form-description-cell">
                         {{ $setting->description }}
