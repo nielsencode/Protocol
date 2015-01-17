@@ -1,13 +1,5 @@
 <?php
 
-Route::filter('enable orders',function() {
-
-    if(!Subscriber::current()->setting('enable orders')) {
-        App::abort(404);
-    }
-
-});
-
 Route::group(['prefix'=>'orders','before'=>'enable orders'],function() {
 
     Route::get('/',[

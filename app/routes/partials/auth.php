@@ -1,14 +1,5 @@
 <?php
 
-Route::filter('subscriber',function() {
-
-	if(!Subscriber::current()) {
-		App::abort(404);
-	}
-
-});
-
-
 Route::group(['prefix' => 'forgot-password', 'as' => 'forgot password'], function () {
 
 	Route::get('/', [
