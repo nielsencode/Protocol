@@ -12,25 +12,30 @@
                 <tr class="client-protocols-table-row">
                     <th class="client-protocols-table-label-cell">Supplements</th>
 
-                    @foreach ($client->protocols as $protocol)
-                        <th class="client-protocols-table-header-cell">
-                            @if (
-                                Auth::user()
-                                    ->has('edit')
-                                    ->ofScope('Subscriber',Subscriber::current()->id)
-                                    ->orScope('Protocol')
-                                    ->over('Protocol',$protocol->id)
-                            )
+                    @if (
+                        Auth::user()
+                            ->has('edit')
+                            ->ofScope('Subscriber',Subscriber::current()->id)
+                            ->orScope('Protocol')
+                            ->over('Protocol')
+                    )
+                        @foreach ($client->protocols as $protocol)
+                            <th class="client-protocols-table-header-cell">
                                 <a class="client-protocols-table-header-cell-link" href="{{ route('edit protocol',[$protocol->id]) }}">
                                     {{ $protocol->supplement->name }}
                                 </a>
-                            @else
+                            </th>
+                        @endforeach
+                    @else
+                        @foreach ($client->protocols as $protocol)
+                            <th class="client-protocols-table-header-cell">
                                 <a class="client-protocols-table-header-cell-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
                                     {{ $protocol->supplement->name }}&nbsp;&nbsp;<i class="fa fa-info-circle"></i></span>
                                 </a>
-                            @endif
-                        </th>
-                    @endforeach
+                            </th>
+                        @endforeach
+                    @endif
+
                 </tr>
             </thead>
             @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)

@@ -65,28 +65,6 @@
 
 <div class="master-right-header-navbar">
 
-	@if (Auth::check())
-		<!--<li class="master-dropdown-navbar-item">
-
-			<a class="master-small-navbar-link" href="#">
-				<span class="master-navbar-message-link-icon"><div class="master-navbar-message-link-count">5</div></span>
-			</a>
-
-			<div class="master-navbar-dropdown-menu" style="width:250px;">
-
-				<div class="master-navbar-dropdown-menu-triangle"></div>
-				<div class="master-navbar-dropdown-menu-header">Messages</div>
-				<div class="master-navbar-dropdown-menu-body" style="max-height:300px; overflow-y:scroll;">
-					@for ($i=0; $i<10; $i++)
-						<a class="master-navbar-dropdown-menu-item" href="#">Robin Bibby has configured new autoships.</a>
-					@endfor
-				</div>
-
-			</div>
-
-		</li>-->
-	@endif
-
 	<li class="master-navbar-item">
 		<a class="master-small-navbar-link {{ Route::currentRouteName()=='help' ? 'is-selected' : '' }}" href="{{ route('help') }}" target="_blank">help</a>
 	</li>
@@ -108,7 +86,6 @@
 
 					<a class="master-navbar-dropdown-menu-item" href="{{ route('my account') }}">Account</a>
 
-					<!--<a class="master-navbar-dropdown-menu-item" href="#">Notification Settings</a>-->
 					@if (
 						Auth::user()
 							->has('edit')
