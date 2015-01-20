@@ -63,6 +63,11 @@
             Email
         </a>
     </th>
+    <th class="index-table-column">
+        <a class="index-table-column-link" href="{{ sortby('email',$sortorder) }}">
+            Verified
+        </a>
+    </th>
 @stop
 
 @section('index-table-rows')
@@ -86,6 +91,9 @@
                 </td>
                 <td class="index-table-cell">
                     <a href="{{ route('user',$user->id) }}">{{ $user->email }}</a>
+                </td>
+                <td class="index-table-cell">
+                    <span class="{{ $user->password ? '' : 'warning-' }}messages-small">{{ $user->password ? 'verified' : 'not verified' }}</span>
                 </td>
             </tr>
         @endforeach
