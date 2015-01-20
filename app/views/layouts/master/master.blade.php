@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Protocol</title>
+	<title>{{ Subscriber::current() ? Subscriber::current()->name : 'Protocol' }}</title>
 
 	@section('js')
 		{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
