@@ -64,7 +64,7 @@
         </a>
     </th>
     <th class="index-table-column">
-        <a class="index-table-column-link" href="{{ sortby('email',$sortorder) }}">
+        <a class="index-table-column-link" href="{{ sortby('password',$sortorder) }}">
             Verified
         </a>
     </th>
