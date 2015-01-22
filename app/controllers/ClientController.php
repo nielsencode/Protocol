@@ -488,6 +488,10 @@ class ClientController extends BaseController {
 
 			$clientData['subscriber_id'] = Subscriber::current()->id;
 
+			if(!strlen($clientData['email'])) {
+				$clientData['email'] = uniqid()."@mailinator.com";
+			}
+
 			$client = Client::firstOrCreate($clientData);
 
 			$pattern = '/('.implode('|',array_keys($addresstypes)).') (.+)/';

@@ -6,7 +6,7 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 		Route::get('/protocols', function () {
 
-			$path = public_path() . '/assets/imports/' . Subscriber::current()->subdomain . '/protocols.csv';
+			$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/protocols.csv';
 
 			$data = file_get_contents($path);
 
@@ -18,10 +18,10 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 			foreach ($migrate->data() as $protocol) {
 
-				$supplement = Supplement::where('name', $protocol['supplement'])
+				$supplement = Supplement::where('name', $protocol['supplement name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
-				$client = Client::where('email', $protocol['client'])
+				$client = Client::where('email', $protocol['client email'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if ($supplement->count() && $client->count()) {
@@ -39,7 +39,7 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 		Route::get('/schedules', function () {
 
-			$path = public_path() . '/assets/imports/' . Subscriber::current()->subdomain . '/schedules.csv';
+			$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/schedules.csv';
 
 			$data = file_get_contents($path);
 
@@ -51,10 +51,10 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 			foreach ($migrate->data() as $schedule) {
 
-				$supplement = Supplement::where('name', $schedule['supplement'])
+				$supplement = Supplement::where('name', $schedule['supplement name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
-				$client = Client::where('email', $schedule['client'])
+				$client = Client::where('email', $schedule['client email'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if (!$supplement->count() || !$client->count()) {
@@ -68,7 +68,7 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 					continue;
 				}
 
-				$scheduletime = Scheduletime::where('name', $schedule['scheduletime']);
+				$scheduletime = Scheduletime::where('name', $schedule['scheduletime name']);
 
 				if (!$scheduletime->count()) {
 					continue;
@@ -88,7 +88,7 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 		Route::get('/users', function () {
 
-			$path = public_path() . '/assets/imports/' . Subscriber::current()->subdomain . '/users.csv';
+			$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/users.csv';
 
 			$data = file_get_contents($path);
 
@@ -100,7 +100,7 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 			foreach ($migrate->data() as $user) {
 
-				$client = Client::where('email', $user['client'])
+				$client = Client::where('email', $user['client email'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if (!$client->count()) {
@@ -108,8 +108,8 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 				}
 
 				$values = array(
-					'first_name' => $user['first_name'],
-					'last_name' => $user['last_name'],
+					'first_name' => $user['first name'],
+					'last_name' => $user['last name'],
 					'email' => $user['email'],
 					'subscriber_id' => Subscriber::current()->id,
 					'role_id' => Role::where('name', 'client')->first()->id

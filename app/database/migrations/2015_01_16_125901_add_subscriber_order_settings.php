@@ -43,9 +43,13 @@ class AddSubscriberOrderSettings extends Migration {
 			->where('scope_id',Scope::where('name','subscriber')->pluck('id'))
 			->pluck('id');
 
-		Settingname::where('settinggroup_id',$group)
-			->whereIn('name',['enable orders','external store'])
+		$settingnames = Settingname::where('settinggroup_id',$group)
+			->whereIn('name',['enable orders','external store']);
+
+		Setting::whereIn('settingname_id',$settingnames->lists('id'))
 			->delete();
+
+		$settingnames->delete();
 	}
 
 }

@@ -247,15 +247,15 @@ class SupplementController extends BaseController {
 		}
 
 		foreach($migrate->data() as $supplement) {
-			if(!Supplement::where('name',$supplement['name'])->count()) {
-				Supplement::create(array(
-					'subscriber_id'=>Subscriber::current()->id,
-					'name'=>$supplement['name'],
-					'price'=>$supplement['price'],
-					'description'=>$supplement['description'],
-					'short_description'=>$supplement['short description']
-				));
-			}
+			$data = [
+				'subscriber_id'=>Subscriber::current()->id,
+				'name'=>$supplement['name'],
+				'price'=>$supplement['price'],
+				'description'=>$supplement['description'],
+				'short_description'=>$supplement['short description']
+			];
+
+			Supplement::firstOrCreate($data);
 		}
 
 		return Redirect::route('import supplements')->with('success','Your supplements have been imported successfully.');
