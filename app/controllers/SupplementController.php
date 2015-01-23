@@ -238,7 +238,7 @@ class SupplementController extends BaseController {
 
 		$data = file_get_contents($_FILES['data']['tmp_name']);
 
-		$template_path = public_path().'/assets/templates/supplements/import.csv';
+		$template_path = app_path().'/imports/templates/supplements.csv';
 
 		$migrate = Migrate::import($data,$template_path);
 

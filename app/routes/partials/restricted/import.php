@@ -1,22 +1,31 @@
 <?php
 
+function migrate($type,$callback)
+{
+
+	$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/'.$type.'.csv';
+
+	$data = file_get_contents($path);
+
+	$migrate = Migrate::import($data, app_path() . '/imports/templates/'.$type.'.csv');
+
+	if ($migrate->fails()) {
+		export($migrate->errors());
+	}
+
+	foreach ($migrate->data() as $datum) {
+		$callback($datum);
+	}
+
+}
+
 if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 	Route::group(['prefix' => 'import'], function () {
 
 		Route::get('/protocols', function () {
 
-			$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/protocols.csv';
-
-			$data = file_get_contents($path);
-
-			$migrate = Migrate::import($data, public_path() . '/assets/templates/protocols/import.csv');
-
-			if ($migrate->fails()) {
-				export($migrate->errors());
-			}
-
-			foreach ($migrate->data() as $protocol) {
+			migrate('protocols',function($protocol) {
 
 				$supplement = Supplement::where('name', $protocol['supplement name'])
 					->where('subscriber_id', Subscriber::current()->id);
@@ -33,23 +42,13 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 					Protocol::firstOrCreate($values);
 				}
 
-			}
+			});
 
 		});
 
 		Route::get('/schedules', function () {
 
-			$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/schedules.csv';
-
-			$data = file_get_contents($path);
-
-			$migrate = Migrate::import($data, public_path() . '/assets/templates/schedules/import.csv');
-
-			if ($migrate->fails()) {
-				export($migrate->errors());
-			}
-
-			foreach ($migrate->data() as $schedule) {
+			migrate('schedules',function($schedule) {
 
 				$supplement = Supplement::where('name', $schedule['supplement name'])
 					->where('subscriber_id', Subscriber::current()->id);
@@ -58,20 +57,20 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if (!$supplement->count() || !$client->count()) {
-					continue;
+					return;
 				}
 
 				$protocol = Protocol::where('client_id', $client->first()->id)
 					->where('supplement_id', $supplement->first()->id);
 
 				if (!$protocol->count()) {
-					continue;
+					return;
 				}
 
 				$scheduletime = Scheduletime::where('name', $schedule['scheduletime name']);
 
 				if (!$scheduletime->count()) {
-					continue;
+					return;
 				}
 
 				$values = array(
@@ -82,29 +81,19 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 				Schedule::firstOrCreate($values);
 
-			}
+			});
 
 		});
 
 		Route::get('/users', function () {
 
-			$path = app_path() . '/imports/' . Subscriber::current()->subdomain . '/users.csv';
-
-			$data = file_get_contents($path);
-
-			$migrate = Migrate::import($data, public_path() . '/assets/templates/users/import.csv');
-
-			if ($migrate->fails()) {
-				export($migrate->errors());
-			}
-
-			foreach ($migrate->data() as $user) {
+			migrate('users',function($user) {
 
 				$client = Client::where('email', $user['client email'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if (!$client->count()) {
-					continue;
+					return;
 				}
 
 				$values = array(
@@ -123,7 +112,38 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 				$client->save();
 
-			}
+			});
+
+		});
+
+		Route::get('/orders',function() {
+
+			migrate('orders',function($order) {
+
+				$client = Subscriber::current()
+					->clients()
+					->where('email',$order['client email']);
+
+				$supplement = Subscriber::current()
+					->supplements()
+					->where('name',$order['supplement name']);
+
+				if(!$client->count()) {
+					return;
+				}
+
+				if(!$supplement->count()) {
+					return;
+				}
+
+				Order::create([
+					'client_id'=>$client->pluck('id'),
+					'supplement_id'=>$supplement->pluck('id'),
+					'quantity'=>$order['quantity'],
+					'date'=>$order['date']
+				]);
+
+			});
 
 		});
 

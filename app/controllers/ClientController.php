@@ -465,7 +465,7 @@ class ClientController extends BaseController {
 
 		$data = file_get_contents($_FILES['data']['tmp_name']);
 
-		$template_path = public_path().'/assets/templates/clients/import.csv';
+		$template_path = app_path().'/imports/templates/clients.csv';
 
 		$migrate = Migrate::import($data,$template_path);
 
