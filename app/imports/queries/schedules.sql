@@ -1,6 +1,7 @@
 SELECT
 supplements.name AS `supplement name`,
-clients.email AS `client email`,
+clients.first_name AS `client first name`,
+clients.last_name AS `client last name`,
 prescription,
 times_of_day.description AS `scheduletime name`
 FROM schedules

@@ -30,7 +30,7 @@ class OrderController extends BaseController {
             $orders = $orders->orderBy(Input::get('sortby'),Input::get('order'));
         }
         else {
-            $orders = $orders->orderBy('orders.created_at','desc');
+            $orders = $orders->orderBy('orders.date','desc');
         }
 
         $page = Input::has('page') ? Input::get('page') : 1;

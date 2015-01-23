@@ -1,5 +1,5 @@
 SELECT
-     first_name AS `first name`,
+first_name AS `first name`,
 last_name AS `last name`,
 email,
 billing_address AS `billing address`,

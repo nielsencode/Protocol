@@ -27,10 +27,11 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 			migrate('protocols',function($protocol) {
 
-				$supplement = Supplement::where('name', $protocol['supplement name'])
+				$supplement = Supplement::where('name',$protocol['supplement name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
-				$client = Client::where('email', $protocol['client email'])
+				$client = Client::where('first_name',$protocol['client first name'])
+					->where('last_name',$protocol['client last name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if ($supplement->count() && $client->count()) {
@@ -53,7 +54,8 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 				$supplement = Supplement::where('name', $schedule['supplement name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
-				$client = Client::where('email', $schedule['client email'])
+				$client = Client::where('first_name',$schedule['client first name'])
+					->where('last_name',$schedule['client last name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if (!$supplement->count() || !$client->count()) {
@@ -89,7 +91,8 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 			migrate('users',function($user) {
 
-				$client = Client::where('email', $user['client email'])
+				$client = Client::where('first_name',$user['client first name'])
+					->where('last_name',$user['client last name'])
 					->where('subscriber_id', Subscriber::current()->id);
 
 				if (!$client->count()) {
@@ -122,11 +125,14 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 				$client = Subscriber::current()
 					->clients()
-					->where('email',$order['client email']);
+					->where('first_name',$order['client first name'])
+					->where('last_name',$order['client last name']);
 
 				$supplement = Subscriber::current()
 					->supplements()
 					->where('name',$order['supplement name']);
+
+				$autoshipFrequency = Autoshipfrequency::where('name',$order['frequency']);
 
 				if(!$client->count()) {
 					return;
@@ -136,11 +142,19 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 					return;
 				}
 
+				if($autoshipFrequency->count()) {
+					$autoship = Autoship::create([
+						'autoshipfrequency_id'=>$autoshipFrequency->pluck('id'),
+						'starting_at'=>$order['date']
+					]);
+				}
+
 				Order::create([
 					'client_id'=>$client->pluck('id'),
 					'supplement_id'=>$supplement->pluck('id'),
 					'quantity'=>$order['quantity'],
-					'date'=>$order['date']
+					'date'=>$order['date'],
+					'autoship_id'=>isset($autoship) ? $autoship->id : null
 				]);
 
 			});

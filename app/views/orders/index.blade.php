@@ -86,7 +86,7 @@
 		</th>
 	@endif
 	<th class="index-table-column">
-		<a class="index-table-column-link" href="{{ sortby('orders.created_at',$sortorder) }}">
+		<a class="index-table-column-link" href="{{ sortby('orders.date',$sortorder) }}">
 			Date
 		</a>
 	</th>
