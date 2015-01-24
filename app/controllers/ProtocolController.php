@@ -10,7 +10,13 @@ class ProtocolController extends BaseController {
             ->over('Supplement');
 
         $letter = Input::get('letter') ? Input::get('letter') : 'A';
-        $supplements = Supplement::where('name','LIKE',"$letter%")->get();
+
+        $supplements = Subscriber::current()
+            ->supplements()
+            ->where('name','LIKE',"$letter%")
+            ->orderBy('name','asc')
+            ->get();
+
         return View::make('protocols.subviews.supplements')->with('supplements',$supplements);
     }
 
