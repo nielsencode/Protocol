@@ -44,7 +44,7 @@ class Subscriber extends Eloquent {
 	*/
 
 	public function users() {
-		return $this->hasMany('User');
+		return $this->belongsToMany('User');
 	}
 	
 	public function clients() {

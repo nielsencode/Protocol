@@ -83,8 +83,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsTo('Role');
 	}
 	
-	public function subscriber() {
-		return $this->belongsTo('Subscriber');
+	public function subscribers() {
+		return $this->belongsToMany('Subscriber');
 	}
 	
 	public function client() {
@@ -125,7 +125,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$email = [
 			'subject'=>$subject,
 			'fromEmail'=>$primaryContactEmail ? $primaryContactEmail : 'support@protocolapp.com',
-			'fromName'=>$this->subscriber ? $this->subscriber->name : 'Protocol',
+			'fromName'=>Subscriber::current() ? Subscriber::current()->name : 'Protocol',
 			'to'=>$this->email
 		];
 

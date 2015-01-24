@@ -103,11 +103,12 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 					'first_name' => $user['first name'],
 					'last_name' => $user['last name'],
 					'email' => $user['email'],
-					'subscriber_id' => Subscriber::current()->id,
 					'role_id' => Role::where('name', 'client')->first()->id
 				);
 
 				$user = User::firstOrCreate($values);
+
+				$user->subscribers()->attach(Subscriber::current()->id);
 
 				$client = $client->first();
 

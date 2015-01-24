@@ -6,7 +6,11 @@ class Scope extends ResourceScope
 {
 
 	public function subscriber($user,$owner) {
-		return \User::where('id',$user->id)->pluck('subscriber_id')==$owner;
+		return \Subscriber::where('id',$owner)
+			->first()
+			->users()
+			->where('id',$user->id)
+			->count();
 	}
 
 	public function client($user,$owner) {

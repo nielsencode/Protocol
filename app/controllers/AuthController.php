@@ -18,22 +18,30 @@ class AuthController extends BaseController {
 			return Redirect::route('login')->withErrors($validator)->withInput();
 		}
 
-		if(
-			Auth::attempt(array(
-				'email'=>Input::get('email'),
-				'password'=>Input::get('password'),
-				'subscriber_id'=>Subscriber::current()->id
-			),true)
+		if(Auth::validate([
+			'email'=>Input::get('email'),
+			'password'=>Input::get('password')
+		])) {
+			$user = User::where('email',Input::get('email'))->first();
+		}
 
-			||
+		if($user) {
+			if($user
+				->subscribers()
+				->where('subscriber_id',Subscriber::current()->id)
+				->count()
 
-			Auth::attempt(array(
-				'email'=>Input::get('email'),
-				'password'=>Input::get('password'),
-				'subscriber_id'=>null
-			),true)
-		) {
-			return Redirect::route('home');
+				||
+
+				$user->role->name=='protocol'
+			) {
+				$success = true;
+			}
+		}
+
+		if(!empty($success)) {
+			Auth::login($user);
+			return Redirect::intended('home');
 		}
 		else {
 			return Redirect::route('login')->withErrors(array('username or password is incorrect.'))->withInput();

@@ -9,8 +9,12 @@ class UserController extends BaseController {
 			->orScope('Protocol')
 			->over('User');
 
-		$users = User::where('subscriber_id',Subscriber::current()->id)
+		$users = Subscriber::current()
+			->users()
 			->join('roles','roles.id','=','users.role_id');
+
+		/*$users = User::where('subscriber_id',Subscriber::current()->id)
+			->join('roles','roles.id','=','users.role_id');*/
 
 		switch(Auth::user()->role->name) {
 			case 'protocol':
@@ -89,7 +93,6 @@ class UserController extends BaseController {
 			'first_name'=>Input::get('first_name'),
 			'last_name'=>Input::get('last_name'),
 			'email'=>Input::get('email'),
-			'subscriber_id'=>Subscriber::current()->id,
 			'role_id'=>Input::get('role')
 		);
 
@@ -97,9 +100,11 @@ class UserController extends BaseController {
 			$user->restore();
 			$user->fill($values);
 			$user->save();
+			$user->subscribers()->attach(Subscriber::current()->id);
 		}
 		else {
 			$user = User::create($values);
+			$user->subscribers()->attach(Subscriber::current()->id);
 		}
 
 		$this->newAccountInvitation($user);

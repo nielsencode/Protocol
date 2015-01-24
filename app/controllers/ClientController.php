@@ -329,9 +329,10 @@ class ClientController extends BaseController {
 			'first_name'=>Input::get('first_name'),
 			'last_name'=>Input::get('last_name'),
 			'email'=>Input::get('email'),
-			'role_id'=>Role::where('name','client')->first()->id,
-			'subscriber_id'=>Subscriber::current()->id
+			'role_id'=>Role::where('name','client')->first()->id
 		));
+
+		$user->subscribers()->attach(Subscriber::current()->id);
 
 		$client->user_id = $user->id;
 		$client->save();
