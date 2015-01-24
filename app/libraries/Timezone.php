@@ -6,12 +6,12 @@ class Timezone {
         return self::get('user');
     }
 
-    public static function get($type) {
+    public static function get($type='user') {
         return Session::get("timezone_$type");
     }
 
-    public static function set($type,$name) {
-        Session::put("timezone_user",$name);
+    public static function set($type='user',$name) {
+        Session::put("timezone_$type",$name);
     }
 
 }

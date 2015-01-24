@@ -133,7 +133,7 @@
 		            </td>
 		        @endif
 				<td class="index-table-cell">
-		            <a href="{{ route('order',[$order->id]) }}">{{ timeForHumans($order->date) }}</a>
+		            <a href="{{ route('order',[$order->id]) }}">{{ timeForHumans($order->date->setTimezone(Timezone::get())) }}</a>
 		        </td>
 		        <td class="index-table-cell">
 		            <a href="{{ route('order',[$order->id]) }}">
