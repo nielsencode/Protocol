@@ -483,10 +483,6 @@ class ClientController extends BaseController {
 
 			$clientData = array_combine(str_replace(' ','_',array_keys($clientData)),array_values($clientData));
 
-			/*if(Client::where('email',$clientData['email'])->count()>0) {
-				continue;
-			}*/
-
 			$clientData['subscriber_id'] = Subscriber::current()->id;
 
 			if(!strlen($clientData['email'])) {
