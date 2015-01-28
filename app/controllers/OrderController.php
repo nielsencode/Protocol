@@ -20,8 +20,6 @@ class OrderController extends BaseController {
 
         $orders = $orders->join('supplements','orders.supplement_id','=','supplements.id');
 
-        $count = $orders->count();
-
         if(Input::get('q')) {
             $orders = $orders->where('orders.fulltext','LIKE','%'.Input::get('q').'%');
         }
@@ -38,6 +36,8 @@ class OrderController extends BaseController {
 
         $orders->skip(($page-1)*$perPage)->take($perPage);
         $orders->select(array('orders.*','supplements.name AS supplement_name'));
+
+        $count = $orders->count();
 
         $data['orders'] = Paginator::make($orders->get()->all(),$count,$perPage);
 

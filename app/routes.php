@@ -46,4 +46,11 @@ require_once app_path().'/routes/partials/base.php';
 */
 
 Route::get('test',function() {
+	$subscriber = Subscriber::where('subdomain','juvenescence')->first();
+	$subscriber->clients()->withTrashed()->forceDelete();
+	$subscriber->supplements()->delete();
+	foreach($subscriber->users()->withTrashed()->get() as $user) {
+		$user->forceDelete();
+	}
+	Autoship::withTrashed()->delete();
 });
