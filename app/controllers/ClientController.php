@@ -493,7 +493,19 @@ class ClientController extends BaseController {
 				$clientData['email'] = uniqid()."@mailinator.com";
 			}
 
-			$client = Client::firstOrCreate($clientData);
+			$client = Client::where('subscriber_id',$clientData['subscriber_id'])
+				->where('email',$clientData['email'])
+				->withTrashed();
+
+			if($client->count()) {
+				$client = $client->first();
+				$client->restore();
+				$client->fill($clientData);
+				$client->save();
+			}
+			else {
+				$client = Client::create($clientData);
+			}
 
 			$pattern = '/('.implode('|',array_keys($addresstypes)).') (.+)/';
 
