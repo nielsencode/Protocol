@@ -3,6 +3,10 @@
 class AutoshipController extends BaseController {
 
     public static function generateOrders() {
+        if(!Subscriber::current()->setting('enable orders')) {
+            return;
+        }
+
         foreach(Autoship::all() as $autoship) {
 
             if($autoship->nextOrder->isToday()) {
