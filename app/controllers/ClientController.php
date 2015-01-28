@@ -58,7 +58,7 @@ class ClientController extends BaseController {
 		$rules = array(
 			'first_name'=>'required',
 			'last_name'=>'required',
-			'email'=>'required|email|unique:clients|unique:users',
+			'email'=>'required|email|unique:clients,email,NULL,id,subscriber_id,'.Subscriber::current()->id.'|unique:users',
 		);
 
 		$addressRules = array(
