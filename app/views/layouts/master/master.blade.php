@@ -7,8 +7,8 @@
 	@section('js')
 		{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
 		{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js') }}
-
-		<script data-main="/assets/js/layouts/master/master.js" src="/assets/js/require.js"></script>
+		{{ HTML::script('assets/js/timezone.js') }}
+		{{ HTML::script('assets/js/layouts/master/master.js') }}
 	@show
 
 

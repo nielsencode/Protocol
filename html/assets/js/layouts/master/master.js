@@ -1,20 +1,31 @@
-require.config({
-	baseUrl: '/assets/js/layouts/master'
-});
+$(function() {
 
-var loadingAssets = $.Deferred();
+	// Navbar dropdown menus.
 
-require([
-	'/assets/js/timezone.js',
-	'/assets/js/bootstrap-tour-standalone.min.js'
-],function() {
-	loadingAssets.resolve();
-});
+	$(document).on('click',function(e) {
+		var item = $(e.target).closest('.master-dropdown-navbar-item');
 
-loadingAssets.done(function() {
-	require([
-		'partials/forms',
-		'subviews/navbar',
-		'tour/tour'
-	]);
+		if(item.length) {
+			var link = item.children('.master-small-navbar-link');
+			var dropdown = item.children('.master-navbar-dropdown-menu');
+
+			if($(e.target).closest('.master-small-navbar-link').is(link)) {
+				link.toggleClass('is-selected');
+				dropdown.toggle();
+			}
+
+			var items = $('.master-dropdown-navbar-item').not(item);
+		}
+		else {
+			var items = $('.master-dropdown-navbar-item');
+		}
+
+		items.children('.master-small-navbar-link').removeClass('is-selected');
+		items.children('.master-navbar-dropdown-menu').hide();
+	});
+
+	// Forms
+
+	$('.focus').first().focus();
+
 });

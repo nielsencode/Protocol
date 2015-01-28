@@ -4,34 +4,20 @@ tour.addSteps([
         placement: 'left',
         title: "Subscriber Settings",
         content: "Click the account dropdown.",
-        next: -1,
-        onShow: function(tour) {
-            $('.master-navbar-account-dropdown').click(function() {
-                setTimeout(function() {
-                    tour.goTo(tour.getCurrentStep()+1);
-                });
-            });
-        }
+        reflex: true
     },
     {
         element: '.master-navbar-dropdown-menu-item:contains("Settings")',
         placement: 'left',
         title: "Subscriber Settings",
         content: "Click the settings link.",
-        next: -1,
-        prev: -1,
-        onShow: function(tour) {
-            $('.master-navbar-dropdown-menu-item:contains("Settings")').click(function() {
-                tour.goTo(tour.getCurrentStep()+1);
-            });
-        }
+        reflex: true
     },
     {
         element: 'body',
         placement: 'top',
         title: "Subscriber Settings",
-        content: "This is the settings page. Here you can customize your site.",
-        prev: -1
+        content: "This is the settings page. Here you can customize your site."
     },
     {
         element: '.colorpicker',

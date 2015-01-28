@@ -8,9 +8,17 @@ require([
     'tour/partials/addClient',
     //'tour/partials/'
 ],function() {
-    tour.init();
+    if(!tour._current) {
+        tour.init();
+    }
 
     $(function() {
-       //tour.restart();
+        if($('.master-navbar-dropdown-menu-item:contains("Settings")').length) {
+            //tour.end();
+            tour.restart();
+            //tour.start();
+        }
     });
+
+    console.log(tour);
 });
