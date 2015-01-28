@@ -46,5 +46,4 @@ require_once app_path().'/routes/partials/base.php';
 */
 
 Route::get('test',function() {
-
 });

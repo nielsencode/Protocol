@@ -24,3 +24,8 @@ Rbac::let('admin')
 	->have('all')
 	->ofScope('Subscriber')
 	->over('Protocol');
+
+Rbac::let('admin')
+	->have('all')
+	->ofScope('Subscriber')
+	->over('Autoship');

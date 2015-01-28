@@ -29,3 +29,8 @@ Rbac::let('client')
 	->have('read')
 	->ofScope('Subscriber')
 	->over('Setting');
+
+Rbac::let('client')
+	->have('delete')
+	->ofScope('Client')
+	->over('Autoship');

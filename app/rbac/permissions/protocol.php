@@ -29,3 +29,8 @@ Rbac::let('protocol')
 	->have('all')
 	->ofScope('Protocol')
 	->over('Setting');
+
+Rbac::let('protocol')
+	->have('all')
+	->ofScope('Protocol')
+	->over('Autoship');

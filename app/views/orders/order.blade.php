@@ -74,7 +74,7 @@
         @endif
         <tr>
             <td class="info-table-label-cell">date:</td>
-            <td class="info-table-cell">{{ timeForHumans($order->date) }}</td>
+            <td class="info-table-cell">{{ timeForHumans($order->date->setTimezone(Timezone::get())) }}</td>
         </tr>
         <tr>
             <td class="info-table-label-cell">fulfillment:</td>
@@ -130,7 +130,7 @@
                 <tr>
                     <td class="info-table-label-cell">next order:</td>
                     <td class="info-table-cell">
-                        {{ timeForHumans($order->autoship->next_order) }}
+                        {{ timeForHumans($order->autoship->next_order->setTimezone(Timezone::get())) }}
                     </td>
                 </tr>
                 <tr>

@@ -29,7 +29,9 @@
                     </td>
                 @endif
                 <td class="index-table-cell">
-                    <a href="{{ route('order',$autoshipOrder->id) }}">{{ timeForHumans($autoshipOrder->date) }}</a>
+                    <a href="{{ route('order',$autoshipOrder->id) }}">
+                        {{ timeForHumans($autoshipOrder->date->setTimezone(Timezone::get())) }}
+                    </a>
                 </td>
                 <td class="index-table-cell">
                     <a href="{{ route('order',$autoshipOrder->id) }}">

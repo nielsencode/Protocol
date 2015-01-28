@@ -29,3 +29,8 @@ Rbac::let('subscriber')
 	->have('all')
 	->ofScope('Subscriber')
 	->over('Setting');
+
+Rbac::let('subscriber')
+	->have('all')
+	->ofScope('Subscriber')
+	->over('Autoship');
