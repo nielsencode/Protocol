@@ -151,6 +151,16 @@
   margin: 0 5px;
   font-size: 14px; }
 
+.tour-tour, .tour-tour h3 {
+  line-height: 1.5em;
+  font-size: 1.1em; }
+
+.tour-tour .popover-content {
+  padding: 12px 14px; }
+
+.tour-tour button[data-role="end"] {
+  margin-left: 5px; }
+
 body {
   font-family: helvetica, sans-serif;
   font-size: 13px; }

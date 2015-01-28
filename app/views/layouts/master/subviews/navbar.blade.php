@@ -70,7 +70,7 @@
 	</li>
 
 	@if (Auth::check())
-		<li class="master-dropdown-navbar-item">
+		<li class="master-dropdown-navbar-item master-navbar-account-dropdown">
 
 			<a class="master-small-navbar-link" href="#">
 				{{ Auth::user()->name() }} <span class="master-navbar-account-link-icon"></span>

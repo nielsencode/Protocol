@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9af32261ff36bd8a988b3623cb8331a2",
+    "hash": "54baf9d962cc55cbc5d4fa5e0484d080",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "b91b0d63488f9a295815af082f987e4773d2843c"
+                "reference": "6554d8165e048972b470a7d56ab5f4d6fd6c6367"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/b91b0d63488f9a295815af082f987e4773d2843c",
-                "reference": "b91b0d63488f9a295815af082f987e4773d2843c",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6554d8165e048972b470a7d56ab5f4d6fd6c6367",
+                "reference": "6554d8165e048972b470a7d56ab5f4d6fd6c6367",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2014-12-29 11:58:35"
+            "time": "2015-01-20 17:10:23"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -291,16 +291,16 @@
         },
         {
             "name": "jeremeamia/SuperClosure",
-            "version": "1.0.1",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "d05400085f7d4ae6f20ba30d36550836c0d061e8"
+                "reference": "4d89ca74994feab128ea46d5b3add92e6cb84554"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/d05400085f7d4ae6f20ba30d36550836c0d061e8",
-                "reference": "d05400085f7d4ae6f20ba30d36550836c0d061e8",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/4d89ca74994feab128ea46d5b3add92e6cb84554",
+                "reference": "4d89ca74994feab128ea46d5b3add92e6cb84554",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +335,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2013-10-09 04:20:00"
+            "time": "2015-01-10 01:09:28"
         },
         {
             "name": "laravel/framework",
@@ -458,12 +458,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "17f651bb96692b084b3e0361d45aeb75e0a25ac0"
+                "reference": "ba31b79fa540d68da0e9e3269c0f85c1756ff10a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/17f651bb96692b084b3e0361d45aeb75e0a25ac0",
-                "reference": "17f651bb96692b084b3e0361d45aeb75e0a25ac0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/ba31b79fa540d68da0e9e3269c0f85c1756ff10a",
+                "reference": "ba31b79fa540d68da0e9e3269c0f85c1756ff10a",
                 "shasum": ""
             },
             "require": {
@@ -522,24 +522,27 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-12-30 10:39:23"
+            "time": "2015-01-20 10:31:44"
         },
         {
             "name": "mtdowling/cron-expression",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/cron-expression.git",
-                "reference": "a47ac8d5ec15049013792401af5a4d13e3dbe7f6"
+                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/a47ac8d5ec15049013792401af5a4d13e3dbe7f6",
-                "reference": "a47ac8d5ec15049013792401af5a4d13e3dbe7f6",
+                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/fd92e883195e5dfa77720b1868cf084b08be4412",
+                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
             },
             "type": "library",
             "autoload": {
@@ -563,7 +566,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2013-11-23 19:48:39"
+            "time": "2015-01-11 23:07:46"
         },
         {
             "name": "nesbot/carbon",
@@ -662,12 +665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "abae29343b1b0e1bfbcb48bf3d59f34189c6e783"
+                "reference": "ffa082111aa3cb23cf2479a17e6785ace91da982"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/abae29343b1b0e1bfbcb48bf3d59f34189c6e783",
-                "reference": "abae29343b1b0e1bfbcb48bf3d59f34189c6e783",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/ffa082111aa3cb23cf2479a17e6785ace91da982",
+                "reference": "ffa082111aa3cb23cf2479a17e6785ace91da982",
                 "shasum": ""
             },
             "require": {
@@ -705,7 +708,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-11-10 20:40:47"
+            "time": "2015-01-12 08:05:15"
         },
         {
             "name": "pda/pheanstalk",
@@ -755,12 +758,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "c3a8f98dcb19b86f873f321f0949eae44b8c2f4e"
+                "reference": "fd6aa5258c29792924e9034ff58679d9c65bfdf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c3a8f98dcb19b86f873f321f0949eae44b8c2f4e",
-                "reference": "c3a8f98dcb19b86f873f321f0949eae44b8c2f4e",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/fd6aa5258c29792924e9034ff58679d9c65bfdf3",
+                "reference": "fd6aa5258c29792924e9034ff58679d9c65bfdf3",
                 "shasum": ""
             },
             "require": {
@@ -845,7 +848,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-12-27 19:24:27"
+            "time": "2015-01-11 15:05:19"
         },
         {
             "name": "predis/predis",
@@ -995,12 +998,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "e29c7b692bae6610b137670d6749151fd6e41608"
+                "reference": "db95cfa68a8bc91d1c54f75c416f481c9a8bd100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/e29c7b692bae6610b137670d6749151fd6e41608",
-                "reference": "e29c7b692bae6610b137670d6749151fd6e41608",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/db95cfa68a8bc91d1c54f75c416f481c9a8bd100",
+                "reference": "db95cfa68a8bc91d1c54f75c416f481c9a8bd100",
                 "shasum": ""
             },
             "require": {
@@ -1039,7 +1042,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-12-05 14:17:46"
+            "time": "2015-01-18 13:49:36"
         },
         {
             "name": "symfony/browser-kit",
@@ -1315,16 +1318,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "fb1e482e75cca7eb24e6ed4a8c0b75756fcd3e5a"
+                "reference": "7a26717d431dfb092198d7c55f06788b2de5aaf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/fb1e482e75cca7eb24e6ed4a8c0b75756fcd3e5a",
-                "reference": "fb1e482e75cca7eb24e6ed4a8c0b75756fcd3e5a",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/7a26717d431dfb092198d7c55f06788b2de5aaf7",
+                "reference": "7a26717d431dfb092198d7c55f06788b2de5aaf7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.9"
             },
             "require-dev": {
                 "psr/log": "~1.0",
@@ -1364,7 +1367,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-27 11:44:51"
+            "time": "2015-01-16 15:11:56"
         },
         {
             "name": "symfony/filesystem",
@@ -1373,16 +1376,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "ed229b7d4f31c344fcaa29ca9e9ae12c574f2617"
+                "reference": "e681ca515e1e668a551b089177867e62e03d7d2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/ed229b7d4f31c344fcaa29ca9e9ae12c574f2617",
-                "reference": "ed229b7d4f31c344fcaa29ca9e9ae12c574f2617",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/e681ca515e1e668a551b089177867e62e03d7d2d",
+                "reference": "e681ca515e1e668a551b089177867e62e03d7d2d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.9"
             },
             "type": "library",
             "extra": {
@@ -1411,7 +1414,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 13:34:24"
+            "time": "2015-01-09 06:51:41"
         },
         {
             "name": "symfony/finder",

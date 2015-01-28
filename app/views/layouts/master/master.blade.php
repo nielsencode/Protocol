@@ -6,13 +6,14 @@
 
 	@section('js')
 		{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
-		{{-- {{ HTML::script('assets/js/jquery.min.js') }} --}}
 		{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js') }}
-		{{ HTML::script('assets/js/timezone.js') }}
-		{{ HTML::script('assets/js/layouts/master/master.js') }}
+
+		<script data-main="/assets/js/layouts/master/master.js" src="/assets/js/require.js"></script>
 	@show
 
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+	{{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
+	{{ HTML::style('assets/css/bootstrap-tour-standalone.min.css') }}
 
 	@section('css')
 		{{ HTML::style('assets/css/layouts/master/master.css') }}
