@@ -185,11 +185,11 @@ class UserController extends BaseController {
 	}
 
 	public function newAccountInvitation($user) {
-		/*Auth::user()
+		Auth::user()
 			->requires('add')
 			->ofScope('Subscriber',Subscriber::current()->id)
 			->orScope('Protocol')
-			->over('User');*/
+			->over('User');
 
 		if($token = $user->token) {
 			$token->delete();
