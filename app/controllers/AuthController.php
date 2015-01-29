@@ -25,7 +25,7 @@ class AuthController extends BaseController {
 			$user = User::where('email',Input::get('email'))->first();
 		}
 
-		if($user) {
+		if(isset($user)) {
 			if($user
 				->subscribers()
 				->where('subscriber_id',Subscriber::current()->id)
