@@ -11,7 +11,7 @@ if(Auth::user() && Auth::user()->role->name=='protocol') {
 		});
 
 		Route::get('orders',function() {
-			foreach(Subscriber::current()->orders()->orderBy('date','desc') as $order) {
+			foreach(Subscriber::current()->orders as $order) {
 				echo "{$order->supplement->name} | {$order->client->name()} | {$order->date}<br>";
 			}
 		});
