@@ -13,22 +13,22 @@ class DatabaseSeeder extends Seeder {
 
 		Eloquent::unguard();
 
-		$this->call('RoleSeeder');
-		$this->call('ActionSeeder');
-		$this->call('ScopeSeeder');
-		$this->call('PermissionSeeder');
+		//$this->call('RoleSeeder');
+		//$this->call('ActionSeeder');
+		//$this->call('ScopeSeeder');
+		//$this->call('PermissionSeeder');
 		//$this->call('SubscriberSeeder');
 		//$this->call('ClientSeeder');
-		$this->call('UserSeeder');
-		$this->call('AddresstypeSeeder');
+		//$this->call('UserSeeder');
+		//$this->call('AddresstypeSeeder');
 		//$this->call('AddressSeeder');
-		$this->call('ScheduletimeSeeder');
+		//$this->call('ScheduletimeSeeder');
 		//$this->call('SupplementSeeder');
 		//$this->call('ProtocolSeeder');
-		$this->call('AutoshipfrequencySeeder');
-		$this->call('InputtypeSeeder');
-		$this->call('SettinggroupSeeder');
-		$this->call('SettingnameSeeder');
+		//$this->call('AutoshipfrequencySeeder');
+		//$this->call('InputtypeSeeder');
+		//$this->call('SettinggroupSeeder');
+		//$this->call('SettingnameSeeder');
 	}
 }
 
@@ -138,24 +138,20 @@ class ClientSeeder extends Seeder {
 	public function run() {
 		DB::table('clients')->delete();
 
-		foreach(Subscriber::all() as $subscriber) {
+		$subscriber = Subscriber::where('subdomain','demo')->first();
 
-			$clients = 0;
+		$clients = 0;
 
-			while ($clients < 100) {
-				$client = array(
-					'subscriber_id' => $subscriber->id,
-					'first_name' => ucfirst(Seed::data('firstnames')->shuffle()->get()[0]),
-					'last_name' => ucfirst(Seed::data('lastnames')->shuffle()->get()[0]),
-					'email' => uniqid() . '@mailinator.com'
-				);
+		while ($clients < 100) {
+			$client = array(
+				'subscriber_id' => $subscriber->id,
+				'first_name' => ucfirst(Seed::data('firstnames')->shuffle()->get()[0]),
+				'last_name' => ucfirst(Seed::data('lastnames')->shuffle()->get()[0]),
+				'email' => uniqid() . '@mailinator.com'
+			);
 
-				if(!Client::where('email', $client['email'])->count()) {
-					Client::create($client);
-					$clients++;
-				}
-			}
-
+			Client::firstOrCreate($client);
+			$clients++;
 		}
 	}
 
@@ -187,7 +183,7 @@ class AddressSeeder extends Seeder {
 	public function run() {
 		DB::table('addresses')->delete();
 
-		foreach(Client::all() as $client) {
+		foreach(Subscriber::where('subdomain','demo')->first()->clients as $client) {
 
 			foreach(Addresstype::all() as $addresstype) {
 
@@ -246,22 +242,20 @@ class SupplementSeeder extends Seeder {
 	public function run() {
 		DB::table('supplements')->delete();
 
-		foreach(Subscriber::all() as $subscriber) {
+		$subscriber = Subscriber::where('subdomain','demo')->first();
 
-			foreach (Seed::data('supplements')->get() as $supplement) {
-				$supplement['price'] = implode('', array_slice(Seed::data('numbers')->shuffle()->get(), 0, 4)) / 100;
-				$supplement['subscriber_id'] = $subscriber->id;
+		foreach (Seed::data('supplements')->get() as $supplement) {
+			$supplement['price'] = implode('', array_slice(Seed::data('numbers')->shuffle()->get(), 0, 4)) / 100;
+			$supplement['subscriber_id'] = $subscriber->id;
 
-				if (!strlen($supplement['description'])) {
-					$supplement['description'] = null;
-					$supplement['short_description'] = null;
-				} else {
-					$supplement['short_description'] = substr($supplement['description'], 0, 150);
-				}
-
-				Supplement::create($supplement);
+			if (!strlen($supplement['description'])) {
+				$supplement['description'] = null;
+				$supplement['short_description'] = null;
+			} else {
+				$supplement['short_description'] = substr($supplement['description'], 0, 150);
 			}
 
+			Supplement::create($supplement);
 		}
 	}
 }
@@ -270,36 +264,35 @@ class SupplementSeeder extends Seeder {
 class ProtocolSeeder extends Seeder {
 
 	public function run() {
-		foreach(Subscriber::all() as $subscriber) {
+		$subscriber = Subscriber::where('subdomain','demo')->first();
 
-			$clients[] = Client::where('subscriber_id',$subscriber->id)->orderBy('last_name', 'asc')->first();
+		$clients[] = Client::where('subscriber_id',$subscriber->id)->orderBy('last_name', 'asc')->first();
 
-			foreach ($clients as $client) {
+		foreach ($clients as $client) {
 
-				$supplements = Supplement::where('subscriber_id',$subscriber->id)->get()->toArray();
-				shuffle($supplements);
+			$supplements = Supplement::where('subscriber_id',$subscriber->id)->get()->toArray();
+			shuffle($supplements);
 
-				$prescriptions = Seed::data('prescriptions')->get();
+			$prescriptions = Seed::data('prescriptions')->get();
 
-				for ($i = 0; $i < 20; $i++) {
-					$protocol = Protocol::create(array(
-						'client_id' => $client->id,
-						'supplement_id' => $supplements[$i]['id']
-					));
+			for ($i = 0; $i < 20; $i++) {
+				$protocol = Protocol::create(array(
+					'client_id' => $client->id,
+					'supplement_id' => $supplements[$i]['id']
+				));
 
-					foreach (Scheduletime::all() as $scheduletime) {
-						if (rand(0, 1)) {
-							shuffle($prescriptions);
-							Schedule::create(array(
-								'scheduletime_id' => $scheduletime->id,
-								'prescription' => $prescriptions[0],
-								'protocol_id' => $protocol->id
-							));
-						}
+				foreach (Scheduletime::all() as $scheduletime) {
+					if (rand(0, 1)) {
+						shuffle($prescriptions);
+						Schedule::create(array(
+							'scheduletime_id' => $scheduletime->id,
+							'prescription' => $prescriptions[0],
+							'protocol_id' => $protocol->id
+						));
 					}
 				}
-
 			}
+
 		}
 	}
 }
