@@ -31,13 +31,13 @@ class OrderController extends BaseController {
             $orders = $orders->orderBy('orders.date','desc');
         }
 
+        $count = $orders->count();
+
         $page = Input::has('page') ? Input::get('page') : 1;
         $perPage = 15;
 
         $orders->skip(($page-1)*$perPage)->take($perPage);
         $orders->select(array('orders.*','supplements.name AS supplement_name'));
-
-        $count = $orders->count();
 
         $data['orders'] = Paginator::make($orders->get()->all(),$count,$perPage);
 
