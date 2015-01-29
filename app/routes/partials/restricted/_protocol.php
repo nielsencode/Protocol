@@ -1,6 +1,6 @@
 <?php
 
-if(Auth::user()->role->name=='protocol') {
+if(Auth::user() && Auth::user()->role->name=='protocol') {
 
 	Route::group(['prefix'=>'_protocol'],function() {
 
