@@ -19,7 +19,16 @@
                             ->orScope('Protocol')
                             ->over('Protocol')
                     )
-                        @foreach ($client->protocols as $protocol)
+                        @foreach (
+                            $client
+                                ->protocols()
+                                ->with('Supplement')
+                                ->get()
+                                ->sortBy(function($item) {
+                                    return $item->supplement->name;
+                                })
+                            as $protocol
+                        )
                             <th class="client-protocols-table-header-cell">
                                 <a class="client-protocols-table-header-cell-link" href="{{ route('edit protocol',[$protocol->id]) }}">
                                     {{ $protocol->supplement->name }}
@@ -27,7 +36,16 @@
                             </th>
                         @endforeach
                     @else
-                        @foreach ($client->protocols as $protocol)
+                        @foreach (
+                             $client
+                                 ->protocols()
+                                 ->with('Supplement')
+                                 ->get()
+                                 ->sortBy(function($item) {
+                                     return $item->supplement->name;
+                                 })
+                             as $protocol
+                         )
                             <th class="client-protocols-table-header-cell">
                                 <a class="client-protocols-table-header-cell-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
                                     {{ $protocol->supplement->name }}&nbsp;&nbsp;<i class="fa fa-info-circle"></i></span>
@@ -43,7 +61,16 @@
                     <tr height="20"></tr>
                     <tr class="client-protocols-table-row">
                         <td class="client-protocols-table-label-cell">{{ $scheduletime->name }}</td>
-                        @foreach ($client->protocols as $protocol)
+                        @foreach (
+                            $client
+                                ->protocols()
+                                ->with('Supplement')
+                                ->get()
+                                ->sortBy(function($item) {
+                                    return $item->supplement->name;
+                                })
+                            as $protocol
+                        )
                             <td class="client-protocols-table-cell" style="height:10px;">
                                 {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
                             </td>
