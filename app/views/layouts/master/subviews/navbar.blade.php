@@ -3,7 +3,9 @@
 
 		<li class="master-navbar-item">
 			<a class="master-navbar-home-link" href="{{ route('home') }}">
-				@if (Subscriber::current()->setting('logo'))
+				@if(App::environment()=='development')
+					<span style="font-size:1.5em;">dev</span>
+				@elseif (Subscriber::current()->setting('logo'))
 					<img class="subscriber-logo" src="{{ Subscriber::current()->setting('logo') }}"/>
 				@else
 					<div class="master-navbar-home-link-icon"></div>
