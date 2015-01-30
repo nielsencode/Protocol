@@ -26,6 +26,6 @@ return array(
 	|
 	*/
 
-	'url' => 'protocolappstage.com',
+	'url' => 'protocolapp.com',
 
 );
