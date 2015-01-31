@@ -598,7 +598,7 @@ body {
   border-right-width: 0; }
 
 .client-protocols-table-portrait-row .client-protocols-table-portrait-cell:first-child {
-  max-width: 250px; }
+  width: 160px; }
 
 .client-protocols-table-label-cell, .client-protocols-table-portrait-label-cell {
   border-right-width: 1px;
