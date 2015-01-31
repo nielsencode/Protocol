@@ -617,7 +617,8 @@ body {
   white-space: normal;
   padding: 12px 8px;
   line-height: 1.25em;
-  min-width: 0; }
+  min-width: 0;
+  border-right-color: white; }
 
 .client-protocols-table-supplement-cell-link {
   color: inherit;
