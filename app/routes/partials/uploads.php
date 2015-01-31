@@ -1,5 +1,11 @@
 <?php
 
+
+/**
+ * TO DO: Needs to be in restricted folder,
+ * currently unrestricted to allow access from protocolappstage.com
+ */
+
 Route::group(['prefix'=>'images'],function() {
 
 	Route::get('/{file}',function($file) {
