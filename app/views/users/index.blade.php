@@ -1,28 +1,10 @@
 @extends('layouts.master.indextable')
 
-@section('js')
-    @parent
-    <script>
-        $(function() {
-            /*$('.import-supplements').click(function() {
-                $('.modal-dialog').css('left',0);
-            });*/
-        });
-    </script>
-@stop
-
 @section('breadcrumbs')
     {{ Breadcrumbs::make([
         'users'=>''
     ]) }}
 @stop
-
-{{--
-@section('content')
-    @include('layouts.master.subviews.modaldialog',['title'=>'import supplements','url'=>route('import supplements')])
-    @parent
-@stop
---}}
 
 @section('index-tools-left')
     @if (
@@ -33,12 +15,6 @@
             ->over('User')
     )
         <a class="button" href="{{ route('add user') }}">New User</a>
-        {{--
-        {{ str_repeat('&nbsp;',6) }}
-        <a class="index-tools-link import-supplements">import supplements</a>
-        {{ str_repeat('&nbsp;',3).'&rsaquo;'.str_repeat('&nbsp;',3) }}
-        <a class="index-tools-link" href="{{ route('export supplements') }}" target="_blank">export supplements</a>
-        --}}
     @endif
 @stop
 
@@ -73,7 +49,7 @@
 @section('index-table-rows')
     @if (!count($users))
         <tr class="index-table-row">
-            <td class="index-table-cell" colspan="4">
+            <td class="index-table-cell" colspan="5">
                 <a>no users.</a>
             </td>
         </tr>
