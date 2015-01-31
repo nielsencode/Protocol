@@ -47,7 +47,7 @@
                              as $protocol
                          )
                             <th class="client-protocols-table-header-cell">
-                                <a class="client-protocols-table-header-cell-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
+                                <a class="client-protocols-table-supplement-cell-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
                                     {{ $protocol->supplement->name }}&nbsp;&nbsp;<i class="fa fa-info-circle"></i></span>
                                 </a>
                             </th>
