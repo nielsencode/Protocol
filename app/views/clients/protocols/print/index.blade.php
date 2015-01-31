@@ -6,7 +6,7 @@
 	{{ HTML::script('assets/js/jquery.min.js') }}
 	<script>
 		$(function() {
-			//window.print();
+			window.print();
 		});
 	</script>
 
