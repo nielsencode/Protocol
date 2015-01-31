@@ -9,33 +9,69 @@
 
         <table class="client-protocols-table-portrait" cellpadding="0" cellspacing="0">
             <thead>
-            <tr>
-                <th class="client-protocols-table-portrait-label-cell">Supplements</th>
+                <tr>
+                    <th class="client-protocols-table-portrait-label-cell">Supplements</th>
 
-                @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
-                    <th class="client-protocols-table-portrait-label-cell">
-                        {{ $scheduletime->name }}
-                    </th>
-                @endforeach
+                    @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
+                        <th class="client-protocols-table-portrait-label-cell">
+                            {{ $scheduletime->name }}
+                        </th>
+                    @endforeach
 
-            </tr>
+                </tr>
             </thead>
-            @foreach(
-                $client
-                    ->protocols()
-                    ->with('Supplement')
-                    ->get()
-                    ->sortBy(function($item) {
-                        return $item->supplement->name;
-                    })
-                as $protocol
+
+            @if (
+                Auth::user()
+                    ->has('edit')
+                    ->ofScope('Subscriber',Subscriber::current()->id)
+                    ->orScope('Protocol')
+                    ->over('Protocol')
             )
-                <tbody>
+                @foreach(
+                    $client
+                        ->protocols()
+                        ->with('Supplement')
+                        ->get()
+                        ->sortBy(function($item) {
+                            return $item->supplement->name;
+                        })
+                    as $protocol
+                )
+                    <tbody>
+                        <tr height="20"></tr>
+                        <tr class="client-protocols-table-portrait-row">
+                            <td class="client-protocols-table-portrait-cell">
+                                <a class="client-protocols-table-supplement-cell-link" href="{{ route('edit protocol',[$protocol->id]) }}">
+                                    {{ $protocol->supplement->name }}
+                                </a>
+                            </td>
+
+                            @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
+                                <td class="client-protocols-table-portrait-cell">
+                                    {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
+                                </td>
+                            @endforeach
+                        </tr>
+                    </tbody>
+                @endforeach
+            @else
+                @foreach(
+                    $client
+                        ->protocols()
+                        ->with('Supplement')
+                        ->get()
+                        ->sortBy(function($item) {
+                            return $item->supplement->name;
+                        })
+                    as $protocol
+                )
+                    <tbody>
                     <tr height="20"></tr>
                     <tr class="client-protocols-table-portrait-row">
                         <td class="client-protocols-table-portrait-cell">
-                            <a class="client-protocols-table-supplement-cell-link" href="{{ route('edit protocol',[$protocol->id]) }}">
-                                {{ $protocol->supplement->name }}
+                            <a class="client-protocols-table-supplement-cell-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
+                                {{ $protocol->supplement->name }}&nbsp;&nbsp;<i class="fa fa-info-circle"></i></span>
                             </a>
                         </td>
 
@@ -45,8 +81,9 @@
                             </td>
                         @endforeach
                     </tr>
-                </tbody>
-            @endforeach
+                    </tbody>
+                @endforeach
+            @endif
         </table>
 
     </div>
