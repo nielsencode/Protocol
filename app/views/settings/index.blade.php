@@ -115,6 +115,15 @@
                             {{ Form::hidden($setting->name,0,['id'=>'']) }}
                             {{ Form::checkbox($setting->name,1,Subscriber::current()->setting($setting->name)) }}
                         @endif
+
+                        @if ($setting->inputtype->name=='dropdown')
+                            {{ Form::select(
+                                $setting->name,
+                                array_combine($setting->values,array_map('ucfirst',$setting->values)),
+                                Subscriber::current()->setting($setting->name),
+                                ['class'=>'form-select']
+                            ) }}
+                        @endif
                     </td>
                     <td class="form-description-cell">
                         {{ $setting->description }}
