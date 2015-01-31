@@ -2,6 +2,7 @@ $(function() {
     window.onload = function() {
         var widths = [];
 
+        // Fixed row labels
         $('.client-protocols-table-label-cell').each(function () {
             widths.push($(this).width());
         });
@@ -23,6 +24,7 @@ $(function() {
             });
         });
 
+        // Supplement link
         $('.client-protocols-table-supplement-cell-link').each(function () {
             var parent = $(this).closest('td,th');
             var height = (parent.height() - $(this).outerHeight(true)) / 2;
