@@ -542,108 +542,57 @@ body {
   text-transform: uppercase;
   font-size: 11px; }
 
-.client-protocols-header {
-  width: 100%; }
+.protocols-wrapper {
+  width: 1050px;
+  padding: 25px;
+  margin: auto; }
 
-.client-protocols-table-wrapper {
-  overflow-x: scroll;
-  margin-top: 20px; }
-  .client-protocols-table-wrapper:before {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1) inset;
-    display: block;
-    content: ''; }
-
-.client-protocols-table-portrait-wrapper {
-  margin-top: 20px;
-  overflow-y: scroll;
-  max-height: 550px; }
-  .client-protocols-table-portrait-wrapper:before {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 5px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1) inset;
-    display: block;
-    content: ''; }
-
-.client-protocols-table, .client-protocols-table-portrait {
-  width: 100%; }
-
-.client-protocols-table-portrait {
+.protocols-table {
   border-collapse: collapse; }
 
-.client-protocols-table-cell, .client-protocols-table-portrait-cell, .client-protocols-table-header-cell, .client-protocols-table-label-cell, .client-protocols-table-portrait-label-cell {
-  padding: 8px;
+.print-protocols-cell, .print-protocols-supplement-cell, .print-protocols-supplement-portrait-cell, .print-protocols-label-cell, .print-protocols-portrait-label-cell {
+  padding: 10px;
+  height: 30px;
   text-align: center;
-  font-weight: normal;
-  min-width: 110px;
-  border-width: 1px 0 1px 1px;
-  border-style: solid;
-  border-color: #999999; }
-  .client-protocols-table-cell:last-of-type, .client-protocols-table-portrait-cell:last-of-type, .client-protocols-table-header-cell:last-of-type, .client-protocols-table-label-cell:last-of-type, .client-protocols-table-portrait-label-cell:last-of-type {
-    border-right-width: 1px; }
+  border: 1px solid #909090;
+  page-break-inside: avoid; }
 
-.client-protocols-table-portrait-cell {
-  min-width: 0;
-  border-width: 1px;
-  padding: 15px 8px; }
-
-.client-protocols-table-row .client-protocols-table-cell:last-of-type, .client-protocols-table-row .client-protocols-table-portrait-cell:last-of-type, .client-protocols-table-row .client-protocols-table-header-cell:last-of-type, .client-protocols-table-row .client-protocols-table-label-cell:last-of-type, .client-protocols-table-row .client-protocols-table-portrait-label-cell:last-of-type {
-  border-right-width: 0; }
-
-.client-protocols-table-portrait-row .client-protocols-table-portrait-cell:first-child {
-  max-width: 250px; }
-
-.client-protocols-table-label-cell, .client-protocols-table-portrait-label-cell {
-  border-right-width: 1px;
-  background-color: gray;
-  text-align: right;
-  color: white;
-  font-weight: normal;
-  text-transform: uppercase;
+.print-protocols-supplement-cell, .print-protocols-supplement-portrait-cell {
+  width: 100px;
   font-size: 12px;
-  position: absolute;
-  white-space: nowrap;
-  z-index: 1; }
+  border-bottom-width: 2px;
+  border-bottom-color: #606060; }
 
-.client-protocols-table-portrait-label-cell {
-  position: static;
-  white-space: normal;
-  padding: 12px 8px;
-  line-height: 1.25em;
-  min-width: 0; }
+.print-protocols-supplement-portrait-cell {
+  border-bottom-width: 1px; }
 
-.client-protocols-table-supplement-cell-link {
-  color: inherit;
-  display: block; }
-  .client-protocols-table-supplement-cell-link:hover {
-    background-color: rgba(255, 255, 255, 0.66); }
+.print-protocols-cell {
+  width: 100px;
+  font-size: 12px; }
 
-.client-menu {
-  float: right;
-  min-width: 200px;
-  margin-top: -2px; }
-
-.client-menu-item, .client-current-menu-item {
-  display: block;
-  padding: 8px 16px;
-  margin: 2px 0;
+.print-protocols-label-cell, .print-protocols-portrait-label-cell {
+  background-color: #808080;
+  color: #fff;
   text-align: right;
-  text-decoration: none;
-  color: gray; }
-  .client-menu-item::after, .client-current-menu-item::after {
-    content: "\00A0\00A0\276E";
-    color: white; }
+  width: 100px;
+  text-transform: uppercase;
+  font-size: 12px; }
 
-.client-current-menu-item {
-  color: black;
-  cursor: default;
-  font-weight: bold; }
-  .client-current-menu-item::after {
-    color: black; }
+.print-protocols-portrait-label-cell {
+  border: 1px solid white; }
+
+.page {
+  padding: 25px 0; }
+
+.page-break {
+  page-break-after: always; }
+
+.protocols-credit {
+  text-align: right;
+  font-size: 9px;
+  margin-top: 10px; }
+
+.protocols-supplement-info-cell {
+  padding: 8px 0;
+  vertical-align: top;
+  font-size: 11px; }

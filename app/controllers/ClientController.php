@@ -275,7 +275,7 @@ class ClientController extends BaseController {
 			return array_pad($v,$pageCount,null);
 		},array_chunk($protocols,$pageCount));
 
-		return View::make('clients.protocols.print',array(
+		return View::make('clients.protocols.print.index',array(
 			'client'=>$client,
 			'protocols'=>$protocols
 		));

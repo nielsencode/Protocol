@@ -131,7 +131,7 @@
 		</table>
 
 		@if ($client->protocols->count())
-			@include('clients.subviews.protocoltable')
+			@include("clients.subviews.protocoltable_".Subscriber::current()->setting('protocol table orientation'))
 		@else
 			<div style="margin-top:20px; color:#737373;">
 				@if (Auth::user()->role->name=='client')

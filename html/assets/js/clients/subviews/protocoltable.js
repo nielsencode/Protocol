@@ -23,8 +23,8 @@ $(function() {
             });
         });
 
-        $('.client-protocols-table-header-cell-link').each(function () {
-            var parent = $(this).closest('.client-protocols-table-header-cell');
+        $('.client-protocols-table-supplement-cell-link').each(function () {
+            var parent = $(this).closest('td,th');
             var height = (parent.height() - $(this).outerHeight(true)) / 2;
 
             var paddingTop = parseInt(parent.css('padding-top'));
@@ -42,10 +42,22 @@ $(function() {
             });
         });
 
+        // Colors - landscape
         $('.client-protocols-table-row').each(function () {
             $(this).children('.client-protocols-table-cell,.client-protocols-table-header-cell').each(function (index) {
                 if ($(this).text().replace(/\s+/, '').length) {
                     var className = 'protocol-color' + parseInt((index % 3) + 1);
+                    $(this).addClass(className);
+                }
+            });
+        });
+
+        // Colors - portrait
+        $('.client-protocols-table-portrait-row').each(function(index) {
+            var className = 'protocol-color' + parseInt((index % 3) + 1);
+
+            $(this).children('.client-protocols-table-portrait-cell').each(function() {
+                if ($(this).text().replace(/\s+/, '').length) {
                     $(this).addClass(className);
                 }
             });
