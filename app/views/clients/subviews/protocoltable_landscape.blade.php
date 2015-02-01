@@ -1,42 +1,7 @@
 @section('js')
     @parent
 
-    <script>
-        $(function() {
-
-            $('.protocol-table-row').each(function() {
-                $(this).children('.protocol-table-cell,.protocol-table-supplement-cell').each(function(index) {
-                    if ($(this).text().replace(/\s+/, '').length) {
-
-                        var color = 'protocol-color'+(index%3+1);
-
-                        $(this).addClass(color);
-
-                    }
-                });
-            });
-
-            $('.protocol-table-label-cell').each(function() {
-                var contents = $(this).clone();
-                var fixed = $('<div></div>').append(contents);
-
-                fixed.css({
-                    position:'absolute',
-                    left:$(this).position().left,
-                    top:$(this).position().top
-                });
-
-                contents.css({
-                    height:$(this).height()+1,
-                    width:$(this).width()+2,
-                    verticalAlign:'middle'
-                });
-
-                $(this).after(fixed);
-            });
-
-        });
-    </script>
+    {{ HTML::script('assets/js/clients/subviews/protocoltable.js') }}
 @stop
 
 <div style="position:relative;">
@@ -67,7 +32,9 @@
                         )
                             <th class="protocol-table-supplement-cell">
                                 <a class="protocol-table-supplement-link" href="{{ route('edit protocol',[$protocol->id]) }}">
-                                    {{ $protocol->supplement->name }}
+                                    <span class="protocol-table-supplement-name">
+                                        {{ $protocol->supplement->name }}
+                                    </span>
                                 </a>
                             </th>
                         @endforeach
@@ -84,7 +51,7 @@
                          )
                             <th class="protocol-table-supplement-cell">
                                 <a class="protocol-table-supplement-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
-                                    {{ $protocol->supplement->name }}&nbsp;&nbsp;<i class="fa fa-info-circle"></i></span>
+                                    {{ $protocol->supplement->name }}
                                 </a>
                             </th>
                         @endforeach

@@ -1,68 +1,96 @@
 $(function() {
     window.onload = function() {
-        var widths = [];
-
-        // Fixed row labels
-        $('.client-protocols-table-label-cell').each(function () {
-            widths.push($(this).width());
-        });
-
-        $('.client-protocols-table-label-cell').each(function () {
-            $(this).css('width', Math.max.apply(Math, widths));
-            $(this).siblings().first().css({
-                paddingLeft: $(this).outerWidth(true) + parseInt($(this).css('padding-left'))
-            });
-        });
-
-        $('.client-protocols-table-label-cell').each(function () {
-            var height = ($(this).siblings().first().height() - $(this).height()) / 2;
-            var padding = (parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'))) / 2;
-
-            $(this).css({
-                paddingTop: height + padding,
-                paddingBottom: height + padding
-            });
-        });
-
-        // Supplement link
-        $('.client-protocols-table-supplement-cell-link').each(function () {
-            var parent = $(this).closest('td,th');
-            var height = (parent.height() - $(this).outerHeight(true)) / 2;
-
-            var paddingTop = parseInt(parent.css('padding-top'));
-            var paddingBottom = parseInt(parent.css('padding-bottom'));
-            var paddingLeft = parseInt(parent.css('padding-left'));
-            var paddingRight = parseInt(parent.css('padding-right'));
-
-            parent.css('padding', 0);
-
-            $(this).css({
-                paddingTop: height + paddingTop,
-                paddingBottom: height + paddingBottom,
-                paddingLeft: paddingLeft,
-                paddingRight: paddingRight
-            });
-        });
 
         // Colors - landscape
-        $('.client-protocols-table-row').each(function () {
-            $(this).children('.client-protocols-table-cell,.client-protocols-table-header-cell').each(function (index) {
+        $('.protocol-table-row').each(function() {
+            $(this).children('.protocol-table-cell,.protocol-table-supplement-cell').each(function(index) {
                 if ($(this).text().replace(/\s+/, '').length) {
-                    var className = 'protocol-color' + parseInt((index % 3) + 1);
-                    $(this).addClass(className);
+                    var color = 'protocol-color'+(index%3+1);
+                    $(this).addClass(color);
                 }
             });
         });
 
         // Colors - portrait
-        $('.client-protocols-table-portrait-row').each(function(index) {
-            var className = 'protocol-color' + parseInt((index % 3) + 1);
+        $('.protocol-table-supplement-cell-portrait').each(function(index) {
+            var color = 'protocol-color'+(index%3+1);
+            $(this).addClass(color);
 
-            $(this).children('.client-protocols-table-portrait-cell').each(function() {
+            $(this).siblings('.protocol-table-cell-portrait').each(function() {
                 if ($(this).text().replace(/\s+/, '').length) {
-                    $(this).addClass(className);
+                    $(this).addClass(color);
                 }
             });
         });
+
+        // Fixed column - landscape
+        $('.protocol-table-label-cell').each(function() {
+            var contents = $(this).clone();
+            var fixed = $('<div></div>').append(contents);
+
+            fixed.css({
+                position:'absolute',
+                left:$(this).position().left,
+                top:$(this).position().top
+            });
+
+            contents.css({
+                height:$(this).height()+1,
+                width:$(this).width()+2
+            });
+
+            $(this).after(fixed);
+        });
+
+        // Fixed column - portrait
+        var head = $('.protocol-table-head-portrait');
+
+        if(head.length) {
+
+            var clone = head.clone().css({
+                position: 'absolute',
+                top: head.position().top,
+                width: '100%'
+            });
+
+            head.find('.protocol-table-label-cell-portrait').each(function (index) {
+                var cells = clone.find('.protocol-table-label-cell-portrait');
+
+                $(cells[index]).css({
+                    width: $(this).width() + 1,
+                    height: $(this).height() + 2
+                });
+            });
+
+            head.after(clone);
+
+        }
+
+        // Supplement link padding - landscape
+        var height = $('.protocol-table-supplement-link').first().outerHeight();
+
+        $('.protocol-table-supplement-link').each(function() {
+            var textHeight = $(this).find('.protocol-table-supplement-name').height();
+
+            var padding = (height-textHeight)/2;
+
+            $(this).css({
+                paddingTop:padding,
+                paddingBottom:padding
+            });
+        });
+
+        // Supplement link padding - portrait
+        $('.protocol-table-supplement-link-portrait').each(function() {
+            var textHeight = $(this).find('.protocol-table-supplement-name').height();
+
+            var padding = ($(this).height()-textHeight)/2;
+
+            $(this).css({
+                paddingTop:Math.max(padding+8,14),
+                paddingBottom:Math.max(padding+8,14)
+            });
+        });
+
     }
 });

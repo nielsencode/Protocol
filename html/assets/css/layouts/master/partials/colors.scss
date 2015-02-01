@@ -21,24 +21,3 @@
 @function yellow($lightness:95%,$opacity:1) {
   @return hsla(30,100,$lightness,$opacity)
 }
-
-
-.protocol-color1 {
-  background-color:red(95%);
-  color:red(40%);
-}
-
-.protocol-color2 {
-  background-color:blue(95%);
-  color:blue(40%);
-}
-
-.protocol-color3 {
-  background-color:green(95%);
-  color:green(30%);
-}
-
-.protocol-color4 {
-  background-color:yellow(95%);
-  color:yellow(30%);
-}
