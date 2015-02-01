@@ -1,4 +1,4 @@
-.client-protocols-table-wrapper {
+.protocol-table-wrapper {
   overflow-x:scroll;
   margin-top:20px;
 
@@ -14,100 +14,34 @@
   }
 }
 
-.client-protocols-table-portrait-wrapper {
-  margin-top:20px;
-  overflow-y:scroll;
-  max-height:550px;
-
-  &:before {
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:5px;
-    box-shadow:0 -2px 5px rgba(0,0,0,.1) inset;
-    display:block;
-    content:'';
-  }
-}
-
-.client-protocols-table {
-  width:100%;
-}
-
-.client-protocols-table-portrait {
-  @extend .client-protocols-table;
+.protocol-table {
   border-collapse:collapse;
 }
 
-.client-protocols-table-cell {
+.protocol-table-cell {
+  border-width:1px;
+  border-style:solid;
+  border-color:grey(61%);
   padding:8px;
-  text-align:center;
   font-weight:normal;
   min-width:110px;
-  border-width:1px 0 1px 1px;
-  border-style:solid;
-  border-color:grey(60%);
-
-  &:last-of-type {
-    border-right-width:1px;
-  }
+  text-align:center;
 }
 
-.client-protocols-table-portrait-cell {
-  @extend .client-protocols-table-cell;
-  min-width:0;
-  border-width:1px;
-  padding:15px 8px;
-}
-
-.client-protocols-table-row {
-  .client-protocols-table-cell {
-    &:last-of-type {
-      border-right-width:0;
-    }
-  }
-}
-
-.client-protocols-table-portrait-row {
-  .client-protocols-table-portrait-cell:first-child {
-    width:160px;
-  }
-}
-
-.client-protocols-table-header-cell {
-  @extend .client-protocols-table-cell;
-}
-
-.client-protocols-table-label-cell {
-  @extend .client-protocols-table-cell;
-  border-right-width:1px;
-  background-color:grey(50%);
-  text-align:right;
-  color:grey(100%);
-  font-weight:normal;
+.protocol-table-label-cell {
+  @extend .protocol-table-cell;
+  background-color:grey();
   text-transform:uppercase;
-  font-size:12px;
-  position:absolute;
+  color:grey(100%);
   white-space:nowrap;
-  z-index:1;
+  text-align:right;
+  font-size:.923em;
 }
 
-.client-protocols-table-portrait-label-cell {
-  @extend .client-protocols-table-label-cell;
-  position:static;
-  white-space:normal;
-  padding:12px 8px;
-  line-height:1.25em;
-  min-width:0;
-  border-right-color:grey(100%);
+.protocol-table-supplement-cell {
+  @extend .protocol-table-cell;
 }
 
-.client-protocols-table-supplement-cell-link {
+.protocol-table-supplement-link {
   color:inherit;
-  display:block;
-
-  &:hover {
-    background-color:rgba(255,255,255,.66);
-  }
 }

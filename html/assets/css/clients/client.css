@@ -545,10 +545,10 @@ body {
 .client-protocols-header {
   width: 100%; }
 
-.client-protocols-table-wrapper {
+.protocol-table-wrapper {
   overflow-x: scroll;
   margin-top: 20px; }
-  .client-protocols-table-wrapper:before {
+  .protocol-table-wrapper:before {
     position: absolute;
     right: 0;
     top: 0;
@@ -558,73 +558,28 @@ body {
     display: block;
     content: ''; }
 
-.client-protocols-table-portrait-wrapper {
-  margin-top: 20px;
-  overflow-y: scroll;
-  max-height: 550px; }
-  .client-protocols-table-portrait-wrapper:before {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 5px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1) inset;
-    display: block;
-    content: ''; }
-
-.client-protocols-table, .client-protocols-table-portrait {
-  width: 100%; }
-
-.client-protocols-table-portrait {
+.protocol-table {
   border-collapse: collapse; }
 
-.client-protocols-table-cell, .client-protocols-table-portrait-cell, .client-protocols-table-header-cell, .client-protocols-table-label-cell, .client-protocols-table-portrait-label-cell {
+.protocol-table-cell, .protocol-table-label-cell, .protocol-table-supplement-cell {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #9c9c9c;
   padding: 8px;
-  text-align: center;
   font-weight: normal;
   min-width: 110px;
-  border-width: 1px 0 1px 1px;
-  border-style: solid;
-  border-color: #999999; }
-  .client-protocols-table-cell:last-of-type, .client-protocols-table-portrait-cell:last-of-type, .client-protocols-table-header-cell:last-of-type, .client-protocols-table-label-cell:last-of-type, .client-protocols-table-portrait-label-cell:last-of-type {
-    border-right-width: 1px; }
+  text-align: center; }
 
-.client-protocols-table-portrait-cell {
-  min-width: 0;
-  border-width: 1px;
-  padding: 15px 8px; }
-
-.client-protocols-table-row .client-protocols-table-cell:last-of-type, .client-protocols-table-row .client-protocols-table-portrait-cell:last-of-type, .client-protocols-table-row .client-protocols-table-header-cell:last-of-type, .client-protocols-table-row .client-protocols-table-label-cell:last-of-type, .client-protocols-table-row .client-protocols-table-portrait-label-cell:last-of-type {
-  border-right-width: 0; }
-
-.client-protocols-table-portrait-row .client-protocols-table-portrait-cell:first-child {
-  width: 160px; }
-
-.client-protocols-table-label-cell, .client-protocols-table-portrait-label-cell {
-  border-right-width: 1px;
+.protocol-table-label-cell {
   background-color: gray;
-  text-align: right;
-  color: white;
-  font-weight: normal;
   text-transform: uppercase;
-  font-size: 12px;
-  position: absolute;
+  color: white;
   white-space: nowrap;
-  z-index: 1; }
+  text-align: right;
+  font-size: .923em; }
 
-.client-protocols-table-portrait-label-cell {
-  position: static;
-  white-space: normal;
-  padding: 12px 8px;
-  line-height: 1.25em;
-  min-width: 0;
-  border-right-color: white; }
-
-.client-protocols-table-supplement-cell-link {
-  color: inherit;
-  display: block; }
-  .client-protocols-table-supplement-cell-link:hover {
-    background-color: rgba(255, 255, 255, 0.66); }
+.protocol-table-supplement-link {
+  color: inherit; }
 
 .client-menu {
   float: right;

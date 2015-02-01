@@ -4,10 +4,12 @@
 	<meta charset="utf-8" />
 	<title>{{ Subscriber::current() ? Subscriber::current()->name : 'Protocol' }}</title>
 
+
+	{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
+	{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js') }}
+	{{ HTML::script('assets/js/timezone.js') }}
+
 	@section('js')
-		{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
-		{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js') }}
-		{{ HTML::script('assets/js/timezone.js') }}
 		{{ HTML::script('assets/js/layouts/master/master.js') }}
 	@show
 
