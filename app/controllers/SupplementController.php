@@ -214,7 +214,7 @@ class SupplementController extends BaseController {
 			->orScope('Protocol')
 			->over('Supplement');
 
-		$template_path = public_path().'/assets/templates/supplements/import.csv';
+		$template_path = app_path().'/imports/templates/supplements.csv';
 
 		Migrate::template($template_path,'supplements-import-template');
 	}
