@@ -551,7 +551,7 @@ body {
   .protocol-table-wrapper:before {
     position: absolute;
     right: 0;
-    top: 1px;
+    top: 2px;
     bottom: 0;
     width: 5px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1) inset;
@@ -566,7 +566,7 @@ body {
   .protocol-table-wrapper-portrait:before {
     position: absolute;
     right: 0;
-    left: 0;
+    left: 2px;
     bottom: 1px;
     height: 5px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1) inset;
@@ -576,6 +576,17 @@ body {
 .protocol-table, .protocol-table-portrait {
   border-collapse: collapse;
   width: 100%; }
+
+.protocol-table-column-fixed {
+  overflow-x: hidden;
+  position: absolute;
+  top: 0; }
+
+.protocol-table-portrait-header-fixed {
+  position: absolute;
+  top: -1px;
+  overflow-y: hidden;
+  overflow-x: hidden; }
 
 .protocol-table-cell, .protocol-table-cell-portrait, .protocol-table-label-cell, .protocol-table-label-cell-portrait, .protocol-table-supplement-cell, .protocol-table-supplement-cell-portrait {
   border-width: 2px;

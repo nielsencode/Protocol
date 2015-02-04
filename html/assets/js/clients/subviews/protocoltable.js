@@ -26,13 +26,12 @@ $(function() {
         // Fixed column - landscape
         var clone = $('.protocol-table').clone();
 
-        var container = $('<div></div>').append(clone);
+        var container = $('<div></div>')
+            .addClass('protocol-table-column-fixed')
+            .append(clone);
 
         container.css({
-            width:$('.protocol-table-label-cell').first().outerWidth(true),
-            overflowX:'hidden',
-            position:'absolute',
-            top:0
+            width:$('.protocol-table-label-cell').first().outerWidth(true)
         });
 
         $('.protocol-table').after(container);
@@ -40,15 +39,13 @@ $(function() {
         // Fixed column - portrait
         var clone = $('.protocol-table-portrait').clone();
 
-        var container = $('<div></div>').append(clone);
+        var container = $('<div></div>')
+            .addClass('protocol-table-portrait-header-fixed')
+            .append(clone);
 
         container.css({
-            position:'absolute',
-            top:'-1px',
             height:$('.protocol-table-label-cell-portrait').outerHeight(true),
-            overflowY:'hidden',
-            width:$('.protocol-table-portrait').outerWidth(),
-            overflowX:'hidden'
+            width:$('.protocol-table-portrait').outerWidth()
         });
 
         $('.protocol-table-portrait').after(container);
