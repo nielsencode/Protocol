@@ -24,71 +24,50 @@ $(function() {
         });
 
         // Fixed column - landscape
-        $('.protocol-table-label-cell').each(function() {
-            var contents = $(this).clone();
-            var fixed = $('<div></div>').append(contents);
+        var clone = $('.protocol-table').clone();
 
-            fixed.css({
-                position:'absolute',
-                left:$(this).position().left,
-                top:$(this).position().top
-            });
+        var container = $('<div></div>').append(clone);
 
-            contents.css({
-                height:$(this).height()+1,
-                width:$(this).width()+2
-            });
-
-            $(this).after(fixed);
+        container.css({
+            width:$('.protocol-table-label-cell').first().outerWidth(true),
+            overflowX:'hidden',
+            position:'absolute',
+            top:0
         });
 
+        $('.protocol-table').after(container);
+
         // Fixed column - portrait
-        var head = $('.protocol-table-head-portrait');
+        var clone = $('.protocol-table-portrait').clone();
 
-        if(head.length) {
+        var container = $('<div></div>').append(clone);
 
-            var clone = head.clone().css({
-                position: 'absolute',
-                top: head.position().top,
-                width: '100%'
-            });
+        container.css({
+            position:'absolute',
+            top:'-1px',
+            height:$('.protocol-table-label-cell-portrait').outerHeight(true),
+            overflowY:'hidden',
+            width:$('.protocol-table-portrait').outerWidth(),
+            overflowX:'hidden'
+        });
 
-            head.find('.protocol-table-label-cell-portrait').each(function (index) {
-                var cells = clone.find('.protocol-table-label-cell-portrait');
-
-                $(cells[index]).css({
-                    width: $(this).width() + 1,
-                    height: $(this).height() + 2
-                });
-            });
-
-            head.after(clone);
-
-        }
+        $('.protocol-table-portrait').after(container);
 
         // Supplement link padding - landscape
-        var height = $('.protocol-table-supplement-link').first().outerHeight();
+        var height = $('.protocol-table-supplement-cell').first().height();
 
         $('.protocol-table-supplement-link').each(function() {
-            var textHeight = $(this).find('.protocol-table-supplement-name').height();
-
-            var padding = (height-textHeight)/2;
-
             $(this).css({
-                paddingTop:padding,
-                paddingBottom:padding
+                height:height-14
             });
         });
 
         // Supplement link padding - portrait
+        var height = $('.protocol-table-supplement-cell-portrait').first().height();
+
         $('.protocol-table-supplement-link-portrait').each(function() {
-            var textHeight = $(this).find('.protocol-table-supplement-name').height();
-
-            var padding = ($(this).height()-textHeight)/2;
-
             $(this).css({
-                paddingTop:Math.max(padding+8,14),
-                paddingBottom:Math.max(padding+8,14)
+                height:height
             });
         });
 

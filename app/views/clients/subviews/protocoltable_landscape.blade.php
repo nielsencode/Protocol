@@ -32,9 +32,7 @@
                         )
                             <th class="protocol-table-supplement-cell">
                                 <a class="protocol-table-supplement-link" href="{{ route('edit protocol',[$protocol->id]) }}">
-                                    <span class="protocol-table-supplement-name">
-                                        {{ $protocol->supplement->name }}
-                                    </span>
+                                    {{ $protocol->supplement->name }}
                                 </a>
                             </th>
                         @endforeach

@@ -559,10 +559,10 @@ body {
     content: ''; }
 
 .protocol-table-wrapper-portrait {
-  overflow-x: hidden;
   overflow-y: scroll;
-  max-height: 500px;
-  margin-top: 20px; }
+  max-height: 550px;
+  margin-top: 20px;
+  overflow-x: hidden; }
   .protocol-table-wrapper-portrait:before {
     position: absolute;
     right: 0;
@@ -573,12 +573,12 @@ body {
     display: block;
     content: ''; }
 
-.protocol-table {
+.protocol-table, .protocol-table-portrait {
   border-collapse: collapse;
   width: 100%; }
 
 .protocol-table-cell, .protocol-table-cell-portrait, .protocol-table-label-cell, .protocol-table-label-cell-portrait, .protocol-table-supplement-cell, .protocol-table-supplement-cell-portrait {
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: white;
   padding: 8px;
@@ -591,7 +591,7 @@ body {
   min-width: 0; }
 
 .protocol-table-label-cell, .protocol-table-label-cell-portrait {
-  background-color: #787878;
+  background-color: #666666;
   text-transform: uppercase;
   color: white;
   white-space: nowrap;
@@ -602,36 +602,27 @@ body {
 .protocol-table-label-cell-portrait {
   min-width: 0;
   white-space: normal;
-  text-align: center;
-  line-height: 1.25em; }
+  text-align: center; }
 
 .protocol-table-row .protocol-table-cell:last-of-type, .protocol-table-row .protocol-table-cell-portrait:last-of-type, .protocol-table-row .protocol-table-label-cell:last-of-type, .protocol-table-row .protocol-table-label-cell-portrait:last-of-type, .protocol-table-row .protocol-table-supplement-cell:last-of-type, .protocol-table-row .protocol-table-supplement-cell-portrait:last-of-type {
   border-right-width: 0; }
 
 .protocol-table-supplement-cell, .protocol-table-supplement-cell-portrait {
-  padding: 0;
-  height: 100%; }
+  padding: 0; }
 
 .protocol-table-supplement-cell-portrait {
   text-align: right; }
 
 .protocol-table-supplement-link, .protocol-table-supplement-link-portrait {
   color: inherit;
-  display: inline-block;
-  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
   padding: 8px; }
   .protocol-table-supplement-link:hover, .protocol-table-supplement-link-portrait:hover {
     background-color: rgba(255, 255, 255, 0.66); }
 
 .protocol-table-supplement-link-portrait {
-  height: 100%;
-  padding: 0;
-  width: 100%;
-  display: inline-block; }
-  .protocol-table-supplement-link-portrait .protocol-table-supplement-name {
-    padding: 0 8px;
-    display: inline-block;
-    text-decoration: underline; }
+  width: 275px; }
 
 .client-menu {
   float: right;

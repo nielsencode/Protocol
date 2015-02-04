@@ -8,7 +8,7 @@
 
     <div class="protocol-table-wrapper-portrait">
 
-        <table class="protocol-table" cellpadding="0" cellspacing="0">
+        <table class="protocol-table-portrait" cellpadding="0" cellspacing="0">
             <thead class="protocol-table-head-portrait">
                 <tr class="protocol-table-row">
                     <th class="protocol-table-label-cell-portrait">Supplements</th>
@@ -40,9 +40,7 @@
                         <tr class="protocol-table-row-portrait">
                             <td class="protocol-table-supplement-cell-portrait">
                                 <a class="protocol-table-supplement-link-portrait" href="{{ route('edit protocol',[$protocol->id]) }}">
-                                    <span class="protocol-table-supplement-name">
-                                        {{ $protocol->supplement->name }}
-                                    </span>
+                                    {{ $protocol->supplement->name }}
                                 </a>
                             </td>
 
@@ -66,21 +64,19 @@
                     as $protocol
                 )
                     <tbody>
-                    <tr class="protocol-table-row-portrait">
-                        <td class="protocol-table-supplement-cell-portrait">
-                            <a class="protocol-table-supplement-link-portrait" href="{{ route('supplement',[$protocol->supplement->id]) }}">
-                                <span class="protocol-table-supplement-name">
+                        <tr class="protocol-table-row-portrait">
+                            <td class="protocol-table-supplement-cell-portrait">
+                                <a class="protocol-table-supplement-link-portrait" href="{{ route('supplement',[$protocol->supplement->id]) }}">
                                     {{ $protocol->supplement->name }}
-                                </span>
-                            </a>
-                        </td>
-
-                        @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
-                            <td class="protocol-table-cell-portrait">
-                                {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
+                                </a>
                             </td>
-                        @endforeach
-                    </tr>
+
+                            @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
+                                <td class="protocol-table-cell-portrait">
+                                    {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
+                                </td>
+                            @endforeach
+                        </tr>
                     </tbody>
                 @endforeach
             @endif

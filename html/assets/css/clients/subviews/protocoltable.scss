@@ -35,10 +35,10 @@
 }
 
 .protocol-table-wrapper-portrait {
-  overflow-x:hidden;
   overflow-y:scroll;
-  max-height:500px;
+  max-height:550px;
   margin-top:20px;
+  overflow-x:hidden;
 
   &:before {
     position:absolute;
@@ -57,8 +57,12 @@
   width:100%;
 }
 
+.protocol-table-portrait {
+  @extend .protocol-table;
+}
+
 .protocol-table-cell {
-  border-width:1px;
+  border-width:2px;
   border-style:solid;
   border-color:grey(100%);
   padding:8px;
@@ -75,7 +79,7 @@
 
 .protocol-table-label-cell {
   @extend .protocol-table-cell;
-  background-color:grey(47%);
+  background-color:grey(40%);
   text-transform:uppercase;
   color:grey(100%);
   white-space:nowrap;
@@ -89,7 +93,6 @@
   min-width:0;
   white-space:normal;
   text-align:center;
-  line-height:1.25em;
 }
 
 .protocol-table-row .protocol-table-cell:last-of-type {
@@ -99,19 +102,17 @@
 .protocol-table-supplement-cell {
   @extend .protocol-table-cell;
   padding:0;
-  height:100%;
 }
 
 .protocol-table-supplement-cell-portrait {
   @extend .protocol-table-supplement-cell;
-  //max-width:1px;
   text-align:right;
 }
 
 .protocol-table-supplement-link {
   color:inherit;
-  display:inline-block;
-  height:100%;
+  display:table-cell;
+  vertical-align:middle;
   padding:8px;
 
   &:hover {
@@ -121,14 +122,5 @@
 
 .protocol-table-supplement-link-portrait {
   @extend .protocol-table-supplement-link;
-  height:100%;
-  padding:0;
-  width:100%;
-  display:inline-block;
-
-  .protocol-table-supplement-name {
-    padding:0 8px;
-    display:inline-block;
-    text-decoration:underline;
-  }
+  width:275px;
 }
