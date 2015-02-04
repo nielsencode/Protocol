@@ -122,9 +122,7 @@
 							->orScope('Protocol')
 							->over('Protocol')
 					)
-						<a href="{{ route('client add protocol',[$client->id]) }}">
-							<input type="button" class="button" value="Add"/>
-						</a>
+						<a class="button" href="{{ route('client add protocol',[$client->id]) }}">Add</a>
 					@endif
 				</td>
 			</tr>

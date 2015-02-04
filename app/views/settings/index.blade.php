@@ -131,6 +131,25 @@
                 </tr>
             @endforeach
 
+            @if($group->name=='protocols')
+                <tr height="10"></tr>
+                <tr>
+                    <td class="form-label-cell" style="vertical-align:top;">
+                        Times of day
+                    </td>
+                    <td class="form-cell">
+                        <ul style="margin-top:-16px; list-style:none; padding:0; display:inline-block; border-radius:6px;">
+                            @foreach(Scheduletime::all() as $scheduletime)
+                                <li style="margin:4px 0; border-radius:3px; border:1px solid #c4c4c4; padding:5px; width:200px;">
+                                    <i class="fa fa-bars" style="color:#666; font-size:.9em;"></i>
+                                    {{ $scheduletime->name }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </td>
+                </tr>
+            @endif
+
         </tbody>
 
     @endforeach

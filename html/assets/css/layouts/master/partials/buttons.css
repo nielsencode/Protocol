@@ -1,33 +1,21 @@
 /*
 Syntax error: wrong number of arguments (0 for 1) for `blue'
-        on line 2 of buttons.scss
+        on line 1 of buttons.scss
 
-1: .button {
-2:   background-color:blue();
-3:   color:grey(100%);
-4:   font-size:12px;
-5:   text-shadow:0px -1px rgba(0,0,0,.33);
-6:   letter-spacing:2px;
-7:   border-radius:6px;
+1: $button-background:blue();
+2: 
+3: .button {
+4:   background-color:$button-background;
+5:   color:grey(100%);
+6:   border-radius:4px;
 
 Backtrace:
-buttons.scss:2
+buttons.scss:1
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:303:in `reformat_argument_error'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:146:in `rescue in _perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:123:in `_perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/node.rb:50:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:366:in `visit_prop'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/stack.rb:121:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:152:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:389:in `block (2 levels) in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:389:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:389:in `block in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:387:in `visit_rule'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:438:in `visit_variable'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:36:in `visit'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/stack.rb:79:in `block in with_base'
@@ -64,4 +52,4 @@ buttons.scss:2
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: wrong number of arguments (0 for 1) for `blue'\A         on line 2 of buttons.scss\A \A 1: .button {\A 2:   background-color:blue();\A 3:   color:grey(100%);\A 4:   font-size:12px;\A 5:   text-shadow:0px -1px rgba(0,0,0,.33);\A 6:   letter-spacing:2px;\A 7:   border-radius:6px;"; }
+  content: "Syntax error: wrong number of arguments (0 for 1) for `blue'\A         on line 1 of buttons.scss\A \A 1: $button-background:blue();\A 2: \A 3: .button {\A 4:   background-color:$button-background;\A 5:   color:grey(100%);\A 6:   border-radius:4px;"; }
