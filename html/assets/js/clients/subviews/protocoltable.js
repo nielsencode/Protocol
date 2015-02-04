@@ -63,9 +63,9 @@ $(function() {
         });
 
         // Supplement link padding - portrait
-        var height = $('.protocol-table-supplement-cell-portrait').first().height();
-
         $('.protocol-table-supplement-link-portrait').each(function() {
+            var height = $(this).closest('.protocol-table-supplement-cell-portrait').height();
+
             $(this).css({
                 height:height
             });
