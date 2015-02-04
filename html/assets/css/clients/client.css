@@ -588,7 +588,7 @@ body {
   background-color: #f8f8f8; }
 
 .protocol-table-cell-portrait {
-  min-width: 0; }
+  min-width: 66px; }
 
 .protocol-table-label-cell, .protocol-table-label-cell-portrait {
   background-color: #666666;
