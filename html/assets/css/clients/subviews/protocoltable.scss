@@ -1,11 +1,31 @@
-.client-protocols-table-wrapper {
+.protocol-color1 {
+  background-color:red(95%) !important;
+  color:red(40%);
+}
+
+.protocol-color2 {
+  background-color:blue(95%) !important;
+  color:blue(40%);
+}
+
+.protocol-color3 {
+  background-color:green(95%) !important;
+  color:green(30%);
+}
+
+.protocol-color4 {
+  background-color:yellow(95%) !important;
+  color:yellow(30%);
+}
+
+.protocol-table-wrapper {
   overflow-x:scroll;
   margin-top:20px;
 
   &:before {
     position:absolute;
     right:0;
-    top:0;
+    top:1px;
     bottom:0;
     width:5px;
     box-shadow:-2px 0 5px rgba(0,0,0,.1) inset;
@@ -14,16 +34,17 @@
   }
 }
 
-.client-protocols-table-portrait-wrapper {
-  margin-top:20px;
+.protocol-table-wrapper-portrait {
   overflow-y:scroll;
   max-height:550px;
+  margin-top:20px;
+  overflow-x:hidden;
 
   &:before {
     position:absolute;
-    left:0;
     right:0;
-    bottom:0;
+    left:0;
+    bottom:1px;
     height:5px;
     box-shadow:0 -2px 5px rgba(0,0,0,.1) inset;
     display:block;
@@ -31,83 +52,75 @@
   }
 }
 
-.client-protocols-table {
+.protocol-table {
+  border-collapse:collapse;
   width:100%;
 }
 
-.client-protocols-table-portrait {
-  @extend .client-protocols-table;
-  border-collapse:collapse;
+.protocol-table-portrait {
+  @extend .protocol-table;
 }
 
-.client-protocols-table-cell {
+.protocol-table-cell {
+  border-width:2px;
+  border-style:solid;
+  border-color:grey(100%);
   padding:8px;
-  text-align:center;
   font-weight:normal;
   min-width:110px;
-  border-width:1px 0 1px 1px;
-  border-style:solid;
-  border-color:grey(60%);
-
-  &:last-of-type {
-    border-right-width:1px;
-  }
+  text-align:center;
+  background-color:grey(97.25%);
 }
 
-.client-protocols-table-portrait-cell {
-  @extend .client-protocols-table-cell;
+.protocol-table-cell-portrait {
+  @extend .protocol-table-cell;
   min-width:0;
-  border-width:1px;
-  padding:15px 8px;
 }
 
-.client-protocols-table-row {
-  .client-protocols-table-cell {
-    &:last-of-type {
-      border-right-width:0;
-    }
-  }
-}
-
-.client-protocols-table-portrait-row {
-  .client-protocols-table-portrait-cell:first-child {
-    width:160px;
-  }
-}
-
-.client-protocols-table-header-cell {
-  @extend .client-protocols-table-cell;
-}
-
-.client-protocols-table-label-cell {
-  @extend .client-protocols-table-cell;
-  border-right-width:1px;
-  background-color:grey(50%);
-  text-align:right;
-  color:grey(100%);
-  font-weight:normal;
+.protocol-table-label-cell {
+  @extend .protocol-table-cell;
+  background-color:grey(40%);
   text-transform:uppercase;
-  font-size:12px;
-  position:absolute;
+  color:grey(100%);
   white-space:nowrap;
-  z-index:1;
+  text-align:right;
+  font-size:.923em;
+  vertical-align:middle;
 }
 
-.client-protocols-table-portrait-label-cell {
-  @extend .client-protocols-table-label-cell;
-  position:static;
-  white-space:normal;
-  padding:12px 8px;
-  line-height:1.25em;
+.protocol-table-label-cell-portrait {
+  @extend .protocol-table-label-cell;
   min-width:0;
-  border-right-color:grey(100%);
+  white-space:normal;
+  text-align:center;
 }
 
-.client-protocols-table-supplement-cell-link {
+.protocol-table-row .protocol-table-cell:last-of-type {
+  border-right-width:0;
+}
+
+.protocol-table-supplement-cell {
+  @extend .protocol-table-cell;
+  padding:0;
+}
+
+.protocol-table-supplement-cell-portrait {
+  @extend .protocol-table-supplement-cell;
+  text-align:right;
+}
+
+.protocol-table-supplement-link {
   color:inherit;
-  display:block;
+  display:table-cell;
+  vertical-align:middle;
+  padding:8px;
 
   &:hover {
     background-color:rgba(255,255,255,.66);
   }
+}
+
+.protocol-table-supplement-link-portrait {
+  @extend .protocol-table-supplement-link;
+  width:275px;
 }

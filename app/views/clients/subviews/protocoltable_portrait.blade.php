@@ -1,26 +1,24 @@
 @section('js')
     @parent
+
     {{ HTML::script('assets/js/clients/subviews/protocoltable.js') }}
 @stop
 
 <div style="position:relative;">
 
-    <div class="client-protocols-table-portrait-wrapper">
+    <div class="protocol-table-wrapper-portrait">
 
-        <table class="client-protocols-table-portrait" cellpadding="0" cellspacing="0">
-            <thead>
-                <tr>
-                    <th class="client-protocols-table-portrait-label-cell">Supplements</th>
+        <table class="protocol-table-portrait" cellpadding="0" cellspacing="0">
+            <thead class="protocol-table-head-portrait">
+                <tr class="protocol-table-row">
+                    <th class="protocol-table-label-cell-portrait">Supplements</th>
 
                     @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
-                        <th class="client-protocols-table-portrait-label-cell">
-                            {{ $scheduletime->name }}
-                        </th>
+                        <th class="protocol-table-label-cell-portrait">{{ $scheduletime->name }}</th>
                     @endforeach
 
                 </tr>
             </thead>
-
             @if (
                 Auth::user()
                     ->has('edit')
@@ -28,7 +26,7 @@
                     ->orScope('Protocol')
                     ->over('Protocol')
             )
-                @foreach(
+                @foreach (
                     $client
                         ->protocols()
                         ->with('Supplement')
@@ -39,15 +37,15 @@
                     as $protocol
                 )
                     <tbody>
-                        <tr class="client-protocols-table-portrait-row">
-                            <td class="client-protocols-table-portrait-cell">
-                                <a class="client-protocols-table-supplement-cell-link" href="{{ route('edit protocol',[$protocol->id]) }}">
+                        <tr class="protocol-table-row-portrait">
+                            <td class="protocol-table-supplement-cell-portrait">
+                                <a class="protocol-table-supplement-link-portrait" href="{{ route('edit protocol',[$protocol->id]) }}">
                                     {{ $protocol->supplement->name }}
                                 </a>
                             </td>
 
                             @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
-                                <td class="client-protocols-table-portrait-cell">
+                                <td class="protocol-table-cell-portrait">
                                     {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
                                 </td>
                             @endforeach
@@ -55,7 +53,7 @@
                     </tbody>
                 @endforeach
             @else
-                @foreach(
+                @foreach (
                     $client
                         ->protocols()
                         ->with('Supplement')
@@ -66,19 +64,19 @@
                     as $protocol
                 )
                     <tbody>
-                    <tr class="client-protocols-table-portrait-row">
-                        <td class="client-protocols-table-portrait-cell">
-                            <a class="client-protocols-table-supplement-cell-link" href="{{ route('supplement',[$protocol->supplement->id]) }}">
-                                {{ $protocol->supplement->name }}&nbsp;&nbsp;<i class="fa fa-info-circle"></i></span>
-                            </a>
-                        </td>
-
-                        @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
-                            <td class="client-protocols-table-portrait-cell">
-                                {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
+                        <tr class="protocol-table-row-portrait">
+                            <td class="protocol-table-supplement-cell-portrait">
+                                <a class="protocol-table-supplement-link-portrait" href="{{ route('supplement',[$protocol->supplement->id]) }}">
+                                    {{ $protocol->supplement->name }}
+                                </a>
                             </td>
-                        @endforeach
-                    </tr>
+
+                            @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
+                                <td class="protocol-table-cell-portrait">
+                                    {{ $protocol->schedules()->where('scheduletime_id',$scheduletime->id)->first()['prescription'] }}
+                                </td>
+                            @endforeach
+                        </tr>
                     </tbody>
                 @endforeach
             @endif
