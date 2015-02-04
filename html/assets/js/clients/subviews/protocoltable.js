@@ -54,20 +54,29 @@ $(function() {
         $('.protocol-table-portrait').after(container);
 
         // Supplement link padding - landscape
-        var height = $('.protocol-table-supplement-cell').first().height();
+        var height = $('.protocol-table-supplement-cell').height();
 
         $('.protocol-table-supplement-link').each(function() {
+            var textHeight = $(this).height();
+
+            var padding = (height-textHeight)/2;
+
             $(this).css({
-                height:height-14
+                paddingTop:padding,
+                paddingBottom:padding
             });
         });
 
         // Supplement link padding - portrait
         $('.protocol-table-supplement-link-portrait').each(function() {
-            var height = $(this).closest('.protocol-table-supplement-cell-portrait').height();
+            var height = $(this).closest('.protocol-table-supplement-cell-portrait').outerHeight();
+            var textHeight = $(this).height();
+
+            var padding = (height-textHeight)/2;
 
             $(this).css({
-                height:height
+                paddingTop:padding,
+                paddingBottom:padding
             });
         });
 

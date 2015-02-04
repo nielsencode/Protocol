@@ -581,7 +581,7 @@ body {
   border-width: 2px;
   border-style: solid;
   border-color: white;
-  padding: 8px;
+  padding: 10px 8px;
   font-weight: normal;
   min-width: 110px;
   text-align: center;
@@ -611,18 +611,15 @@ body {
   padding: 0; }
 
 .protocol-table-supplement-cell-portrait {
-  text-align: right; }
+  text-align: right;
+  min-width: 0; }
 
 .protocol-table-supplement-link, .protocol-table-supplement-link-portrait {
   color: inherit;
-  display: table-cell;
-  vertical-align: middle;
-  padding: 8px; }
+  display: block;
+  padding: 10px 8px; }
   .protocol-table-supplement-link:hover, .protocol-table-supplement-link-portrait:hover {
     background-color: rgba(255, 255, 255, 0.66); }
-
-.protocol-table-supplement-link-portrait {
-  min-width: 150px; }
 
 .client-menu {
   float: right;
