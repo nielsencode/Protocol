@@ -122,5 +122,6 @@
 
 .protocol-table-supplement-link-portrait {
   @extend .protocol-table-supplement-link;
-  width:275px;
+  min-width:150px;
+  max-width:150px;
 }
