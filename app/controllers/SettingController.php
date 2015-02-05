@@ -19,6 +19,8 @@ class SettingController extends BaseController {
 			->orScope('Protocol')
 			->over('Setting');
 
+		export(Input::all());
+
 		$input = Input::except('_token');
 
 		$rules = array(

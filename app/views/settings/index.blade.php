@@ -3,6 +3,8 @@
 @section('css')
     @parent
 
+    {{ HTML::style('assets/css/bootstrap-editable.css') }}
+
     <style type="text/css">
         .form-cell {
             padding-top:8px;
@@ -26,12 +28,43 @@
     @parent
 
     {{ HTML::script('assets/js/colorpicker.js') }}
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js') }}
+    {{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js') }}
+    {{ HTML::script('assets/js/bootstrap-editable.js') }}
 
     <script>
         $(function() {
             $('.colors').each(function() {
                 $(this).colorpicker({
-                    rowsize:$(this).find('option').length
+                    rowsize:8
+                });
+            });
+
+            $('.editable-list-item-inner').each(function() {
+                $(this).editable({
+                    mode:'inline',
+                    inputclass:'editable-list-item-input',
+                    unsavedclass:null,
+                    highlight:false,
+                    name:$(this).closest('.editable-list').attr('name')
+                });
+            });
+
+            $('.editable-list').sortable({
+                axis:'y'
+            });
+
+            $('form').submit(function() {
+                $('.editable-list').each(function() {
+                    var name = $(this).attr('name');
+
+                    var values = [];
+
+                    $(this).find('.editable-list-item-inner').each(function() {
+                        values.push($(this).editable('getValue')[name]);
+                    });
+
+                    $(':input[name="'+name+'"]').val(JSON.stringify(values));
                 });
             });
         });
@@ -138,11 +171,13 @@
                         Times of day
                     </td>
                     <td class="form-cell">
-                        <ul style="margin-top:-16px; list-style:none; padding:0; display:inline-block; border-radius:6px;">
+                        <input type="hidden" name="scheduletimes"/>
+                        <ul name="scheduletimes" class="editable-list">
                             @foreach(Scheduletime::all() as $scheduletime)
-                                <li style="margin:4px 0; border-radius:3px; border:1px solid #c4c4c4; padding:5px; width:200px;">
-                                    <i class="fa fa-bars" style="color:#666; font-size:.9em;"></i>
-                                    {{ $scheduletime->name }}
+                                <li class="editable-list-item">
+                                    <div class="editable-list-item-inner">
+                                        {{ $scheduletime->name }}
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>
@@ -156,7 +191,7 @@
 @stop
 
 @section('buttons')
-    <a href="{{ URL::previous()==Request::url() ? route('home') : URL::previous() }}">cancel</a>
+    <a class="cancel" href="{{ URL::previous()==Request::url() ? route('home') : URL::previous() }}">cancel</a>
     {{ str_repeat('&nbsp;',4) }}
     <a href=""><button class="button">Save</button></a>
 @stop

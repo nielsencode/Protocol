@@ -1,0 +1,55 @@
+.editable-list {
+  margin:-19px 0 0 0;
+  padding: 0;
+  list-style: none;
+  font-family:inherit;
+}
+
+.editable-list-item {
+  margin:6px 0;
+}
+
+.editable-list-item-inner {
+  padding: 5px;
+  border: 1px solid grey(77%) !important;
+  border-radius: 4px;
+  width:200px;
+  font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+  font-size:12px;
+  background-color:grey(100%);
+  box-shadow:0 3px 3px -3px rgba(0,0,0,.25);
+  cursor:pointer;
+  outline:none;
+}
+
+.editable-list-item-input {
+  @extend .editable-list-item-inner;
+  margin:0;
+}
+
+.editable-button {
+  border: none;
+  padding:6px 0;
+  text-align:center;
+  width:25px;
+  margin-top:2px;
+  border-radius:3px;
+  outline:none;
+  cursor:pointer;
+  color:grey(100%);
+  border-width:0;
+  border-style:solid;
+  border-color:rgba(0,0,0,.2);
+}
+
+.editable-submit {
+  @extend .editable-button;
+  background-color:blue();
+}
+
+.editable-cancel {
+  @extend .editable-button;
+  background-color:grey(90%);
+  color:grey(0%);
+  margin-left:5px !important;
+}

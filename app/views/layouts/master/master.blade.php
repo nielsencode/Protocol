@@ -13,7 +13,6 @@
 	@show
 
 	{{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
-	{{ HTML::style('assets/css/bootstrap-tour-standalone.min.css') }}
 
 	@section('css')
 		{{ HTML::style('assets/css/layouts/master/master.css') }}

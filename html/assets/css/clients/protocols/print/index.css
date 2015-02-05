@@ -31,7 +31,7 @@
   cursor: default; }
 
 .cancel {
-  /*color:*/ }
+  color: #e60000; }
 
 .messages, .messages-small, .error-messages, .warning-messages, .warning-messages-small {
   border-radius: 4px;
@@ -90,7 +90,8 @@
   border-radius: 3px;
   outline: none;
   padding: 5px;
-  font-size: 12px; }
+  font-size: 12px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif; }
 
 .long-form-text {
   width: 300px; }
@@ -146,6 +147,52 @@
 
 .tour-tour button[data-role="end"] {
   margin-left: 5px; }
+
+.editable-list {
+  margin: -19px 0 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: inherit; }
+
+.editable-list-item {
+  margin: 6px 0; }
+
+.editable-list-item-inner, .editable-list-item-input {
+  padding: 5px;
+  border: 1px solid #c4c4c4 !important;
+  border-radius: 4px;
+  width: 200px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background-color: white;
+  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  outline: none; }
+
+.editable-list-item-input {
+  margin: 0; }
+
+.editable-button, .editable-submit, .editable-cancel {
+  border: none;
+  padding: 6px 0;
+  text-align: center;
+  width: 25px;
+  margin-top: 2px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  border-width: 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2); }
+
+.editable-submit {
+  background-color: #12a1e2; }
+
+.editable-cancel {
+  background-color: #e6e6e6;
+  color: black;
+  margin-left: 5px !important; }
 
 body {
   font-family: helvetica, sans-serif;
