@@ -17,10 +17,10 @@
             </td>
         @endforeach
     </tr>
-    @foreach (Scheduletime::all() as $scheduletime)
+    @foreach (Scheduletime::all() as $index=>$scheduletime)
         <tr height="8"></tr>
         <tr>
-            <td class="print-protocols-label-cell">{{ $scheduletime->name }}</td>
+            <td class="print-protocols-label-cell">{{ Subscriber::current()->setting('schedule times')[$index] }}</td>
             @foreach ($page as $index=>$protocol)
                 <td class="print-protocols-cell">
                     @if (!empty($protocol))

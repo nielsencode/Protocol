@@ -12,8 +12,8 @@
         <tr>
             <td class="print-protocols-portrait-label-cell">supplements</td>
 
-            @foreach (Scheduletime::all() as $scheduletime)
-                <td class="print-protocols-portrait-label-cell">{{ $scheduletime->name }}</td>
+            @foreach (Scheduletime::all() as $index=>$scheduletime)
+                <td class="print-protocols-portrait-label-cell">{{ Subscriber::current()->setting('schedule times')[$index] }}</td>
             @endforeach
         </tr>
         @foreach($page as $index=>$protocol)

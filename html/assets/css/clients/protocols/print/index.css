@@ -610,7 +610,7 @@ body {
   font-size: 12px; }
 
 .print-protocols-label-cell, .print-protocols-portrait-label-cell {
-  background-color: #808080;
+  background-color: #666666;
   color: #fff;
   text-align: right;
   width: 100px;
