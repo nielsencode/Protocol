@@ -88,6 +88,7 @@
 .protocol-table-cell-portrait {
   @extend .protocol-table-cell;
   min-width:66px;
+  max-width:150px;
 }
 
 .protocol-table-label-cell {
@@ -98,6 +99,9 @@
   text-align:right;
   font-size:.923em;
   vertical-align:middle;
+  min-width:133px;
+  max-width:133px;
+  width:133px;
 }
 
 .protocol-table-label-cell-portrait {
@@ -105,6 +109,8 @@
   min-width:0;
   white-space:normal;
   text-align:center;
+  max-width:150px;
+  width:auto;
 }
 
 .protocol-table-row .protocol-table-cell:last-of-type {
@@ -119,7 +125,7 @@
 .protocol-table-supplement-cell-portrait {
   @extend .protocol-table-supplement-cell;
   text-align:right;
-  min-width:0;
+  width:175px;
 }
 
 .protocol-table-supplement-link {

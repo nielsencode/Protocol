@@ -26,6 +26,8 @@ $(function() {
         // Fixed column - landscape
         var clone = $('.protocol-table').clone();
 
+        clone.css('width',$('.protocol-table').width());
+
         var container = $('<div></div>')
             .addClass('protocol-table-column-fixed')
             .append(clone);

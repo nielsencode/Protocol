@@ -654,7 +654,8 @@ body {
   background-color: #f8f8f8; }
 
 .protocol-table-cell-portrait {
-  min-width: 66px; }
+  min-width: 66px;
+  max-width: 150px; }
 
 .protocol-table-label-cell, .protocol-table-label-cell-portrait {
   background-color: #666666;
@@ -662,12 +663,17 @@ body {
   color: white;
   text-align: right;
   font-size: .923em;
-  vertical-align: middle; }
+  vertical-align: middle;
+  min-width: 133px;
+  max-width: 133px;
+  width: 133px; }
 
 .protocol-table-label-cell-portrait {
   min-width: 0;
   white-space: normal;
-  text-align: center; }
+  text-align: center;
+  max-width: 150px;
+  width: auto; }
 
 .protocol-table-row .protocol-table-cell:last-of-type, .protocol-table-row .protocol-table-cell-portrait:last-of-type, .protocol-table-row .protocol-table-label-cell:last-of-type, .protocol-table-row .protocol-table-label-cell-portrait:last-of-type, .protocol-table-row .protocol-table-supplement-cell:last-of-type, .protocol-table-row .protocol-table-supplement-cell-portrait:last-of-type {
   border-right-width: 0; }
@@ -677,7 +683,7 @@ body {
 
 .protocol-table-supplement-cell-portrait {
   text-align: right;
-  min-width: 0; }
+  width: 175px; }
 
 .protocol-table-supplement-link, .protocol-table-supplement-link-portrait {
   color: inherit;
