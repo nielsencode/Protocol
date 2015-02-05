@@ -46,7 +46,8 @@
                     inputclass:'editable-list-item-input',
                     unsavedclass:null,
                     highlight:false,
-                    name:$(this).closest('.editable-list').attr('name')
+                    name:$(this).closest('.editable-list').attr('name'),
+                    emptytext:null
                 });
             });
 
@@ -122,8 +123,12 @@
             </tr>
 
             @foreach($group->settingnames as $setting)
+                @if($setting->inputtype->name=='list')
+                    <tr height="10"></tr>
+                @endif
+
                 <tr>
-                    <td class="form-label-cell">
+                    <td class="form-label-cell" style="{{ $setting->inputtype->name=='list' ? 'vertical-align:top;' : '' }}">
                         {{ Form::label($setting->name,ucfirst($setting->name),['class'=>'form-label']) }}
                     </td>
                     <td class="form-cell">
@@ -157,33 +162,34 @@
                                 ['class'=>'form-select']
                             ) }}
                         @endif
+
+                        @if ($setting->inputtype->name=='list')
+                            <input type="hidden" name="{{ $setting->name }}"/>
+                            <ul name="{{ $setting->name }}" class="editable-list">
+                                @foreach (Subscriber::current()->setting($setting->name) as $value)
+                                    <li class="editable-list-item">
+                                        <div class="editable-list-item-inner">
+                                            {{ $value }}
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </td>
-                    <td class="form-description-cell">
-                        {{ $setting->description }}
-                    </td>
+
+                    @if ($setting->inputtype->name=='list')
+                        <td class="form-description-cell" style="vertical-align:top;">
+                            <div style="margin-top:-5px;">
+                                {{ strtolower($setting->description) }}
+                            </div>
+                        </td>
+                    @else
+                        <td class="form-description-cell">
+                            {{ strtolower($setting->description) }}
+                        </td>
+                    @endif
                 </tr>
             @endforeach
-
-            @if($group->name=='protocols')
-                <tr height="10"></tr>
-                <tr>
-                    <td class="form-label-cell" style="vertical-align:top;">
-                        Times of day
-                    </td>
-                    <td class="form-cell">
-                        <input type="hidden" name="scheduletimes"/>
-                        <ul name="scheduletimes" class="editable-list">
-                            @foreach(Scheduletime::all() as $scheduletime)
-                                <li class="editable-list-item">
-                                    <div class="editable-list-item-inner">
-                                        {{ $scheduletime->name }}
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </td>
-                </tr>
-            @endif
 
         </tbody>
 

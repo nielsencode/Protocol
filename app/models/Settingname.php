@@ -22,4 +22,12 @@ class Settingname extends Eloquent {
 		return explode(',',$values);
 	}
 
+	public function getDefaultAttribute($value) {
+		if($this->inputtype['name']=='list') {
+			return json_decode($value,true);
+		}
+
+		return $value;
+	}
+
 }

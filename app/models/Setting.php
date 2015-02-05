@@ -16,4 +16,12 @@ class Setting extends Eloquent {
 			->where('settingnames.name',$name);
 	}
 
+	public function getValueAttribute($value) {
+		if($this->settingname->inputtype->name=='list') {
+			return json_decode($value,true);
+		}
+
+		return $value;
+	}
+
 }

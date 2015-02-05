@@ -113,6 +113,6 @@ class Subscriber extends Eloquent {
 			return $settings->first()->value;
 		}
 
-		return $settingname->pluck('default');
+		return $settingname->first()->default;
 	}
 }
