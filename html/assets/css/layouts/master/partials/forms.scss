@@ -19,6 +19,7 @@
 .form-checkbox-cell {
   @extend .form-cell;
   padding-right:20px;
+  max-width:100px;
 }
 
 .form-label {

@@ -13,8 +13,10 @@
                 <tr class="protocol-table-row">
                     <th class="protocol-table-label-cell-portrait">Supplements</th>
 
-                    @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
-                        <th class="protocol-table-label-cell-portrait">{{ $scheduletime->name }}</th>
+                    @foreach (Scheduletime::orderBy('index','asc')->get() as $index=>$scheduletime)
+                        <th class="protocol-table-label-cell-portrait">
+                            {{ Subscriber::current()->setting('schedule times')[$index] }}
+                        </th>
                     @endforeach
 
                 </tr>

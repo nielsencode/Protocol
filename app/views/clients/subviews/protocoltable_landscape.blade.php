@@ -58,10 +58,12 @@
 
                 </tr>
             </thead>
-            @foreach (Scheduletime::orderBy('index','asc')->get() as $scheduletime)
+            @foreach (Scheduletime::orderBy('index','asc')->get() as $index=>$scheduletime)
                 <tbody>
                     <tr class="protocol-table-row">
-                        <td class="protocol-table-label-cell">{{ $scheduletime->name }}</td>
+                        <td class="protocol-table-label-cell">
+                            {{ Subscriber::current()->setting('schedule times')[$index] }}
+                        </td>
                         @foreach (
                             $client
                                 ->protocols()

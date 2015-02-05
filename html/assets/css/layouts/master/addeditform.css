@@ -76,7 +76,8 @@
   padding-top: 10px; }
 
 .form-checkbox-cell {
-  padding-right: 20px; }
+  padding-right: 20px;
+  max-width: 100px; }
 
 .form-label, .required-form-label {
   font-size: 13px; }

@@ -51,7 +51,7 @@
                 ]) }}
             </td>
             <td class="form-checkbox-cell">
-                {{ Form::label("scheduletime_$index",$scheduletime->name,[
+                {{ Form::label("scheduletime_$index",Subscriber::current()->setting('schedule times')[$index],[
                     'class'=>'form-label'
                 ]) }}
             </td>

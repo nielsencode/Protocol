@@ -124,7 +124,7 @@
 
             @foreach($group->settingnames as $setting)
                 @if($setting->inputtype->name=='list')
-                    <tr height="10"></tr>
+                    <tr height="15"></tr>
                 @endif
 
                 <tr>
