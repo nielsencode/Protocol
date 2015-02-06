@@ -6,7 +6,7 @@ class User extends ResourceType
 {
 
 	public function scopeSubscriber($owner) {
-		return \User::join('subscriber_user','subscriber_user.user','=','users.id')
+		return \User::join('subscriber_user','subscriber_user.user_id','=','users.id')
 			->where('subscriber_user.subscriber_id',$owner)
 			->lists('id');
 	}
