@@ -74,7 +74,7 @@
 		                ]) }}
 
 		                {{ Form::label('same_as_billing','same as billing',[
-		                    'class'=>'form-label'
+		                    'class'=>'alternate-form-label'
 		                ]) }}
 	                @endif
 	            </td>

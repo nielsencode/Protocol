@@ -11,18 +11,18 @@
 }
 
 .index-table-column {
-  border-width:1px;
+  border-width:0;
   border-style:solid;
   border-color:grey(100%) grey(100%) grey(90%) grey(100%);
-  height:30px;
-  padding:0 10px;
-  color:grey(25%);
+  height:40px;
+  padding:0 15px;
+  border-bottom:1px solid grey(90%);
 }
 
 .index-table-column-link {
   text-decoration:none;
   display:block;
-  color:grey(25%);
+  color:inherit;
 }
 
 .index-table-head {
@@ -33,17 +33,17 @@
   cursor:pointer;
 
   &:hover {
-    background-color:grey(98%);
+    background-color:yellow();
   }
 }
 
 .index-table-cell {
-  border-bottom:1px solid grey(81%);
+  border-bottom:1px solid grey(90%);
 
   a {
-    padding:11px;
+    padding:15px;
     display:block;
-    color:initial;
+    color:inherit;
     text-decoration:none;
   }
 }

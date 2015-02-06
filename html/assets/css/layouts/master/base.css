@@ -50,8 +50,8 @@
   border-color: #ff8080; }
 
 .warning-messages, .warning-messages-small {
-  background-color: #ffe6cc;
-  border-color: #ffbf80; }
+  background-color: #fff2cc;
+  border-color: #ffdf80; }
 
 .warning-messages-small {
   padding: 4px 8px; }
@@ -73,8 +73,11 @@
   padding-right: 20px;
   max-width: 100px; }
 
-.form-label, .required-form-label {
-  font-size: 13px; }
+.form-label, .alternate-form-label, .required-form-label {
+  font-weight: bold; }
+
+.alternate-form-label {
+  font-weight: normal; }
 
 .required-form-label {
   font-weight: bold; }
@@ -196,4 +199,5 @@
 
 body {
   font-family: helvetica, sans-serif;
-  font-size: 13px; }
+  font-size: 13px;
+  color: #4d4d4d; }

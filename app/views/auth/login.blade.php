@@ -17,6 +17,6 @@
 
 @section('buttons')
 	<a href="{{ route('forgot password') }}">forgot password</a>
-	&nbsp;&nbsp;
+	{{ str_repeat('&nbsp;',4) }}
 	{{ Form::submit('Login',['class'=>'button']) }}
 @stop

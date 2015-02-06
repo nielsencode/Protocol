@@ -68,7 +68,7 @@
 @stop
 
 @section('buttons')
-    <a href="{{ route('users') }}">cancel</a>
-    &nbsp;&nbsp;
+    <a class="cancel" href="{{ route('users') }}">cancel</a>
+    {{ str_repeat('&nbsp;',4) }}
     <input type="submit" class="button" value="Save"/>
 @stop

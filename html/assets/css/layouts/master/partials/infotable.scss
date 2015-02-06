@@ -12,14 +12,15 @@
 
 .info-table-label-cell {
   @extend .info-table-cell;
-  color:grey(45%);
   text-align:right;
+  font-weight:bold;
 }
 
 .info-table-section-label {
   @extend .info-table-label-cell;
-  font-size:11px;
+  font-size:0.923em;
   text-transform:uppercase;
+  font-weight:normal;
 }
 
 .info-table-section-cell {

@@ -1,21 +1,21 @@
 /*
 Syntax error: wrong number of arguments (0 for 1) for `red'
-        on line 41 of infotable.scss
+        on line 42 of infotable.scss
 
-36:   margin-left:10px;
-37:   color:grey(75%);
-38: }
-39: 
-40: .info-table-edit-link {
-41:   color:red();
-42:   font-size:13px;
-43:   font-weight:initial;
-44:   text-decoration:underline;
-45:   cursor:pointer;
-46: }
+37:   margin-left:10px;
+38:   color:grey(75%);
+39: }
+40: 
+41: .info-table-edit-link {
+42:   color:red();
+43:   font-size:13px;
+44:   font-weight:initial;
+45:   text-decoration:underline;
+46:   cursor:pointer;
+47: }
 
 Backtrace:
-infotable.scss:41
+infotable.scss:42
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:303:in `reformat_argument_error'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:146:in `rescue in _perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:123:in `_perform'
@@ -68,4 +68,4 @@ infotable.scss:41
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: wrong number of arguments (0 for 1) for `red'\A         on line 41 of infotable.scss\A \A 36:   margin-left:10px;\A 37:   color:grey(75%);\A 38: }\A 39: \A 40: .info-table-edit-link {\A 41:   color:red();\A 42:   font-size:13px;\A 43:   font-weight:initial;\A 44:   text-decoration:underline;\A 45:   cursor:pointer;\A 46: }"; }
+  content: "Syntax error: wrong number of arguments (0 for 1) for `red'\A         on line 42 of infotable.scss\A \A 37:   margin-left:10px;\A 38:   color:grey(75%);\A 39: }\A 40: \A 41: .info-table-edit-link {\A 42:   color:red();\A 43:   font-size:13px;\A 44:   font-weight:initial;\A 45:   text-decoration:underline;\A 46:   cursor:pointer;\A 47: }"; }
