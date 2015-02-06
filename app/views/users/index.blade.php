@@ -69,7 +69,9 @@
                     <a href="{{ route('user',$user->id) }}">{{ $user->email }}</a>
                 </td>
                 <td class="index-table-cell">
-                    <span class="{{ $user->password ? '' : 'warning-' }}messages-small">{{ $user->password ? 'verified' : 'not verified' }}</span>
+                    <a href="{{ route('user',$user->id) }}">
+                        <span class="{{ $user->password ? '' : 'warning-' }}messages-small">{{ $user->password ? 'verified' : 'not verified' }}</span>
+                    </a>
                 </td>
             </tr>
         @endforeach
