@@ -24,13 +24,8 @@
 
 	<div class="master-main-wrapper">
 
-		@if (Subscriber::current()->setting('show announcement bar'))
-			<div class="announcement-bar">
-				<div class="announcement-bar-inner">
-					{{ Subscriber::current()->setting('announcement bar') }}
-					<i class="fa fa-times announcement-bar-close-icon"></i>
-				</div>
-			</div>
+		@if (Auth::user() && Subscriber::current()->setting('show announcement bar'))
+			@include('layouts.master.subviews.announcement_bar')
 		@endif
 
 		<!-- Begin Header -->
