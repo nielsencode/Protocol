@@ -1,7 +1,6 @@
 $(function() {
 
 	// Navbar dropdown menus.
-
 	$(document).on('click',function(e) {
 		var item = $(e.target).closest('.master-dropdown-navbar-item');
 
@@ -25,7 +24,16 @@ $(function() {
 	});
 
 	// Forms
-
 	$('.focus').first().focus();
+
+	// Announcement bar
+	//sessionStorage.removeItem('announcement bar');
+
+	$('.announcement-bar').toggle(!sessionStorage.getItem('announcement bar'));
+
+	$('.announcement-bar-close-icon').click(function() {
+		$('.announcement-bar').hide('fast');
+		sessionStorage.setItem('announcement bar',true);
+	});
 
 });

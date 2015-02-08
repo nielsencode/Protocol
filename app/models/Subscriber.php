@@ -2,31 +2,23 @@
 
 class Subscriber extends Eloquent {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Soft deletes
-	|--------------------------------------------------------------------------
-	|
-	*/
-
+	/**
+	 * Soft deletes
+	 *
+	 * @var bool
+	 */
 	protected $softDelete = true;
 
-	/*
-	|--------------------------------------------------------------------------
-	| Mass assignment
-	|--------------------------------------------------------------------------
-	|
-	*/
+	/**
+	 * Mass assignment
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['name','email','subdomain'];
 
-	protected $fillable = array('name','email','subdomain');
-
-	/*
-	|--------------------------------------------------------------------------
-	| Events
-	|--------------------------------------------------------------------------
-	|
-	*/
-
+	/**
+	 * Model event handlers
+	 */
 	public static function boot()
 	{
 		parent::boot();
@@ -71,13 +63,11 @@ class Subscriber extends Eloquent {
 		return $this->morphMany('Setting','settingable');
 	}
 
-	/*
-	|--------------------------------------------------------------------------
-	| Current subscriber
-	|--------------------------------------------------------------------------
-	|
-	*/
-
+	/**
+	 * Get the current subscriber.
+	 *
+	 * @return bool|Subscriber
+	 */
 	public static function current() {
 		$hostParts = explode('.',$_SERVER['HTTP_HOST']);
 
@@ -98,6 +88,12 @@ class Subscriber extends Eloquent {
 		return $subscriber->first();
 	}
 
+	/**
+	 * Get a Subscriber setting value by name.
+	 *
+	 * @param $name
+	 * @return string
+	 */
 	public function setting($name) {
 		$settingname = Settingname::where('name',$name);
 

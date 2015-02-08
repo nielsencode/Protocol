@@ -2,12 +2,27 @@
 
 class Role extends Eloquent {
 
+	/**
+	 * Timestamps
+	 *
+	 * @var bool
+	 */
 	public $timestamps = false;
 
-	/* Mass assignment */
+	/**
+	 * Mass assignment
+	 *
+	 * @var array
+	 */
 	protected $guarded = array('id');
-	
-	/* Relationships */
+
+	/*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	|
+	*/
+
 	public function users() {
 		return $this->hasMany('User');
 	}

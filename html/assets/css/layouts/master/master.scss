@@ -117,3 +117,22 @@ a {
   text-transform:uppercase;
   font-size:11px;
 }
+
+.announcement-bar {
+  background-color:darken(yellow(),5);
+  line-height:1.5em;
+}
+
+.announcement-bar-inner {
+  position:relative;
+  padding:12px 0;
+  width:1000px;
+  margin:auto;
+  text-align:center;
+  font-size:1.077em;
+}
+
+.announcement-bar-close-icon {
+  margin-left:15px;
+  cursor:pointer;
+}

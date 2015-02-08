@@ -14,14 +14,14 @@ class Request extends Negotiation {
      *
      * @var array
      */
-    public $scopes = array();
+    public $scopes = [];
 
     /**
      * The scope arguments.
      *
      * @var array
      */
-    protected $scopeArguments = array();
+    protected $scopeArguments = [];
 
     /**
      * The denied request handler.
@@ -84,10 +84,10 @@ class Request extends Negotiation {
      * @return void
      */
     protected function addScopeArgument($scope,$id) {
-        $this->scopeArguments[$scope] = array(
+        $this->scopeArguments[$scope] = [
             'name'=>$scope,
             'id'=>$id
-        );
+        ];
     }
 
     /**
@@ -214,7 +214,7 @@ class Request extends Negotiation {
     public function toString() {
         $output = '%s %s %s %s of scope %s over %s%s.';
 
-        $args = array(
+        $args = [
             $this->agent->type,
             $this->agent->id,
             $this->require ? 'requires' : 'requestes',
@@ -222,7 +222,7 @@ class Request extends Negotiation {
             implode(' or ',array_map(function($v) {return $v->name;},$this->scopes)),
             $this->resource->type,
             $this->resource->id ? " {$this->resource->id}" : ''
-        );
+        ];
 
         return vsprintf($output,$args);
     }
@@ -233,14 +233,14 @@ class Request extends Negotiation {
      * @return array
      */
     public function queryValues() {
-        $values = array(
+        $values = [
             'agent_type'=>$this->agent->type,
             'agent_id'=>$this->agent->id,
             'role_id'=>$this->agent->roleId(),
             'resource_type'=>$this->resource->type,
             'resource_id'=>$this->resource->id,
             'actions'=>'%'
-        );
+        ];
 
         foreach($this->scopes as $i=>$scope) {
             $values["scope_id_$i"] = $scope->id;

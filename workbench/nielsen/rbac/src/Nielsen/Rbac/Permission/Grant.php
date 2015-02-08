@@ -116,7 +116,7 @@ class Grant extends Negotiation {
      * @return array
      */
     public function queryValues() {
-        $values = array(
+        $values = [
             'agent_type'=>$this->agent->type,
             'agent_id'=>$this->agent->id,
             'role_id'=>$this->agent->roleId(),
@@ -124,7 +124,7 @@ class Grant extends Negotiation {
             'resource_id'=>$this->resource->id,
             'scope_id'=>$this->scope ? $this->scope->id : null,
             'actions'=>'%'
-        );
+        ];
 
         foreach($this->actions as $action) {
             $values['actions'] .= $action->id.'%';

@@ -4,7 +4,7 @@ class Settingname extends Eloquent {
 
 	public $timestamps = false;
 
-	protected $fillable = array('inputtype_id','settinggroup_id','name','values','default','description');
+	protected $fillable = ['inputtype_id','settinggroup_id','name','values','default','description','maxlength'];
 
 	public function inputtype() {
 		return $this->belongsTo('Inputtype');

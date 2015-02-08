@@ -146,7 +146,10 @@
                         @endif
 
                         @if ($setting->inputtype->name=='text')
-                            {{ Form::text($setting->name,Subscriber::current()->setting($setting->name),['class'=>'form-text']) }}
+                            {{ Form::text($setting->name,Subscriber::current()->setting($setting->name),[
+                                'class'=>'form-text',
+                                'maxlength'=>$setting->maxlength
+                            ]) }}
                         @endif
 
                         @if ($setting->inputtype->name=='checkbox')
