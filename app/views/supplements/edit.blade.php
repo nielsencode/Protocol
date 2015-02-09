@@ -4,7 +4,7 @@
 	@parent
 	<script>
         $(function() {
-            $('.addedit-delete-link').click(function() {
+            $('.add-edit-form-delete-link').click(function() {
                 if(confirm('Are you sure you want to delete "'+$(this).attr('name')+'"')) {
                     $(this).closest('form').submit();
                 }
@@ -34,7 +34,7 @@
 			->over('Supplement',$supplement['id'])
 	)
 		<form action="{{ route('delete supplement',[$supplement['id']]) }}" method="post">
-			<a class="addedit-delete-link" name="{{ $supplement['name'] }}" href="#">delete supplement</a>
+			<a class="add-edit-form-delete-link" name="{{ $supplement['name'] }}" href="#">delete supplement</a>
 		</form>
 	@endif
 @stop

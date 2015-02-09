@@ -22,6 +22,12 @@
 	Add Protocol for {{ $client->name() }}
 @stop
 
+@section('description')
+    <div class="add-edit-form-description">
+        Choose a supplement. Then enter instructions to let {{ $client->first_name }} know how to take it.
+    </div>
+@stop
+
 @section('form')
 	{{ Form::open(['route'=>['client add protocol',$client->id]]) }}
 @stop

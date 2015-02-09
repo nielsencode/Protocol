@@ -17,6 +17,11 @@
 				@yield('delete-link')
 			</td>
 		</tr>
+		<tr>
+			<td colspan="2">
+				@yield('description')
+			</td>
+		</tr>
 	</table>
 
 	@yield('form')

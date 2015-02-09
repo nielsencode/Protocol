@@ -4,7 +4,7 @@
 	@parent
 	<script>
 		$(function() {
-			$('.addedit-delete-link').click(function() {
+			$('.add-edit-form-delete-link').click(function() {
 				if(confirm('Are you sure you want to delete "'+$(this).attr('name')+'"')) {
 					$(this).closest('form').submit();
 				}
@@ -54,7 +54,7 @@
 )
 	@section('delete-link')
 		{{ Form::open(['route'=>['delete user',$user->id]]) }}
-			<a class="addedit-delete-link" name="{{ $user->name() }}" href="#">delete user</a>
+			<a class="add-edit-form-delete-link" name="{{ $user->name() }}" href="#">delete user</a>
 		{{ Form::close() }}
 	@stop
 @endif

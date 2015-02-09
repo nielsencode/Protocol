@@ -605,6 +605,11 @@ a {
   margin-left: 15px;
   cursor: pointer; }
 
-.addedit-delete-link {
+.add-edit-form-delete-link {
   font-size: 13px;
   color: #e60000; }
+
+.add-edit-form-description {
+  margin: 35px 0 5px 0;
+  width: 600px;
+  line-height: 1.5em; }

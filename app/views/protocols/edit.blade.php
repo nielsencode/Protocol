@@ -4,7 +4,7 @@
 	@parent
 	<script>
 		$(function() {
-			$('.addedit-delete-link').click(function() {
+			$('.add-edit-form-delete-link').click(function() {
                 var conf = confirm('Are you sure you want to delete this protocol?');
                 if(conf) {
                     $(this).closest('form').submit();
@@ -35,7 +35,7 @@
 			->over('Protocol',$protocol->id)
 	)
 		<form action="{{ route('delete protocol',[$protocol->id]) }}" method="post">
-			<a class="addedit-delete-link" href="#">delete protocol</a>
+			<a class="add-edit-form-delete-link" href="#">delete protocol</a>
 		</form>
 	@endif
 @stop
