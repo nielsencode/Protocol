@@ -1,21 +1,21 @@
 /*
 Syntax error: wrong number of arguments (0 for 1) for `blue'
-        on line 49 of lists.scss
+        on line 51 of lists.scss
 
-44:   border-color:rgba(0,0,0,.2);
-45: }
-46: 
-47: .editable-submit {
-48:   @extend .editable-button;
-49:   background-color:blue();
-50: }
-51: 
-52: .editable-cancel {
-53:   @extend .editable-button;
-54:   background-color:grey(90%);
+46:   border-color:rgba(0,0,0,.2);
+47: }
+48: 
+49: .editable-submit {
+50:   @extend .editable-button;
+51:   background-color:blue();
+52: }
+53: 
+54: .editable-cancel {
+55:   @extend .editable-button;
+56:   background-color:grey(90%);
 
 Backtrace:
-lists.scss:49
+lists.scss:51
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:303:in `reformat_argument_error'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:146:in `rescue in _perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.3.7/lib/sass/script/tree/funcall.rb:123:in `_perform'
@@ -68,4 +68,4 @@ lists.scss:49
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: wrong number of arguments (0 for 1) for `blue'\A         on line 49 of lists.scss\A \A 44:   border-color:rgba(0,0,0,.2);\A 45: }\A 46: \A 47: .editable-submit {\A 48:   @extend .editable-button;\A 49:   background-color:blue();\A 50: }\A 51: \A 52: .editable-cancel {\A 53:   @extend .editable-button;\A 54:   background-color:grey(90%);"; }
+  content: "Syntax error: wrong number of arguments (0 for 1) for `blue'\A         on line 51 of lists.scss\A \A 46:   border-color:rgba(0,0,0,.2);\A 47: }\A 48: \A 49: .editable-submit {\A 50:   @extend .editable-button;\A 51:   background-color:blue();\A 52: }\A 53: \A 54: .editable-cancel {\A 55:   @extend .editable-button;\A 56:   background-color:grey(90%);"; }

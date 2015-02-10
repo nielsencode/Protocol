@@ -175,7 +175,9 @@
   box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   outline: none;
-  height: 15px; }
+  height: 15px;
+  overflow-x: hidden;
+  white-space: nowrap; }
 
 .editable-list-item-input {
   margin: 0;
