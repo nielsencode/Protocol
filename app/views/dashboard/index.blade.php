@@ -37,7 +37,7 @@
                     var options = {
                         region: 'US',
                         displayMode: 'markers',
-                        colorAxis: {minValue:1,maxValue:max,colors:['blue','red']},
+                        colorAxis: {minValue:1,maxValue:max,colors:['grey','green','yellow','orange','red']},
                         resolution:'provinces'
                     };
 
