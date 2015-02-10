@@ -107,7 +107,9 @@ class UserController extends BaseController {
 			$user->subscribers()->attach(Subscriber::current()->id);
 		}
 
-		$this->newAccountInvitation($user);
+		if(!isset($user->password)) {
+			$this->newAccountInvitation($user);
+		}
 
 		return Redirect::route('user',$user->id);
 	}
