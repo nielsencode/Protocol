@@ -40,7 +40,7 @@ class AuthController extends BaseController {
 		}
 
 		if(!empty($success)) {
-			Auth::login($user);
+			Auth::login($user,true);
 			return Redirect::intended('home');
 		}
 		else {
