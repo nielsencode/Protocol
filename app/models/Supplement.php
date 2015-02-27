@@ -35,7 +35,7 @@ class Supplement extends Eloquent {
 	|
 	*/
 
-	protected $softDelete = true;
+	protected $softDelete = false;
 
 	/*
 	|--------------------------------------------------------------------------

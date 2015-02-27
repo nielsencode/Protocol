@@ -5,7 +5,7 @@
 	<script>
         $(function() {
             $('.add-edit-form-delete-link').click(function() {
-                if(confirm('Are you sure you want to delete "'+$(this).attr('name')+'"')) {
+                if(confirm("WARNING: This supplement may be included in client protocols. Delete anyway? (protocols will be automatically deleted.)")) {
                     $(this).closest('form').submit();
                 }
             });
