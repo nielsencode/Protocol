@@ -9,11 +9,17 @@ class ProtocolController extends BaseController {
             ->orScope('Protocol')
             ->over('Supplement');
 
-        $letter = Input::get('letter') ? Input::get('letter') : 'A';
+        $letter = Input::get('letter') ? rawurldecode(Input::get('letter')) : 'A';
 
         $supplements = Subscriber::current()
-            ->supplements()
-            ->where('name','LIKE',"$letter%")
+            ->supplements();
+
+        $supplements =
+            $letter == '#'
+                ? $supplements->whereRaw("name REGEXP '^[^A-Za-z]'")
+                : $supplements->where('name','LIKE',"$letter%");
+
+        $supplements = $supplements
             ->orderBy('name','asc')
             ->get();
 

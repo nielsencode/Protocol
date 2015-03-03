@@ -16,8 +16,8 @@
 <body>
 
 	<div class="letters">
-        @foreach (range('A','Z') as $letter)
-            <a class="letter" href="?letter={{ $letter }}">{{ $letter }}</a>
+        @foreach (array_merge([rawurlencode('#')=>'#'],array_combine(range('A','Z'),range('A','Z'))) as $k=>$letter)
+            <a class="letter" href="?letter={{ $k }}">{{ $letter }}</a>
         @endforeach
     </div>
 
