@@ -54,7 +54,7 @@ class Permissions extends Command {
 		];
 
 		foreach($this->actions as $action) {
-			$values[] = in_array($action,$actions) ? 'x' : '-';
+			$values[] = in_array($action,$actions) ? $action : '-';
 		}
 
 		$values = array_merge($values,[
