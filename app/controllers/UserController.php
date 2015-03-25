@@ -166,11 +166,13 @@ class UserController extends BaseController {
 		}
 
 		$input = Input::all();
-		$input['token_id'] = null;
 
-		$user->update(Input::all());
+		$input['role_id'] = $input['role'];
 
-		//Auth::login($user);
+		// Don't think this is needed any more.
+		//$input['token_id'] = null;
+
+		$user->update($input);
 
 		return Redirect::route('user',array($user->id));
 	}

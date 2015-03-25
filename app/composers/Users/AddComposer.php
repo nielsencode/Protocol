@@ -5,10 +5,10 @@ class AddComposer {
 	public function compose($view) {
 		switch(\Auth::user()->role->name) {
 			case 'protocol':
-				$roleNames = array('subscriber','admin');
+				$roleNames = array('subscriber','admin','client');
 				break;
 			case 'subscriber':
-				$roleNames = array('admin');
+				$roleNames = array('admin','client');
 				break;
 		}
 

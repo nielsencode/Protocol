@@ -78,6 +78,24 @@
 
 @section('form-fields')
 	@if (Auth::user())
+
+		@if (
+			Auth::user()
+				->has('add')
+				->ofScope('subscriber',Subscriber::current()->id)
+				->orScope('protocol')
+				->over('User',$user->id)
+		)
+			<tr>
+				<td class="form-label-cell">
+					{{ Form::label('user type','user type',['class'=>'required-form-label']) }}
+				</td>
+				<td class="form-cell">
+					{{ Form::select('role',$roles,$user->role->id,['class'=>'form-select']) }}
+				</td>
+			</tr>
+		@endif
+
 		<tr>
 			<td class="form-label-cell">
 				{{ Form::label('email','email (username)',array('class'=>'required-form-label')) }}

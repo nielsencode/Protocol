@@ -18,6 +18,7 @@ View::composers([
         'supplements.order'
     ],
     '\myUsers\AddComposer'=>[
-        'users.add'
+        'users.add',
+        'users.edit'
     ]
 ]);
