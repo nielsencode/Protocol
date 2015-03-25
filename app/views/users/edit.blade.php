@@ -79,13 +79,7 @@
 @section('form-fields')
 	@if (Auth::user())
 
-		@if (
-			Auth::user()
-				->has('add')
-				->ofScope('subscriber',Subscriber::current()->id)
-				->orScope('protocol')
-				->over('User',$user->id)
-		)
+		@if (Auth::user()->role->name == 'protocol')
 			<tr>
 				<td class="form-label-cell">
 					{{ Form::label('user type','user type',['class'=>'required-form-label']) }}

@@ -167,7 +167,7 @@ class UserController extends BaseController {
 
 		$input = Input::all();
 
-		$input['role_id'] = $input['role'];
+		$input['role_id'] = !empty($input['role']) ? $input['role'] : $user->role->id;
 
 		// Don't think this is needed any more.
 		//$input['token_id'] = null;

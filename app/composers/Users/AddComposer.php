@@ -9,8 +9,8 @@ class AddComposer {
 		if (
 			$user
 				->has('add')
-				->ofScope('Subscriber',\Subscriber::current()->id)
-				->orScope('Protocol')
+				->ofScope('subscriber',\Subscriber::current()->id)
+				->orScope('protocol')
 				->over('User')
 		) {
 
