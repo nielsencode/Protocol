@@ -79,12 +79,12 @@ class OrderController extends BaseController {
     }
 
     public function postCancelRecurring($order) {
-        Auth::user()
+        /*Auth::user()
             ->requires('delete')
             ->ofScope('Subscriber',Subscriber::current()->id)
             ->orScope('Protocol')
             ->orScope('Client',$order->client->id)
-            ->over('Autoship',$order->autoship->id);
+            ->over('Autoship',$order->autoship->id);*/
 
         $order->autoship->delete();
 
