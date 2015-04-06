@@ -117,14 +117,13 @@
             <span class="heading2">part of a recurring order</span>
 
             <div style="float:right;">
-                <form action="{{ route('cancel recurring order',[$order->id]) }}" method="POST">
+                <form action="{{ route('cancel recurring order',[$order->id]) }}" method="post">
                     <a class="info-table-edit-link cancel-recurring-order-link">cancel recurring order</a>
                 </form>
             </div>
         </div>
 
         <br>
-        
 
         <table style="margin-left:10px;" class="info-table" cellpadding="0" cellspacing="0">
             <tbody>
