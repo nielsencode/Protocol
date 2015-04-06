@@ -96,7 +96,7 @@ class SupplementController extends BaseController {
 			->over('Supplement',$supplement->id);
 
 		$rules = array(
-			'name'=>"required|unique:supplements,name,$supplement->id",
+			'name'=>"required",
 			'price'=>'required|numeric',
 			'short_description'=>'max:150'
 		);
@@ -104,7 +104,7 @@ class SupplementController extends BaseController {
 		$validator = Validator::make(Input::all(),$rules);
 
 		if($validator->fails()) {
-			return Redirect::to("supplements/$id/edit")->withErrors($validator)->withInput();
+			return Redirect::to("supplements/$supplement->id/edit")->withErrors($validator)->withInput();
 		}
 
 		foreach(Input::except('_token') as $k=>$v) {
