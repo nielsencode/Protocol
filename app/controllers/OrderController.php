@@ -79,12 +79,16 @@ class OrderController extends BaseController {
     }
 
     public function postCancelRecurring($order) {
-        /*Auth::user()
+        /**
+         * TODO
+         * should be over Autoship; scopes not working for some reason.
+         */
+        Auth::user()
             ->requires('delete')
             ->ofScope('Subscriber',Subscriber::current()->id)
             ->orScope('Protocol')
             ->orScope('Client',$order->client->id)
-            ->over('Autoship',$order->autoship->id);*/
+            ->over('Order',$order->id);
 
         $order->autoship->delete();
 
