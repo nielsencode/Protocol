@@ -19,7 +19,7 @@ Route::group(['prefix'=>'orders','before'=>'enable orders'],function() {
             'uses'=>'OrderController@getOrder'
         ]);
 
-        Route::post('/cancel-recurring',[
+        Route::any('/cancel-recurring',[
             'as'=>'cancel recurring order',
             'uses'=>'OrderController@postCancelRecurring'
         ]);

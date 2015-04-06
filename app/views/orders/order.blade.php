@@ -117,9 +117,9 @@
             <span class="heading2">part of a recurring order</span>
 
             <div style="float:right;">
-                {{ Form::open(['route'=>['cancel recurring order',$order->id]]) }}
+                <form action="{{ route('cancel recurring order',[$order->id]) }}" method="post">
                     <a class="info-table-edit-link cancel-recurring-order-link">cancel recurring order</a>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
 
