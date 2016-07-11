@@ -39,8 +39,8 @@ return array(
 	|
 	*/
 
-	//'timezone' => 'America/Los_Angeles',
-	'timezone' => 'Europe/London',
+	'timezone' => 'America/Los_Angeles',
+	//'timezone' => 'Europe/London',
 
 	/*
 	|--------------------------------------------------------------------------
