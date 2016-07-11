@@ -7,6 +7,23 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $softDelete = true;
 
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'users';
+
+	/* Mass assignment */
+	protected $fillable = array('role_id','subscriber_id','email','password','first_name','last_name','token_id');
+
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = array('password');
+
 	/* Events */
 	public static function boot() {
 		parent::boot();
@@ -15,20 +32,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			$user->fulltext();
 		});
 	}
-
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password');
 
 	/**
 	 * Get the unique identifier for the user.
@@ -74,9 +77,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return 'remember_token';
 	}
-	
-	/* Mass assignment */
-	protected $fillable = array('role_id','subscriber_id','email','password','first_name','last_name','token_id');
 	
 	/* Relationships */
 	public function role() {
